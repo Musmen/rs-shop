@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  plugins: ["import"],
   overrides: [
     {
       files: ["*.ts"],
@@ -18,7 +19,7 @@ module.exports = {
         "class-methods-use-this": "off",
         "lines-between-class-members": "off",
         "@typescript-eslint/lines-between-class-members": "off",
-      }   
+      }
     },
     {
       files: ["*.component.html"],
