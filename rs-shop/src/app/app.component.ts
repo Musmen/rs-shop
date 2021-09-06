@@ -6,7 +6,7 @@ import { IAppState } from './redux/state.model';
 import { selectAllCategories } from './redux/selectors/categories.selectors';
 import { updateCategories } from './redux/actions/categories.actions';
 
-import { ICategoryWithSubCategories } from './redux/models';
+import { ICategory } from '@core/models/category.model';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ import { ICategoryWithSubCategories } from './redux/models';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent implements OnInit { 
-  categories$?: Observable<ICategoryWithSubCategories[]>;
+  categories$?: Observable<ICategory[]>;
 
   constructor(private store: Store<IAppState>) { 
     this.store.dispatch(updateCategories());

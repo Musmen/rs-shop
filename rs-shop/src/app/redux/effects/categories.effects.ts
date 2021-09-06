@@ -8,7 +8,8 @@ import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { updateCategories, updateCategoriesFailed, updateCategoriesSuccessfully } from '../actions/categories.actions';
 
-import { ICategoryWithSubCategories } from '../models';
+import { ICategory } from '@core/models/category.model';
+
 // Необходим сервис отдельный на запросы к основному АПИ!!!!!!!!!
 @Injectable({ providedIn: 'any' })
 export class CategoriesEffects {
@@ -17,10 +18,10 @@ export class CategoriesEffects {
   getCategories$: Observable<Action> = createEffect(() => this.actions$
     .pipe(
       ofType(updateCategories.type),
-      switchMap(() => this.http.get<ICategoryWithSubCategories[]>('http://localhost:3004/categories')
+      switchMap(() => this.http.get<ICategory[]>('http://localhost:3004/categories')
         .pipe(
           map(
-            (categories: ICategoryWithSubCategories[]) => updateCategoriesSuccessfully({ categories }),
+            (categories: ICategory[]) => updateCategoriesSuccessfully({ categories }),
           ),
         )),
       catchError(() => of(updateCategoriesFailed())),

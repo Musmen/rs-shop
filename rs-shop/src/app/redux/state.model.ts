@@ -1,4 +1,6 @@
-import { ICategoryWithSubCategories, IGood, IUser } from './models';
+import { IUser } from '@core/models/user.model';
+import { ICategory } from '@core/models/category.model';
+import { IGood } from '@core/models/good.model';
 
 export interface IAppState {
   users: IUsersState,
@@ -12,7 +14,7 @@ export interface IUsersState {
 }
 
 export interface ICategoriesState {
-  categories: ICategoryWithSubCategories[],
+  categories: ICategory[],
 }
 
 export interface IGoodsState {

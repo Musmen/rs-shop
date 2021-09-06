@@ -1,6 +1,6 @@
-import { ICategoryWithSubCategories } from '@app/redux/models';
+import { ICategory } from '@core/models/category.model';
 
-const CATEGORIES: ICategoryWithSubCategories[] = [
+const CATEGORIES: ICategory[] = [
   {
     'id': 'appliances',
     'name': 'Бытовая техника',
