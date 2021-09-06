@@ -1,1 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
+@import './scss/normalize.scss';
+@import './scss/variables.scss';
+@import './scss/common.scss';
+@import './scss/material.scss';
+@import '~bootstrap/scss/bootstrap';

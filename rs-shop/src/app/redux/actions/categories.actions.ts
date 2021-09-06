@@ -6,6 +6,10 @@ export const updateCategories = createAction(
 );
 
 export const updateCategoriesSuccessfully = createAction(
-  '[INIT APP] UPDATE CATEGORIES SUCCESSFULLY',
+  '[MAIN API FETCH] UPDATE CATEGORIES SUCCESSFULLY',
   props<{ categories: ICategoryWithSubCategories[] }>(),
-);     
+);   
+
+export const updateCategoriesFailed = createAction(
+  '[MAIN API FETCH] UPDATE CATEGORIES FAILED',
+);  

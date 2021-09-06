@@ -1,0 +1,18 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';   
+
+.mat-form-field {
+  &.mat-form-field,
+  & .mat-form-field-flex,
+  & .mat-form-field-underline::before {
+    background-color: transparent;
+  }
+
+  & .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+
+  & .mat-form-field-underline {
+    bottom: 0;
+  }
+}

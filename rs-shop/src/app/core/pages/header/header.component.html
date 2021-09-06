@@ -1,1 +1,6 @@
-<app-info-block [location$]="location$"></app-info-block>
+<header class="header">
+  <app-info-block 
+    [location]="location$ | async" 
+    (changeLocationEvent)="changeLocation($event)"
+  ></app-info-block>
+</header>

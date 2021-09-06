@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { ILocation } from '@app/core/models/location.model';
-import { Observable } from 'rxjs';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+
+import { CITIES } from '@common/constants';
 
 @Component({
   selector: 'app-info-block',
@@ -8,6 +8,20 @@ import { Observable } from 'rxjs';
   styleUrls: ['./info-block.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InfoBlockComponent{
-  @Input() location$?: Observable<ILocation>;
+export class InfoBlockComponent implements OnChanges {
+  @Input() location?: string | null;
+  @Output() changeLocationEvent = new EventEmitter<string | null>();
+  cities = CITIES; 
+
+  ngOnChanges(): void {
+    this.addUserLocationToCitiesList();
+  }
+
+  private addUserLocationToCitiesList(): void {
+    if (this.location && !this.cities.includes(this.location)) this.cities.push(this.location);
+  }
+
+  onSelectionChange(): void {
+    this.changeLocationEvent.emit(this.location);
+  }
 }

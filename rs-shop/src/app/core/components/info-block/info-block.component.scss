@@ -1,0 +1,69 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';          
+
+:host {
+  @include flex-between;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.info-block {
+  align-self: center;
+}
+
+.info-block,
+.working-time-block {
+  border-left: 1px solid $secondary-bg-color-dark;
+}
+
+.contacts-list-item,
+.contacts-dropdown {
+  margin-right: 10px;
+}
+
+.contacts-list-item:first-of-type {
+  margin-left: 10px;
+}
+
+.contacts-item-icon {
+  margin-right: 5px;
+}
+
+.link {
+  &:focus,
+  &:hover,
+  &:active {
+    .contacts-item-icon-viber {
+      color: $main-red;
+    }
+    
+    .contacts-item-icon-telegram .path-fill {
+      fill: $main-red;
+    }
+  }  
+}
+
+.working-time-block {
+  height: 100%;
+
+  font-size: 14px;
+  line-height: 16px;
+  color: $secodary-font-color;
+}
+
+.working-time-icon,
+.working-time-description {
+  margin: 0 5px;
+}
+
+.working-time-description {
+  margin: 0;
+}
+
+.dropdown-button{
+  &:focus,
+  &:hover,
+  &:active {
+    color: $main-red;
+  }  
+}

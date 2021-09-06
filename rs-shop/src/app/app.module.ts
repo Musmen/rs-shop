@@ -12,6 +12,9 @@ import { CategoriesEffects } from './redux/effects/categories.effects';
 import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { StateEffects } from './redux/effects/state.effects';
 
 @NgModule({
   declarations: [
@@ -19,6 +22,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     StoreModule.forRoot(appState, {
@@ -34,8 +38,9 @@ import { AppComponent } from './app.component';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
-    EffectsModule.forRoot([CategoriesEffects]),
+    EffectsModule.forRoot([CategoriesEffects, StateEffects]),
     CoreModule,
+    NgbModule,
   ],
   bootstrap: [AppComponent],
 })
