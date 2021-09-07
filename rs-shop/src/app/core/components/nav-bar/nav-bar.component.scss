@@ -1,0 +1,27 @@
+@import 'src/scss/variables.scss';
+@import 'src/scss/mixins.scss';
+
+:host {
+  @include flex;
+
+  background: linear-gradient(90deg,#941e94,#e52e6b);
+}
+
+.header-navigation-list {
+  @include flex-center;
+
+  color: $main-light-font-color;
+}
+
+.header-navigation-link {
+  display: block;
+  padding: 10px;
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: inherit;
+    
+    background-color: $link-hover-color;
+  }
+}

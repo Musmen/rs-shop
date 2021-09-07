@@ -6,8 +6,9 @@
   margin: 0 10px;
 }
 
-.container {
+.centralizer {
   @include flex-aligned;
+  justify-content: space-evenly;
   margin: 15px auto;
 }
 

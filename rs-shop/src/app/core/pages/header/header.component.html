@@ -4,4 +4,5 @@
     (changeLocationEvent)="changeLocation($event)"
   ></app-info-block>
   <app-main-menu></app-main-menu>
+  <app-nav-bar [categories]="categories$ | async"></app-nav-bar>
 </header>

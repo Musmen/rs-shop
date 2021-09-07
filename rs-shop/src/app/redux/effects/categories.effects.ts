@@ -9,6 +9,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { updateCategories, updateCategoriesFailed, updateCategoriesSuccessfully } from '../actions/categories.actions';
 
 import { ICategory } from '@core/models/category.model';
+import CATEGORIES from '@app/mock-data/categories';
 
 // Необходим сервис отдельный на запросы к основному АПИ!!!!!!!!!
 @Injectable({ providedIn: 'any' })
@@ -18,7 +19,8 @@ export class CategoriesEffects {
   getCategories$: Observable<Action> = createEffect(() => this.actions$
     .pipe(
       ofType(updateCategories.type),
-      switchMap(() => this.http.get<ICategory[]>('http://localhost:3004/categories')
+      // switchMap(() => this.http.get<ICategory[]>('http://localhost:3004/categories')
+      switchMap(() => of(CATEGORIES)
         .pipe(
           map(
             (categories: ICategory[]) => updateCategoriesSuccessfully({ categories }),

@@ -3,9 +3,12 @@ import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import { detectLocation, setNewLocation } from '@app/redux/actions/state.actions';
+import { updateCategories } from '@app/redux/actions/categories.actions';
+import { selectLocation } from '@app/redux/selectors/state.selectors';
+import { selectAllCategories } from '@app/redux/selectors/categories.selectors';
 import { IAppState } from '@app/redux/state.model';
 
-import { selectLocation } from '@app/redux/selectors/state.selectors';
+import { ICategory } from '@app/core/models/category.model';
 
 @Component({
   selector: 'app-header',
@@ -15,13 +18,16 @@ import { selectLocation } from '@app/redux/selectors/state.selectors';
 })
 export class HeaderComponent implements OnInit {
   location$?: Observable<string>;
+  categories$?: Observable<ICategory[]>;
 
   constructor(private store: Store<IAppState>) {
     this.store.dispatch(detectLocation());
+    this.store.dispatch(updateCategories());
   }
 
   ngOnInit(): void {
     this.location$ = this.store.select(selectLocation);
+    this.categories$ = this.store.select(selectAllCategories);
   }
 
   changeLocation(newLocation: string | null): void {
