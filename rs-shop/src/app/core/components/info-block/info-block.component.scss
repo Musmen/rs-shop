@@ -2,9 +2,13 @@
 @import './src/scss/variables.scss';          
 
 :host {
+  @include flex;
+  
+  border-bottom: 1px solid $main-divider-color;
+}
+
+.container {
   @include flex-between;
-  width: 1200px;
-  margin: 0 auto;
 }
 
 .info-block {
@@ -13,7 +17,7 @@
 
 .info-block,
 .working-time-block {
-  border-left: 1px solid $secondary-bg-color-dark;
+  border-left: 1px solid $main-divider-color;
 }
 
 .contacts-list-item,
@@ -29,10 +33,13 @@
   margin-right: 5px;
 }
 
-.link {
+.contacts-list-item,
+.dropdown-item {
   &:focus,
   &:hover,
   &:active {
+    color: $main-red;
+
     .contacts-item-icon-viber {
       color: $main-red;
     }

@@ -1,0 +1,43 @@
+@import 'src/scss/variables.scss';
+@import 'src/scss/mixins.scss';
+
+:host {
+  @include flex;
+  margin: 0 10px;
+}
+
+.container {
+  @include flex-aligned;
+  margin: 15px auto;
+}
+
+.logo {
+  width: 37px;
+  height: 40px;
+  margin-right: 60px;
+}
+
+.search-form {
+  @include flex;
+  margin-right: 20px;
+}
+
+.search-form-field {
+  width: 540px;
+  height: 36px;
+}
+
+.search-form-input {
+  height: 36px;
+}
+
+.catalog-button {
+  min-width: 160px;
+	margin-right: 20px;
+}
+
+.profile-button,
+.cart-button {
+  min-width: 120px;
+	margin-right: 20px;
+}

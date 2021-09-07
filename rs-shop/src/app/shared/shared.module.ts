@@ -4,9 +4,12 @@ import { FormsModule } from '@angular/forms';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 
 const materialModules = [ 
-  MatSelectModule, MatIconModule,
+  MatSelectModule, MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule,
 ];    
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';

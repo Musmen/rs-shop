@@ -5,8 +5,9 @@ body {
 	font-family: "Roboto", "Helvetica Neue", sans-serif;
 }
 
-:root {
-  margin: auto;
+.container {
+  width: 1200px;
+  margin: 0 auto;
 }
 
 .visually-hidden {
@@ -31,10 +32,7 @@ body {
 	text-decoration: none;
 	color: inherit;
 
-	transition: color 0.15s ease-in-out,
-	 background-color 0.15s ease-in-out,
-	     border-color 0.15s ease-in-out,
-		     box-shadow 0.15s ease-in-out;
+	transition: .2s ease;
 
 	&:focus,
   &:hover,
@@ -50,4 +48,38 @@ body {
 
 .flex-aligned {
   @include flex-aligned;
+}
+
+// :root .main-button {
+// 	color:  $main-light-color;
+
+// 	border: 1px solid $main-color;
+// 	background-color: $main-color;
+	
+// 	&:hover {
+//     color:  $main-color;
+
+//     background-color: $main-light-color;
+//   }
+// } 
+
+:root .main-button {
+	box-sizing: border-box;
+	@include flex-center;
+	height: 42px;
+	
+	border: 1px solid $main-button-border-color;
+	border-radius: 40px;
+	
+	background-color: $main-button-background-color;
+	
+	transition: .2s ease;
+
+	&:focus,
+  &:hover,
+  &:active {
+		border-color: $main-button-light-color;
+    background-color: $main-button-light-color;
+    box-shadow: 0 2px 4px $main-button-shadow-color;
+	}
 }

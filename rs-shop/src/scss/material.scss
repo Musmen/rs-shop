@@ -16,3 +16,73 @@
     bottom: 0;
   }
 }
+
+.mat-form-field .mat-form-field-infix {
+  border: 0;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-infix {
+  padding: 0;
+}
+
+.search-form-field {
+  &.mat-form-field-appearance-outline .mat-form-field-outline-start {
+    width: 40px !important;
+    border-radius: 40px 0 0 40px;
+  } 
+  
+  &.mat-form-field-appearance-outline .mat-form-field-outline-end {
+    width: 40px !important;
+    border-radius: 0 40px 40px 0;
+  }
+
+  &.mat-form-field .mat-form-field-infix .mat-input-element {
+    padding-top: 5px;
+  }
+
+  &.mat-form-field-appearance-outline .mat-form-field-prefix,
+  &.mat-form-field-appearance-outline .mat-form-field-suffix {
+    top: 0;
+  }
+
+  &.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,
+  &.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button {
+    width: 24px;
+    height: 24px;
+  }
+
+  &.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: $main-color;
+  }
+
+  &.mat-form-field-appearance-outline .mat-form-field-outline {
+    background-color: $secondary-bg-color-light;
+  }
+
+  &.mat-form-field-appearance-outline .mat-form-field-flex {
+    margin-top: -8px;
+  }
+
+  &.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+  &.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus+.mat-form-field-label-wrapper .mat-form-field-label {
+    width: 133%;
+
+    color: $main-dark-color;
+
+    transform: translateY(-1em) scale(0.75);
+  }
+
+  &.mat-form-field-appearance-outline .mat-form-field-prefix, 
+  &.mat-form-field-appearance-outline .mat-form-field-suffix {
+    top: -2px;
+  }
+
+  &.mat-form-field-appearance-outline .mat-form-field-flex {
+    padding: 0 .3em 0 .75em;
+  }
+
+  &.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label,
+  .search-form-field.mat-form-field-appearance-outline.mat-form-field-can-float .mat-input-server:focus + .mat-form-field-label-wrapper .mat-form-field-label {
+    transform: translateY(-1em) translateX(1.95em) scale(0.73);
+  }
+}     

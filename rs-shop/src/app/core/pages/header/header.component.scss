@@ -2,7 +2,5 @@
 @import './src/scss/variables.scss';          
 
 .header {
-  border-bottom: 1px solid $secondary-bg-color-dark;
-
-  background-color: $main-bg-color-light;
+  background-color: $secondary-bg-color-light;
 }
