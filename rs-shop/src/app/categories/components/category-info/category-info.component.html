@@ -1,6 +1,0 @@
-<section *ngIf="(category$ | async) as category">
-  <h2 class="category-title">{{ category.name }}</h2>
-  <ul>
-    <li *ngFor="let subCategory of category.subCategories">{{ subCategory | json }}</li>
-  </ul>
-</section>

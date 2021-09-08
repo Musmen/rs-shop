@@ -1,11 +1,5 @@
 import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  OnInit,
-  OnDestroy,
-  ChangeDetectorRef,
-  OnChanges,
+  ChangeDetectionStrategy, Component, Input, OnInit, OnDestroy, ChangeDetectorRef, OnChanges,
 } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -34,7 +28,6 @@ export class CategoryInfoComponent implements OnInit, OnDestroy, OnChanges {
   ) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit in CategoryInfoComponent');
     if (this.categoryId) {
       this.setCategory(this.categoryId);
     } else {
@@ -45,7 +38,6 @@ export class CategoryInfoComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnChanges(): void {
-    console.log('ngOnChanges in CategoryInfoComponent');
     if (this.categoryId) this.setCategory(this.categoryId);
   }
 
@@ -55,9 +47,8 @@ export class CategoryInfoComponent implements OnInit, OnDestroy, OnChanges {
 
   private setCategory(id: string): void {
     if (!id) return;
-    console.log('setNewCurrentCategory in CategoryInfoComponent:', id);
     this.categoryId = id;
-    if (this.categoryId) this.category$ = this.store.select(selectCategoryById(this.categoryId));
+    this.category$ = this.store.select(selectCategoryById(this.categoryId));
     this.ref.detectChanges();
   }
 }

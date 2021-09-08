@@ -1,12 +1,16 @@
 @import 'src/scss/variables.scss';
 @import 'src/scss/mixins.scss';
 
-.centralizer {
+:host {
   @include flex;
+  min-height: 60vh;
+  margin-top: 20px;
 }
 
 .navigation-block {
-  width: 25%;
+  width: 25vw;
+
+  border-right: 1px solid $main-divider-color;
 }
 
 .navigation-list {
@@ -21,7 +25,9 @@
 
   color: $third-dark-font-color;
 
-  cursor: pointer;
+  .icon {
+    margin-right: 10px;
+  }
 
   &:focus,
   &:hover,
@@ -30,12 +36,8 @@
     color: $main-font-brand-color;
     background-color: $link-hover-secondary-color;
   }
+}
 
-  .icon {
-    margin-right: 10px;
-  }
-
-  .category-content {
-    width: 75%;
-  }
+.category-content {
+  width: 75vw;
 }

@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { selectAllCategories } from '@redux/selectors/categories.selectors';
 import { IAppState } from '@redux/state.model';
 
+import { CATEGORIES_ID_TO_ICONS } from '@app/categories/common/constants';
 import { ICategory } from '@core/models/category.model';
 
 @Component({
@@ -16,14 +17,14 @@ import { ICategory } from '@core/models/category.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoriesPageComponent implements OnInit {
+  ICONS = CATEGORIES_ID_TO_ICONS;
+
   categories$?: Observable<ICategory[]>;
-  currentCategory$?: Observable<ICategory | null>;
   currentCategoryId?: string;
 
   constructor(private store: Store<IAppState>) { }
 
   ngOnInit(): void {
-    console.log('ngOnInit in CategoriesPageComponent****');
     this.categories$ = this.store.select(selectAllCategories);
   }
 
