@@ -3,6 +3,11 @@
     [location]="location$ | async" 
     (changeLocationEvent)="changeLocation($event)"
   ></app-info-block>
-  <app-main-menu></app-main-menu>
-  <app-nav-bar [categories]="categories$ | async"></app-nav-bar>
+  <app-main-menu
+    (catalogButtonClickEvent)="onCatalogButtonClick()"
+  ></app-main-menu>
+  <app-nav-bar 
+    [categories]="categories$ | async"
+    (categoryClickEvent)="onCategoryClick($event)"
+  ></app-nav-bar>
 </header>

@@ -8,7 +8,7 @@ describe('InfoBlockComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoBlockComponent ],
+      declarations: [InfoBlockComponent],
     })
       .compileComponents();
   });

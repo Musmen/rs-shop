@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, EventEmitter, Input, OnChanges, Output,
+} from '@angular/core';
 
 import { CITIES } from '@common/constants';
 
@@ -11,7 +13,7 @@ import { CITIES } from '@common/constants';
 export class InfoBlockComponent implements OnChanges {
   @Input() location?: string | null;
   @Output() changeLocationEvent = new EventEmitter<string | null>();
-  cities = CITIES; 
+  cities = CITIES;
 
   ngOnChanges(): void {
     this.addUserLocationToCitiesList();

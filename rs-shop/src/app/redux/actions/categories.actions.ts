@@ -8,8 +8,8 @@ export const updateCategories = createAction(
 export const updateCategoriesSuccessfully = createAction(
   '[MAIN API FETCH] UPDATE CATEGORIES SUCCESSFULLY',
   props<{ categories: ICategory[] }>(),
-);   
+);
 
 export const updateCategoriesFailed = createAction(
   '[MAIN API FETCH] UPDATE CATEGORIES FAILED',
-);  
+);

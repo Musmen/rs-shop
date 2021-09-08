@@ -1,0 +1,41 @@
+@import 'src/scss/variables.scss';
+@import 'src/scss/mixins.scss';
+
+.centralizer {
+  @include flex;
+}
+
+.navigation-block {
+  width: 25%;
+}
+
+.navigation-list {
+  @include flex-column;
+
+  color: $main-light-font-color;
+}
+
+.navigation-link {
+  @include flex-aligned;
+  padding: 10px;
+
+  color: $third-dark-font-color;
+
+  cursor: pointer;
+
+  &:focus,
+  &:hover,
+  &:active,
+  &.active {
+    color: $main-font-brand-color;
+    background-color: $link-hover-secondary-color;
+  }
+
+  .icon {
+    margin-right: 10px;
+  }
+
+  .category-content {
+    width: 75%;
+  }
+}

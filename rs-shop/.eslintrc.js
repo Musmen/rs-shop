@@ -8,10 +8,11 @@ module.exports = {
         project: [
           "tsconfig.*?.json",
         ],
-        createDefaultProgram: true,
+        createDefaultProgram: true
       },
       extends: [
         "plugin:@angular-eslint/recommended",
+        "airbnb-base",
         "airbnb-typescript/base",
       ],
       rules: {
@@ -19,7 +20,7 @@ module.exports = {
         "class-methods-use-this": "off",
         "lines-between-class-members": "off",
         "@typescript-eslint/lines-between-class-members": "off",
-      }
+      } 
     },
     {
       files: ["*.component.html"],

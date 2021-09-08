@@ -13,5 +13,5 @@ export const stateReducer = createReducer(
     (state, { newLocation }) => ({
       ...state,
       location: newLocation,
-    })),  
+    })),
 );

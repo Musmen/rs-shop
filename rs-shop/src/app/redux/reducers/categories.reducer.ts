@@ -8,5 +8,5 @@ export const categoriesReducer = createReducer(
     (state, { categories }) => ({
       ...state,
       categories: [...categories],
-    })), 
+    })),
 );

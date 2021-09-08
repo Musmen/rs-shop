@@ -1,0 +1,19 @@
+<div class="centralizer">
+  <aside class="navigation-block">
+    <ul class="navigation-list list"> 
+      <li class="navigation-item" *ngFor="let category of categories$ | async">
+        <a 
+          class="navigation-link link" 
+          [class.active]="category.id === currentCategoryId"
+          (mouseenter)="setNewCurrentCategory(category.id)"
+        >
+          <mat-icon class="icon" matPrefix>map</mat-icon>
+          <span>{{ category.name }}</span>
+        </a>
+      </li>
+    </ul>
+  </aside>
+  <div class="category-content">
+    <app-category-info [categoryId]="currentCategoryId"></app-category-info>
+  </div>
+</div>

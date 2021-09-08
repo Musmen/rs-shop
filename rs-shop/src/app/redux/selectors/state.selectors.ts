@@ -6,4 +6,4 @@ export const selectState = createFeatureSelector<IState>('state');
 export const selectLocation = createSelector(
   selectState,
   (state: IState) => state.location,
-); 
+);

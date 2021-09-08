@@ -1,5 +1,8 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, Input, Output, EventEmitter,
+} from '@angular/core';
 import { ICategory } from '@app/core/models/category.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,4 +12,11 @@ import { ICategory } from '@app/core/models/category.model';
 })
 export class NavBarComponent {
   @Input() categories?: ICategory[] | null;
+  @Output() categoryClickEvent = new EventEmitter<string>();
+
+  constructor(private router: Router) { }
+
+  onCategoryClick(categoryId: string): void {
+    this.categoryClickEvent.emit(categoryId);
+  }
 }

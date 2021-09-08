@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
 import { Store } from '@ngrx/store';
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit {
   location$?: Observable<string>;
   categories$?: Observable<ICategory[]>;
 
-  constructor(private store: Store<IAppState>) {
+  constructor(private store: Store<IAppState>, private router: Router) {
     this.store.dispatch(detectLocation());
     this.store.dispatch(updateCategories());
   }
@@ -33,5 +34,13 @@ export class HeaderComponent implements OnInit {
   changeLocation(newLocation: string | null): void {
     if (!newLocation) return;
     this.store.dispatch(setNewLocation({ newLocation }));
+  }
+
+  onCategoryClick(categoryId: string): void {
+    this.router.navigate(['/categories', categoryId]);
+  }
+
+  onCatalogButtonClick(): void {
+    this.router.navigate(['/categories']);
   }
 }

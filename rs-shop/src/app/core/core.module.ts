@@ -13,8 +13,8 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     MainMenuComponent,
     NavBarComponent,
   ],
-  imports: [ SharedModule ],
-  exports: [ HeaderComponent ],
-  providers: [ LocationService ],
+  imports: [SharedModule],
+  exports: [HeaderComponent],
+  providers: [LocationService],
 })
 export class CoreModule { }

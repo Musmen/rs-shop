@@ -2,160 +2,160 @@ import { ICategory } from '@core/models/category.model';
 
 const CATEGORIES: ICategory[] = [
   {
-    'id': 'appliances',
-    'name': 'Бытовая техника',
-    'subCategories': [
+    id: 'appliances',
+    name: 'Бытовая техника',
+    subCategories: [
       {
-        'id': 'refrigerators',
-        'name': 'Холодильники',
+        id: 'refrigerators',
+        name: 'Холодильники',
       },
       {
-        'id': 'cookers',
-        'name': 'Кухонные плиты',
+        id: 'cookers',
+        name: 'Кухонные плиты',
       },
       {
-        'id': 'dishwashers',
-        'name': 'Посудомоечные машины',
+        id: 'dishwashers',
+        name: 'Посудомоечные машины',
       },
       {
-        'id': 'freezers',
-        'name': 'Морозильники',
+        id: 'freezers',
+        name: 'Морозильники',
       },
       {
-        'id': 'microwaves',
-        'name': 'Микроволновые печи',
+        id: 'microwaves',
+        name: 'Микроволновые печи',
       },
       {
-        'id': 'teapots',
-        'name': 'Электрочайники',
+        id: 'teapots',
+        name: 'Электрочайники',
       },
       {
-        'id': 'washing-machines',
-        'name': 'Стиральные машины',
+        id: 'washing-machines',
+        name: 'Стиральные машины',
       },
       {
-        'id': 'irons',
-        'name': 'Утюги',
+        id: 'irons',
+        name: 'Утюги',
       },
       {
-        'id': 'vacuum',
-        'name': 'Пылесосы',
-      },
-    ],
-  },
-  {
-    'id': 'electronics',
-    'name': 'Электроника',
-    'subCategories': [
-      {
-        'id': 'mobile',
-        'name': 'Смартфоны',
-      },
-      {
-        'id': 'watches',
-        'name': 'Умные часы',
-      },
-      {
-        'id': 'tablets',
-        'name': 'Планшеты',
-      },
-      {
-        'id': 'ebooks',
-        'name': 'Электронные книги',
-      },
-      {
-        'id': 'powerbanks',
-        'name': 'Портативные аккумуляторы',
-      },
-      {
-        'id': 'cameras',
-        'name': 'Фотоаппараты',
-      },
-      {
-        'id': 'tvs',
-        'name': 'Телевизоры',
-      },
-      {
-        'id': 'headphones',
-        'name': 'Наушники и гарнитуры',
+        id: 'vacuum',
+        name: 'Пылесосы',
       },
     ],
   },
   {
-    'id': 'computers-peripherals',
-    'name': 'Компьютеры и периферия',
-    'subCategories': [
+    id: 'electronics',
+    name: 'Электроника',
+    subCategories: [
       {
-        'id': 'laptops',
-        'name': 'Ноутбуки',
+        id: 'mobile',
+        name: 'Смартфоны',
       },
       {
-        'id': 'computers',
-        'name': 'Компьютеры',
+        id: 'watches',
+        name: 'Умные часы',
       },
       {
-        'id': 'consoles',
-        'name': 'Игровые приставки',
+        id: 'tablets',
+        name: 'Планшеты',
       },
       {
-        'id': 'hardware',
-        'name': 'Комплектующие',
+        id: 'ebooks',
+        name: 'Электронные книги',
       },
       {
-        'id': 'peripherals',
-        'name': 'Компьютерная периферия',
+        id: 'powerbanks',
+        name: 'Портативные аккумуляторы',
       },
       {
-        'id': 'monitors',
-        'name': 'Мониторы',
-      },
-    ],
-  },
-  {
-    'id': 'furniture',
-    'name': 'Мебель',
-    'subCategories': [
-      {
-        'id': 'sofas',
-        'name': 'Диваны, тахты',
+        id: 'cameras',
+        name: 'Фотоаппараты',
       },
       {
-        'id': 'armchairs',
-        'name': 'Кресла',
+        id: 'tvs',
+        name: 'Телевизоры',
       },
       {
-        'id': 'cabinets',
-        'name': 'Шкафы',
-      },
-      {
-        'id': 'chairs',
-        'name': 'Стулья',
-      },
-      {
-        'id': 'tables',
-        'name': 'Столы, столики',
-      },
-      {
-        'id': 'beds',
-        'name': 'Кровати',
+        id: 'headphones',
+        name: 'Наушники и гарнитуры',
       },
     ],
   },
   {
-    'id': 'hobbies',
-    'name': 'Досуг и хобби',
-    'subCategories': [
+    id: 'computers-peripherals',
+    name: 'Компьютеры и периферия',
+    subCategories: [
       {
-        'id': 'music-instruments',
-        'name': 'Музыкальные инструменты',
+        id: 'laptops',
+        name: 'Ноутбуки',
       },
       {
-        'id': 'books',
-        'name': 'Книги',
+        id: 'computers',
+        name: 'Компьютеры',
       },
       {
-        'id': 'fun-and-rest',
-        'name': 'Развлечения и отдых',
+        id: 'consoles',
+        name: 'Игровые приставки',
+      },
+      {
+        id: 'hardware',
+        name: 'Комплектующие',
+      },
+      {
+        id: 'peripherals',
+        name: 'Компьютерная периферия',
+      },
+      {
+        id: 'monitors',
+        name: 'Мониторы',
+      },
+    ],
+  },
+  {
+    id: 'furniture',
+    name: 'Мебель',
+    subCategories: [
+      {
+        id: 'sofas',
+        name: 'Диваны, тахты',
+      },
+      {
+        id: 'armchairs',
+        name: 'Кресла',
+      },
+      {
+        id: 'cabinets',
+        name: 'Шкафы',
+      },
+      {
+        id: 'chairs',
+        name: 'Стулья',
+      },
+      {
+        id: 'tables',
+        name: 'Столы, столики',
+      },
+      {
+        id: 'beds',
+        name: 'Кровати',
+      },
+    ],
+  },
+  {
+    id: 'hobbies',
+    name: 'Досуг и хобби',
+    subCategories: [
+      {
+        id: 'music-instruments',
+        name: 'Музыкальные инструменты',
+      },
+      {
+        id: 'books',
+        name: 'Книги',
+      },
+      {
+        id: 'fun-and-rest',
+        name: 'Развлечения и отдых',
       },
     ],
   },

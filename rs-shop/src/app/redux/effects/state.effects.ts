@@ -4,9 +4,8 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { detectLocation, detectLocationFailed, detectLocationSuccessfully } from '../actions/state.actions';
-
 import { LocationService } from '@app/core/services/location/location.service';
+import { detectLocation, detectLocationFailed, detectLocationSuccessfully } from '../actions/state.actions';
 
 @Injectable({ providedIn: 'any' })
 export class StateEffects {
@@ -22,6 +21,5 @@ export class StateEffects {
           ),
         )),
       catchError(() => of(detectLocationFailed())),
-    ),
-  );
+    ));
 }

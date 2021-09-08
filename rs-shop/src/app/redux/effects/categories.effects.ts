@@ -6,10 +6,10 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { updateCategories, updateCategoriesFailed, updateCategoriesSuccessfully } from '../actions/categories.actions';
 
 import { ICategory } from '@core/models/category.model';
 import CATEGORIES from '@app/mock-data/categories';
+import { updateCategories, updateCategoriesFailed, updateCategoriesSuccessfully } from '../actions/categories.actions';
 
 // Необходим сервис отдельный на запросы к основному АПИ!!!!!!!!!
 @Injectable({ providedIn: 'any' })
@@ -27,6 +27,5 @@ export class CategoriesEffects {
           ),
         )),
       catchError(() => of(updateCategoriesFailed())),
-    ),
-  );
+    ));
 }

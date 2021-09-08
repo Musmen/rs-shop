@@ -8,11 +8,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 
-const materialModules = [ 
-  MatSelectModule, MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule,
-];    
-
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+const materialModules = [
+  MatSelectModule, MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule,
+];
 
 @NgModule({
   imports: [

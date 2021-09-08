@@ -10,6 +10,7 @@
       "@core/*": ["src/app/core/*"],
       "@shared/*": ["src/app/shared/*"],
       "@redux/*": ["src/app/redux/*"],
+      "@categories/*": ["src/app/categories/*"],
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

@@ -1,7 +1,10 @@
-<nav class="header-navigation-block centralizer">
-  <ul class="header-navigation-list list"> 
-    <li class="header-navigation-item" *ngFor="let category of categories">
-      <a class="header-navigation-link link" href="/">
+<nav class="navigation-block centralizer">
+  <ul class="navigation-list list"> 
+    <li class="navigation-item" *ngFor="let category of categories">
+      <a 
+        class="navigation-link link" 
+        (click)="onCategoryClick(category.id)"
+      >
         {{ category.name }}
       </a>
     </li>
