@@ -1,0 +1,106 @@
+@import './src/scss/mixins.scss';
+@import './src/scss/variables.scss';
+
+.footer {
+  margin-top: 20px;
+
+  background-color: $secondary-bg-color-light;
+}
+
+.contacts-list {
+  @include flex-evenly;
+  border-top: 1px solid $main-divider-color;
+  border-bottom: 1px solid $main-divider-color;
+}
+
+.contacts-list-item {
+  margin-right: 10px;
+  padding: 10px 0;
+}
+
+.contacts-list-item:first-of-type {
+  margin-left: 10px;
+}
+
+.contacts-item-icon {
+  margin-right: 5px;
+}
+
+.contacts-list-item {
+  &:focus,
+  &:hover,
+  &:active {
+    color: $main-red;
+
+    .contacts-item-icon-viber {
+      color: $main-red;
+    }
+    
+    .contacts-item-icon-telegram .path-fill {
+      fill: $main-red;
+    }
+  }  
+}
+
+.social-list {
+  @include flex-center;
+  margin: 10px;
+}
+
+.social-item-link {
+  @include flex-center-aligned;
+  width: 40px;
+  height: 40px;
+
+  background-color: $main-light-color;
+  border-radius: 50%;
+
+  box-shadow: 0 2px 4px $link-shadow-light-color;
+}
+
+.social-list-item:not(:last-of-type) {
+  margin-right: 10px;
+}
+
+.hover {
+  &:focus,
+  &:hover,
+  &:active {
+    .path {
+      fill: $main-light-color;
+    }
+  }
+}
+
+.hover-set-1 {
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $social-link-hover-color;
+  }
+}
+
+.hover-set-2 {
+  &:focus,
+  &:hover,
+  &:active {
+    background-image: $instagram-backgroud-gradient;
+    background-color: $instagram-backgroud-gradient;
+  }
+}
+
+.hover-set-3 {
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $youtube-social-link-hover-color;
+  }
+}
+
+.hover-set-4 {
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $ok-social-link-hover-color;
+  }
+}

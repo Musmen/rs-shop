@@ -5,6 +5,7 @@ import { InfoBlockComponent } from './components/info-block/info-block.component
 import { HeaderComponent } from './pages/header/header.component';
 import { MainMenuComponent } from './components/main-menu/main-menu.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FooterComponent } from './pages/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -12,9 +13,13 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     HeaderComponent,
     MainMenuComponent,
     NavBarComponent,
+    FooterComponent,
   ],
   imports: [SharedModule],
-  exports: [HeaderComponent],
+  exports: [
+    HeaderComponent,
+    FooterComponent,
+  ],
   providers: [LocationService],
 })
 export class CoreModule { }

@@ -52,19 +52,6 @@ body {
   @include flex-aligned;
 }
 
-// :root .main-button {
-// 	color:  $main-light-color;
-
-// 	border: 1px solid $main-color;
-// 	background-color: $main-color;
-	
-// 	&:hover {
-//     color:  $main-color;
-
-//     background-color: $main-light-color;
-//   }
-// } 
-
 :root .main-button {
 	box-sizing: border-box;
 	@include flex-center;
