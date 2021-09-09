@@ -2,21 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  // { path: '', pathMatch: 'full', redirectTo: 'main' },
+  { path: '', pathMatch: 'full', redirectTo: 'main' },
   // { path: 'auth', redirectTo: 'login' },
-  // { path: 'home', redirectTo: 'main' },
+  { path: 'home', redirectTo: 'main' },
   {
     path: 'categories',
     loadChildren: () => import('@categories/categories.module')
       .then((m) => m.CategoriesModule),
   },
-  // {
-  //   path: 'main',
-  //   loadChildren: () => import('@youtube/youtube.module')
-  //     .then((m) => m.YoutubeModule),
-  //   canLoad: [AuthGuard],
-  //   canActivate: [AuthGuard],
-  // },
+  {
+    path: 'main',
+    loadChildren: () => import('@main/main.module')
+      .then((m) => m.MainModule),
+  },
   // {
   //   path: 'admin',
   //   loadChildren: () => import('@admin/admin.module')

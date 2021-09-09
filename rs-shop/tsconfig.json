@@ -11,6 +11,7 @@
       "@shared/*": ["src/app/shared/*"],
       "@redux/*": ["src/app/redux/*"],
       "@categories/*": ["src/app/categories/*"],
+      "@main/*": ["src/app/main/*"],
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,
