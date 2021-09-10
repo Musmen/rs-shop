@@ -10,7 +10,9 @@ import {
 })
 export class MainMenuComponent {
   @Output() setSearchValueEvent = new EventEmitter<string>();
-  @Output() catalogButtonClickEvent = new EventEmitter();
+  @Output() catalogButtonClickEvent = new EventEmitter<void>();
+  @Output() logoClickEvent = new EventEmitter<void>();
+
   searchValue: string = '';
 
   setSearchValue(searchValue: string = this.searchValue): void {
@@ -19,5 +21,9 @@ export class MainMenuComponent {
 
   onCatalogButtonClick(): void {
     this.catalogButtonClickEvent.emit();
+  }
+
+  onLogoClick(): void {
+    this.logoClickEvent.emit();
   }
 }

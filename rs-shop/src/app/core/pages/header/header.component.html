@@ -5,6 +5,7 @@
   ></app-info-block>
   <app-main-menu
     (catalogButtonClickEvent)="onCatalogButtonClick()"
+    (logoClickEvent)="goToMainPage()"
   ></app-main-menu>
   <app-nav-bar 
     [categories]="categories$ | async"

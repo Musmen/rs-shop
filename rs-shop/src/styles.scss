@@ -3,3 +3,8 @@
 @import './scss/common.scss';
 @import './scss/material.scss';
 @import '~bootstrap/scss/bootstrap';
+
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import './scss/swiper.scss';

@@ -1,0 +1,44 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';
+
+.slide,
+.slide-poster {
+  height: 200px;
+}
+
+.slide {
+  @include flex-aligned;
+}
+
+.slide-poster-wrapper {
+  @include flex-center-aligned;
+  justify-content: flex-end;
+  width: 40%;
+}
+
+.slide-poster {
+  min-height: 200px;
+  object-fit: cover;
+}
+
+.slide-description-wrapper {
+  @include flex-center-aligned;
+  flex-direction: column;
+  width: 40%;
+  margin-left: 40px;
+
+  font-size: 1.5rem;
+}
+
+.description-title {
+  text-align: center;
+}
+
+.description-price,
+.description-raiting {
+  margin: 5px 0;
+}
+
+.price-label {
+  font-weight: bold;
+}

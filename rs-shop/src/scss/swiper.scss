@@ -1,0 +1,28 @@
+@import './src/scss/variables.scss';
+
+.swiper-slide {
+  height: auto;
+}
+
+.swiper-pagination-bullet {
+  width: 15px;
+  height: 15px;
+
+  background-color: $secondary-bg-color-dark;
+
+  opacity: 1;
+  
+  &:hover {
+    background-color: $main-blue;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $main-brand-color;
+
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $main-brand-color;
+  }
+}

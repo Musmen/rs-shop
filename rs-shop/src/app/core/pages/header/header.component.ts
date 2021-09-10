@@ -43,4 +43,8 @@ export class HeaderComponent implements OnInit {
   onCatalogButtonClick(): void {
     this.router.navigate(['/categories']);
   }
+
+  goToMainPage(): void {
+    this.router.navigate(['/main']);
+  }
 }

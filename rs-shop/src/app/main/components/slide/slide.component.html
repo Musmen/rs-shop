@@ -1,0 +1,22 @@
+<article class="slide" *ngIf="content">
+  <div class="slide-poster-wrapper">
+    <img 
+    class="slide-poster" 
+    src="{{ content.imageUrls[0] }}" 
+    alt="{{ content.name }}"
+    title="{{ content.name }}"
+    >
+  </div>
+  <div class="slide-description-wrapper">
+    <h3 class="description-title">
+      {{ content.name }}
+    </h3>
+    <p class="description-price">
+      Рейтинг: {{ content.rating }}
+    </p>
+    <p class="description-raiting">
+      <span class="price-label">Цена:</span> 
+      {{ content.price | number:'.2-2' }} бел. рублей
+    </p>
+  </div>
+</article>

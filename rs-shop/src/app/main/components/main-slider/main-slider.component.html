@@ -1,0 +1,19 @@
+<div class="swiper-container">
+  <!-- <swiper
+    [config]="config"
+    (swiper)="onSwiper($event)"
+    (slideChange)="onSlideChange()"
+  > -->
+  <swiper [config]="config">
+    <ng-template 
+      swiperSlide 
+      *ngFor="let promoGood of promoGoods"
+    >
+      <app-slide [content]="promoGood"></app-slide>
+    </ng-template>
+  </swiper>
+
+  <div class="swiper-pagination"></div>
+  <!-- <div class="swiper-button-prev"></div>
+  <div class="swiper-button-next"></div> -->
+</div>
