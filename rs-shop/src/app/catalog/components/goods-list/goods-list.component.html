@@ -1,1 +1,5 @@
-<p>goods-list works!</p>
+<ul class="goods-list list">
+  <li class="goods-item" *ngFor="let goodsItem of goods$ | async">
+    <app-goods-item-card [goodsItem]="goodsItem"></app-goods-item-card>
+  </li>
+</ul>

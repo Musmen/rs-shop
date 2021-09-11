@@ -1,0 +1,38 @@
+<article class="goods-item-card card-body" *ngIf="goodsItem">
+  <div class="goods-item-card-poster-wrapper card-poster-wrapper">
+    <img 
+      class="goods-item-card-poster card-poster" 
+      src="{{ goodsItem.imageUrls[0] }}" 
+      alt="{{ goodsItem.name }}"
+      title="{{ goodsItem.name }}"
+    >
+  </div>
+  <div class="goods-item-card-description-wrapper card-description-wrapper">
+    <h3 class="goods-item-card-description-title card-description-title">
+      {{ goodsItem.name }}
+    </h3>
+    <p class="goods-item-card-description-raiting card-description-raiting">
+      Рейтинг: {{ goodsItem.rating }}
+    </p>
+    <p class="goods-item-card-description-price card-description-price">
+      <span class="goods-item-card-price-label card-price-label">Цена:</span> 
+      {{ goodsItem.price | number:'.2-2' }} бел.&nbsp;рублей
+    </p>
+  </div>
+</article>
+
+<!-- { "id": "612d43650149cb2bb33cc369", 
+"name": "Микроволновая печь Horizont 20MW700-1378HTS", 
+"imageUrls": [
+"https://cdn21vek.by/img/galleries/6266/221/preview_b/20mw7001378hts_horizont_5fb4f156406f7.png",
+"https://cdn21vek.by/img/galleries/6266/221/preview_b/20mw7001378hts_horizont_5fb4f1639c99b.png",
+"https://cdn21vek.by/img/galleries/6266/221/preview_b/20mw7001378hts_horizont_5fb4f14eb05b6.png" 
+], 
+"rating": 3,
+"availableAmount": 16, 
+"price": 715, 
+"description": "nostrud dolor laborum anim nisi duis elit Lorem ad minim voluptate
+deserunt in nulla commodo minim et ex magna veniam exercitation ipsum duis dolor mollit veniam deserunt commodo anim est
+non anim aliquip veniam ad pariatur pariatur ipsum proident sit", 
+"isInCart": false, 
+"isFavorite": false } -->

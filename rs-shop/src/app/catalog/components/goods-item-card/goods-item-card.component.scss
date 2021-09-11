@@ -1,0 +1,48 @@
+// @import './src/scss/mixins.scss';          
+// @import './src/scss/variables.scss';
+
+// .goods-item-card,
+// .goods-item-card-poster {
+//   height: 200px;
+// }
+
+// .goods-item-card {
+//   @include flex-aligned;
+//   justify-content: center;
+//   // width: 94%;
+// }
+
+// .goods-item-card-poster {
+//   width: 70%;
+//   min-height: 200px;
+
+//   object-fit: contain;
+// }
+
+// .goods-item-card-poster-wrapper {
+//   @include flex-center-aligned;
+// }
+
+.goods-item-card-description-wrapper {
+//   @include flex-center-aligned;
+//   flex-direction: column;
+//   max-width: 50%;
+//   margin-left: 5px;
+
+  font-size: 0.85rem;
+}
+
+.goods-item-card-description-title {
+  font-size: 0.95rem;
+//   text-align: center;
+}
+
+// .goods-item-card-description-price,
+// .goods-item-card-description-raiting {
+//   margin: 2px 0;
+//   text-align: center;
+// }
+
+// .goods-item-card-price-label {
+//   font-weight: bold;
+// }

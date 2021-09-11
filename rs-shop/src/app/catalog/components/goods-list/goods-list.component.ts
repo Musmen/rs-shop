@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Observable } from 'rxjs';
+import { IGoods } from '@core/models/goods.model';
 
 @Component({
   selector: 'app-goods-list',
@@ -6,4 +8,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./goods-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class GoodsListComponent { }
+export class GoodsListComponent {
+  @Input() goods$?: Observable<IGoods[]>;
+}

@@ -1,0 +1,57 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';
+
+.card-body,
+.card-poster {
+  height: 200px;
+}
+
+.card-body {
+  @include flex-aligned;
+  justify-content: center;
+}
+
+.card-poster {
+  width: 90%;
+  min-height: 200px;
+
+  object-fit: contain;
+}
+
+.card-poster-wrapper {
+  @include flex-center-aligned;
+  max-width: 50%;
+}
+
+.card-description-wrapper {
+  @include flex-center-aligned;
+  flex-direction: column;
+  max-width: 50%;
+  margin-left: 5px;
+
+  font-size: 1rem;
+}
+
+.card-description-title {
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.card-description-price,
+.card-description-raiting {
+  margin: 2px 0;
+  text-align: center;
+}
+
+.card-price-label {
+  font-weight: bold;
+}
+
+.card-description-title,
+.card-description-price,
+.card-description-raiting,
+.card-price-label {
+  max-width: 130px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

@@ -7,7 +7,7 @@ import { CatalogComponent } from './pages/catalog/catalog.component';
 import { CategoryPageComponent } from './pages/category-page/category-page.component';
 import { SubcategoryPageComponent } from './pages/subcategory-page/subcategory-page.component';
 import { GoodsListComponent } from './components/goods-list/goods-list.component';
-import { GoodsCardComponent } from './components/goods-card/goods-card.component';
+import { GoodsItemCardComponent } from './components/goods-item-card/goods-item-card.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { GoodsCardComponent } from './components/goods-card/goods-card.component
     CategoryPageComponent,
     SubcategoryPageComponent,
     GoodsListComponent,
-    GoodsCardComponent,
+    GoodsItemCardComponent,
   ],
   imports: [
     SharedModule,
