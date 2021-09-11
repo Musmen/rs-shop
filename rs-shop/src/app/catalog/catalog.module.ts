@@ -8,6 +8,7 @@ import { CategoryPageComponent } from './pages/category-page/category-page.compo
 import { SubcategoryPageComponent } from './pages/subcategory-page/subcategory-page.component';
 import { GoodsListComponent } from './components/goods-list/goods-list.component';
 import { GoodsItemCardComponent } from './components/goods-item-card/goods-item-card.component';
+import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { GoodsItemCardComponent } from './components/goods-item-card/goods-item-
     SubcategoryPageComponent,
     GoodsListComponent,
     GoodsItemCardComponent,
+    BreadcrumbsComponent,
   ],
   imports: [
     SharedModule,

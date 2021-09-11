@@ -1,0 +1,9 @@
+.breadcrumbs-category-link {
+  text-decoration: underline;
+
+  &:focus,
+  &:hover,
+  &:active {
+		text-decoration: none;
+  }
+}

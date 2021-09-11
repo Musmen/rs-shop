@@ -1,0 +1,24 @@
+<p class="breadcrumbs">
+  <a 
+    class="breadcrumbs-category-link link" 
+    *ngIf="category"
+    (click)="onBreadcrumbsLinkClick(category.id)"
+    >
+    <span class="category-name">{{ category.name }}</span>
+  </a>
+  >
+  <span 
+    *ngIf="disableSubcategoryLink; else subcategoryLink" 
+    class="subcategory-name"
+  >{{ subcategory && subcategory.name }}</span>
+</p>
+
+<ng-template #subcategoryLink>
+  <a 
+   class="breadcrumbs-subcategory-link link"
+   *ngIf="category && subcategory"
+    (click)="onBreadcrumbsLinkClick(category.id, subcategory.id)"
+  >
+    <span class="subcategory-name">{{ subcategory.name }}</span>
+  </a>
+</ng-template>
