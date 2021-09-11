@@ -1,6 +1,6 @@
 import { IUser } from '@core/models/user.model';
 import { ICategory } from '@core/models/category.model';
-import { IGood } from '@core/models/good.model';
+import { IGoods } from '@core/models/goods.model';
 
 export interface IAppState {
   users: IUsersState,
@@ -18,7 +18,7 @@ export interface ICategoriesState {
 }
 
 export interface IGoodsState {
-  goods: IGood[],
+  goods: IGoods[],
 }
 
 export interface IState {

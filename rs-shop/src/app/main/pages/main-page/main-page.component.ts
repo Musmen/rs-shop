@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { IGood } from '@app/core/models/good.model';
+import { IGoods } from '@core/models/goods.model';
 
-import { IAppState } from '@app/redux/state.model';
+import { IAppState } from '@redux/state.model';
 import { Store } from '@ngrx/store';
 
 import { GOODS } from '@app/mock-data/goods';
-import { ICategory } from '@app/core/models/category.model';
+import { ICategory } from '@core/models/category.model';
 
 @Component({
   selector: 'app-main-page',
@@ -15,8 +15,8 @@ import { ICategory } from '@app/core/models/category.model';
 })
 export class MainPageComponent {
   private categories$?: ICategory[];
-  promoGoods?: IGood[] = [];
-  popularGoods?: IGood[] = [];
+  promoGoods?: IGoods[] = [];
+  popularGoods?: IGoods[] = [];
 
   constructor(private store: Store<IAppState>) {
     const allGoods = Object.values(GOODS)

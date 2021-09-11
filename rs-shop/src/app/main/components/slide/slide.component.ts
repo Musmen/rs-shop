@@ -1,7 +1,7 @@
 import {
   Component, ChangeDetectionStrategy, Input, ViewEncapsulation,
 } from '@angular/core';
-import { IGood } from '@app/core/models/good.model';
+import { IGoods } from '@core/models/goods.model';
 
 @Component({
   selector: 'app-slide',
@@ -11,5 +11,5 @@ import { IGood } from '@app/core/models/good.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class SlideComponent {
-  @Input() content?: IGood;
+  @Input() content?: IGoods;
 }

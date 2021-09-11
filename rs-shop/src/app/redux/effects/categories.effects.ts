@@ -19,8 +19,8 @@ export class CategoriesEffects {
   getCategories$: Observable<Action> = createEffect(() => this.actions$
     .pipe(
       ofType(updateCategories.type),
-      // switchMap(() => this.http.get<ICategory[]>('http://localhost:3004/categories')
-      switchMap(() => of(CATEGORIES)
+      switchMap(() => this.http.get<ICategory[]>('http://localhost:3004/categories')
+      // switchMap(() => of(CATEGORIES)
         .pipe(
           map(
             (categories: ICategory[]) => updateCategoriesSuccessfully({ categories }),

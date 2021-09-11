@@ -1,0 +1,5 @@
+<p>{{ categoryId }} > {{ subcategoryId }}</p>
+<h2 class="subcategory-title">{{ subcategoryId }}</h2>
+<ul>
+  <li *ngFor="let goodsItem of goods$ | async">{{ goodsItem | json }}</li>
+</ul>

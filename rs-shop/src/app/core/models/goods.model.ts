@@ -1,4 +1,4 @@
-export interface IGood {
+export interface IGoods {
   id: string,
   name: string,
   imageUrls: string[],

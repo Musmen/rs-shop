@@ -1,6 +1,6 @@
-import { IGood } from '@core/models/good.model';
+import { IGoods } from '@core/models/goods.model';
 
-export const GOODS: { [key: string]: { [key: string]: IGood[] } } = {
+export const GOODS: { [key: string]: { [key: string]: IGoods[] } } = {
   appliances: {
     refrigerators: [
       {

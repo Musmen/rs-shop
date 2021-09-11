@@ -1,4 +1,4 @@
-import { IGood } from './good.model';
+import { IGoods } from './goods.model';
 
 export interface IUser {
   firstName: string,
@@ -6,7 +6,7 @@ export interface IUser {
   token: string,
   login: string,
   password: string,
-  cart: IGood[],
-  favorites: IGood[],
-  orders: IGood[]
+  cart: IGoods[],
+  favorites: IGoods[],
+  orders: IGoods[]
 }

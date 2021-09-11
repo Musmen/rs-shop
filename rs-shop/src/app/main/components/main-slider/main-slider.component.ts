@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-import { IGood } from '@app/core/models/good.model';
+import { IGoods } from '@core/models/goods.model';
 import { MAIN_SLIDER_CONFIG } from '@app/main/common/constants';
 
 import SwiperCore, {
@@ -16,7 +16,7 @@ SwiperCore.use([Pagination, Autoplay]);
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainSliderComponent {
-  @Input() promoGoods?: IGood[];
+  @Input() promoGoods?: IGoods[];
 
   config: SwiperOptions = MAIN_SLIDER_CONFIG;
 }

@@ -1,0 +1,4 @@
+<app-category-info [category$]="category$"></app-category-info>
+<ul>
+  <li *ngFor="let goodsItem of goods$ | async">{{ goodsItem | json }}</li>
+</ul>
