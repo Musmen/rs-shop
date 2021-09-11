@@ -37,11 +37,11 @@ export class HeaderComponent implements OnInit {
   }
 
   onCategoryClick(categoryId: string): void {
-    this.router.navigate(['/categories', categoryId]);
+    this.router.navigate(['/', categoryId]);
   }
 
   onCatalogButtonClick(): void {
-    this.router.navigate(['/categories']);
+    this.router.navigate(['']);
   }
 
   goToMainPage(): void {
