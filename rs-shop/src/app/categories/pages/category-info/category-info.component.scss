@@ -6,8 +6,8 @@
 }
 
 .category-section {
+  width: 80%;
   margin-top: 30px;
-  margin-left: 50px;
 }
 
 .category-title {
@@ -16,14 +16,12 @@
 }
 
 .subcategory-list {
-  @include flex;
-  width: 60vw;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 50% 50%;
 }
 
 .subcategory-link {
   @include flex-aligned;
-  width: 25vw;
   padding: 10px;
 
   color: $third-dark-font-color;

@@ -1,6 +1,10 @@
 @import './src/scss/mixins.scss';          
 @import './src/scss/variables.scss';
 
+:host {
+  display: block;
+}
+
 .slide,
 .slide-poster {
   height: 200px;
@@ -8,24 +12,23 @@
 
 .slide {
   @include flex-aligned;
+  justify-content: center;
 }
 
 .slide-poster-wrapper {
   @include flex-center-aligned;
-  justify-content: flex-end;
-  width: 40%;
 }
 
 .slide-poster {
   min-height: 200px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .slide-description-wrapper {
   @include flex-center-aligned;
   flex-direction: column;
-  width: 40%;
-  margin-left: 40px;
+  max-width: 50%;
+  margin-left: 30px;
 
   font-size: 1.5rem;
 }
@@ -37,6 +40,7 @@
 .description-price,
 .description-raiting {
   margin: 5px 0;
+  text-align: center;
 }
 
 .price-label {

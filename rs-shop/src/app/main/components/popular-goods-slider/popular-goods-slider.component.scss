@@ -1,0 +1,37 @@
+.popular-goods-title {
+  margin-left: 20px;
+}
+
+.popular-goods-swiper-container {
+  position: relative;
+
+  .swiper {
+    width: 94%;
+  }
+
+  .slide-poster {
+    width: 70%;
+  }
+
+  .slide-description-wrapper {
+    margin-left: 5px;
+    font-size: 1rem;
+  }
+  
+  .description-title {
+    font-size: 1.1rem;
+  }
+  
+  .description-price,
+  .description-raiting {
+    margin: 2px 0;
+  }
+
+  .popular-goods-swiper-button-prev {
+    left: 5px;
+  }
+
+  .popular-goods-swiper-button-next {
+    right: 5px;
+  }
+}

@@ -16,19 +16,21 @@ import { ICategory } from '@app/core/models/category.model';
 export class MainPageComponent {
   private categories$?: ICategory[];
   promoGoods?: IGood[] = [];
+  popularGoods?: IGood[] = [];
 
   constructor(private store: Store<IAppState>) {
-    this.promoGoods = Object.values(GOODS)
+    const allGoods = Object.values(GOODS)
       .map((subcategoryObj) => Object.values(subcategoryObj))
-      .map((subcategories) => subcategories.map((goods) => goods[0]))
+      .map((subcategories) => subcategories.map((goods) => goods[1]))
       .reduce(
         (
           currentSubCategoryPromoGoods,
           previousSubCategoryPromoGoods,
         ) => currentSubCategoryPromoGoods.concat(previousSubCategoryPromoGoods),
-      )
-      .filter((item, index) => index % 3 === 0)
-      .slice(-10);
+      );
+
+    this.popularGoods = allGoods;
+    this.promoGoods = allGoods.filter((item, index) => index % 2 === 0).slice(-10);
 
     // Object.values(goods).map(subcategoryObj => Object.values(subcategoryObj))
     // .flat(2) так забираем все товары

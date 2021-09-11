@@ -1,7 +1,25 @@
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import 'swiper/scss/autoplay';
+@import 'swiper/scss/grid';
+
+@import './src/scss/mixins.scss';
 @import './src/scss/variables.scss';
+
+.swiper-container {
+  position: relative;
+  @include flex-center-aligned;
+  height: 250px;
+  margin: 30px 0;
+}
 
 .swiper-slide {
   height: auto;
+}
+
+.swiper-container .swiper-pagination {
+  bottom: -20px;
 }
 
 .swiper-pagination-bullet {
