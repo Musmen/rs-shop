@@ -42,10 +42,22 @@
 <ul class="goods-list list">
   <li 
     class="goods-item" 
-    *ngFor="let goodsItem of goods$ 
-      | async
-      | sort: sortState"
+    *ngFor="let goodsItem of goods | sort: sortState"
   >
     <app-goods-item-card [goodsItem]="goodsItem"></app-goods-item-card>
   </li>
 </ul>
+
+<div class="controls-block">
+  <button
+    class="goods-list-more-button main-button"
+    [attr.disabled]="isGoodsMaxCountReached"
+    mat-icon-button
+    aria-label="Показать еще 10 товаров"
+    title="Показать еще 10 товаров"
+    (click)="addNextGoodsGroup()"
+  >
+    <mat-icon class="button-icon">add_circle_outline</mat-icon>
+    <span>Показать больше</span>
+  </button>
+</div>

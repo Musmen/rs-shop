@@ -61,3 +61,49 @@
 .increasing .sorting-direction-icon {
   transform: rotate(-180deg);
 }
+
+.controls-block {
+  @include flex-center-aligned;
+}
+
+.goods-list-more-button {
+  width: 200px;
+  margin: 10px;
+
+  color: $main-brand-color;
+
+  border-color: $main-brand-color;
+
+  &:active,
+  &:focus {
+    color: $main-brand-color;
+
+    border-color: $main-brand-color;
+  }
+
+  &:hover {
+    color: $main-light-font-color;
+
+    background-color: $main-brand-color;
+    
+    box-shadow: 0 2px 4px $main-brand-color;
+  }
+  
+  &:disabled {
+    color: $secondary-font-color;
+
+    border-color: $secondary-font-color;
+
+    &:hover {
+      color: $secondary-font-color;
+
+      background-color: inherit;
+
+      box-shadow: none;
+    }
+  }
+}
+
+.button-icon {
+  margin-right: 10px;
+}

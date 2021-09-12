@@ -1,3 +1,3 @@
 <app-breadcrumbs [category]="category" [subcategory]="subcategory"></app-breadcrumbs>
 <h2 *ngIf="subcategory" class="subcategory-title">{{ subcategory.name }}</h2>
-<app-goods-list [goods$]="goods$"></app-goods-list>
+<app-goods-list [category]="category" [subcategory]="subcategory"></app-goods-list>

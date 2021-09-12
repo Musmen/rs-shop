@@ -26,3 +26,5 @@ export const DEFAULT_AMOUNT_VISUALIZATION = {
   color: Colors.yellow,
   title: 'Осталось от 5 до 20 единиц',
 };
+
+export const GOODS_COUNT_IN_GROUP = 10;
