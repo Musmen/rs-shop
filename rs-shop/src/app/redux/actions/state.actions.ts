@@ -1,5 +1,7 @@
 import { createAction, props } from '@ngrx/store';
+
 import { ILocation } from '@app/core/models/location.model';
+import ISortState from '@core/models/sort-state.model';
 
 export const detectLocation = createAction(
   '[INIT HEADER] DETECT USER LOCATION',
@@ -17,4 +19,9 @@ export const detectLocationFailed = createAction(
 export const setNewLocation = createAction(
   '[HEADER] SET NEW USER LOCATION',
   props<{ newLocation: string }>(),
+);
+
+export const setNewSortState = createAction(
+  '[GOODS LIST] SET NEW SORT STATE',
+  props<{ newSortState: ISortState }>(),
 );

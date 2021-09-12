@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { detectLocationSuccessfully, setNewLocation } from '../actions/state.actions';
+import { detectLocationSuccessfully, setNewLocation, setNewSortState } from '../actions/state.actions';
 import { initialState } from '../state.model';
 
 export const stateReducer = createReducer(
@@ -13,5 +13,10 @@ export const stateReducer = createReducer(
     (state, { newLocation }) => ({
       ...state,
       location: newLocation,
+    })),
+  on(setNewSortState,
+    (state, { newSortState }) => ({
+      ...state,
+      sort: newSortState,
     })),
 );

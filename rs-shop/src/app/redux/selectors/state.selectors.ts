@@ -7,3 +7,8 @@ export const selectLocation = createSelector(
   selectState,
   (state: IState) => state.location,
 );
+
+export const selectSortState = createSelector(
+  selectState,
+  (state: IState) => state.sort,
+);

@@ -2,6 +2,9 @@ import { IUser } from '@core/models/user.model';
 import { ICategory } from '@core/models/category.model';
 import { IGoods } from '@core/models/goods.model';
 
+import ISortState from '@core/models/sort-state.model';
+import { initialSortState } from '@common/constants';
+
 export interface IAppState {
   users: IUsersState,
   categories: ICategoriesState,
@@ -23,6 +26,7 @@ export interface IGoodsState {
 
 export interface IState {
   location: string,
+  sort: ISortState,
 }
 
 export const initialUsersState: IUsersState = {
@@ -39,6 +43,7 @@ export const initialGoodsState: IGoodsState = {
 
 export const initialState: IState = {
   location: '',
+  sort: initialSortState,
 };
 
 export const initialAppState: IAppState = {

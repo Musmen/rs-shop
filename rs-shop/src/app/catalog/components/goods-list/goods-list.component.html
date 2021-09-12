@@ -1,5 +1,39 @@
+<div class="sorting-block">
+  <span class="sorting-title">Сортировать по:</span>   
+  <ul class="sorting-criteria-list list">
+    <li class="sorting-criteria-item">
+      <a
+        class="sorting-criteria-link"
+        [class.increasing]="sortState.ascending === 1"
+        [class.active]="sortState.sortingBy === 'price'"
+        (click)="changeSortState('price')"
+      >
+        <span class="text-underline">цене</span>
+        <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
+      </a>
+    </li>
+
+    <li class="sorting-criteria-item">
+      <a
+        class="sorting-criteria-link"
+        [class.increasing]="sortState.ascending === 1"
+        [class.active]="sortState.sortingBy === 'rating'"
+        (click)="changeSortState('rating')"
+      >
+        <span class="text-underline">популярности</span>
+        <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
+      </a>
+    </li>
+  </ul>
+</div>
+
 <ul class="goods-list list">
-  <li class="goods-item" *ngFor="let goodsItem of goods$ | async">
+  <li 
+    class="goods-item" 
+    *ngFor="let goodsItem of goods$ 
+      | async
+      | sort: sortState"
+  >
     <app-goods-item-card [goodsItem]="goodsItem"></app-goods-item-card>
   </li>
 </ul>

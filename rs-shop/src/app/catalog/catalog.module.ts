@@ -10,6 +10,7 @@ import { GoodsListComponent } from './components/goods-list/goods-list.component
 import { GoodsItemCardComponent } from './components/goods-item-card/goods-item-card.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { AmountVisualizationDirective } from './directives/amount-visualization/amount-visualization.directive';
+import { SortPipe } from './pipes/sort/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { AmountVisualizationDirective } from './directives/amount-visualization/
     GoodsItemCardComponent,
     BreadcrumbsComponent,
     AmountVisualizationDirective,
+    SortPipe,
   ],
   imports: [
     SharedModule,
