@@ -55,6 +55,7 @@ body {
 :root .main-button {
 	box-sizing: border-box;
 	@include flex-center;
+	width: 120px;
 	height: 42px;
 	
 	border: 1px solid $main-button-border-color;

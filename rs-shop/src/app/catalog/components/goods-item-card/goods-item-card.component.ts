@@ -9,4 +9,14 @@ import { IGoods } from '@core/models/goods.model';
 })
 export class GoodsItemCardComponent {
   @Input() goodsItem?: IGoods;
+
+  onCartButtonClick(): void {
+    if (!this.goodsItem) return;
+    this.goodsItem.isInCart = !this.goodsItem.isInCart;
+  }
+
+  onFavoriteButtonClick(): void {
+    if (!this.goodsItem) return;
+    this.goodsItem.isFavorite = !this.goodsItem.isFavorite;
+  }
 }

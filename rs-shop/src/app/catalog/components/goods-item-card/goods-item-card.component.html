@@ -7,6 +7,7 @@
       title="{{ goodsItem.name }}"
     >
   </div>
+
   <div class="goods-item-card-description-wrapper card-description-wrapper">
     <h3 class="goods-item-card-description-title card-description-title">
       {{ goodsItem.name }}
@@ -36,20 +37,57 @@
       </span>
     </p>
   </div>
+
+  <div class="goods-item-card-controller-wrapper card-controller-wrapper">
+    <div class="goods-item-card-buttons card-buttons">
+      <button
+        class="goods-item-card-button main-button goods-item-card-button-active"
+        *ngIf="goodsItem.isInCart; else notIsInCartButton"
+        mat-icon-button
+        aria-label="Извлечь из корзины"
+        title="Извлечь из корзины"
+        (click)="onCartButtonClick()"
+      >
+        <mat-icon class="button-icon">shopping_cart</mat-icon>
+        <span>В корзинe</span>
+      </button>
+      <button
+        class="goods-item-card-button main-button goods-item-card-button-active"
+        *ngIf="goodsItem.isFavorite; else notIsFavoriteButton"
+        mat-icon-button
+        aria-label="Убрать из избранных"
+        title="Убрать из избранных"
+        (click)="onFavoriteButtonClick()"
+      >
+        <mat-icon class="button-icon">favorite</mat-icon>
+        <span>В избранном</span>
+      </button>
+    </div>
+  </div>
 </article>
 
-<!-- { "id": "612d43650149cb2bb33cc369", 
-"name": "Микроволновая печь Horizont 20MW700-1378HTS", 
-"imageUrls": [
-"https://cdn21vek.by/img/galleries/6266/221/preview_b/20mw7001378hts_horizont_5fb4f156406f7.png",
-"https://cdn21vek.by/img/galleries/6266/221/preview_b/20mw7001378hts_horizont_5fb4f1639c99b.png",
-"https://cdn21vek.by/img/galleries/6266/221/preview_b/20mw7001378hts_horizont_5fb4f14eb05b6.png" 
-], 
-"rating": 3,
-"availableAmount": 16, 
-"price": 715, 
-"description": "nostrud dolor laborum anim nisi duis elit Lorem ad minim voluptate
-deserunt in nulla commodo minim et ex magna veniam exercitation ipsum duis dolor mollit veniam deserunt commodo anim est
-non anim aliquip veniam ad pariatur pariatur ipsum proident sit", 
-"isInCart": false, 
-"isFavorite": false } -->
+<ng-template #notIsInCartButton>
+  <button
+    class="goods-item-card-button main-button"
+    mat-icon-button
+    aria-label="Добавить в корзину"
+    title="Добавить в корзину"
+    (click)="onCartButtonClick()"
+  >
+    <mat-icon class="button-icon">shopping_cart</mat-icon>
+    <span>В корзину</span>
+  </button>
+</ng-template>
+
+<ng-template #notIsFavoriteButton>
+  <button
+    class="goods-item-card-button main-button"
+    mat-icon-button
+    aria-label="Добавить в избранное"
+    title="Добавить в избранное"
+    (click)="onFavoriteButtonClick()"
+  >
+    <mat-icon class="button-icon">favorite</mat-icon>
+    <span>В избранное</span>
+  </button>
+</ng-template>
