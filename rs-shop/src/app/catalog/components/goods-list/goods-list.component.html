@@ -24,6 +24,18 @@
         <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
       </a>
     </li>
+
+    <li class="sorting-criteria-item">
+      <a
+        class="sorting-criteria-link"
+        [class.increasing]="sortState.ascending === 1"
+        [class.active]="sortState.sortingBy === 'availableAmount'"
+        (click)="changeSortState('availableAmount')"
+      >
+        <span class="text-underline">количеству</span>
+        <mat-icon class="sorting-direction-icon">keyboard_arrow_down</mat-icon>
+      </a>
+    </li>
   </ul>
 </div>
 

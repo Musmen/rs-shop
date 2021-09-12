@@ -1,3 +1,4 @@
+import { SortingValues } from '@common/constants';
 import { IGoods } from '@core/models/goods.model';
 
 type CompareFunctionType = (
@@ -12,12 +13,20 @@ export const compare: CompareFunctionType = (
   ascending: number,
 ) => (firstCompareItem - secondCompareItem) * ascending;
 
-type GetValueType = (item: IGoods) => number;
+type GetCompareValue = (goodsItem: IGoods, sortingBy: string) => number;
 
-export const getPriceToCompare: GetValueType = (
-  goodsItem: IGoods,
-) => Number(goodsItem.price);
-
-export const getRatingToCompare: GetValueType = (
-  goodsItem: IGoods,
-) => Number(goodsItem.rating);
+export const getCompareValue: GetCompareValue = (
+  goodsItem: IGoods, sortingBy: string,
+) => {
+  switch (sortingBy) {
+    case SortingValues.rating: {
+      return Number(goodsItem.rating);
+    }
+    case SortingValues.availableAmount: {
+      return Number(goodsItem.availableAmount);
+    }
+    default: {
+      return Number(goodsItem.price);
+    }
+  }
+};

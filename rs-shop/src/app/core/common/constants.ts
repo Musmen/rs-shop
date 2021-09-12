@@ -5,6 +5,7 @@ export const CITIES = ['Минск', 'Могилев', 'Гомель', 'Вите
 export enum SortingValues {
   price = 'price',
   rating = 'rating',
+  availableAmount = 'availableAmount',
 }
 
 export const initialSortState: ISortState = {
