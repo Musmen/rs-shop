@@ -11,11 +11,14 @@
     <h3 class="slide-description-title">
       {{ content.name }}
     </h3>
-    <p class="slide-description-raiting">
-      Рейтинг: {{ content.rating }}
+    <p class="slide-description-raiting card-raiting">
+      <span 
+        class="slide-description-raiting-filled card-raiting-filled" 
+        [style.width]="15*content.rating + 'px'"
+      >
+      </span>
     </p>
     <p class="slide-description-price">
-      <span class="slide-price-label">Цена:</span> 
       {{ content.price | number:'.2-2' }} бел.&nbsp;рублей
     </p>
   </div>

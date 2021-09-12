@@ -9,6 +9,7 @@ import { SubcategoryPageComponent } from './pages/subcategory-page/subcategory-p
 import { GoodsListComponent } from './components/goods-list/goods-list.component';
 import { GoodsItemCardComponent } from './components/goods-item-card/goods-item-card.component';
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
+import { AmountVisualizationDirective } from './directives/amount-visualization/amount-visualization.directive';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.compo
     GoodsListComponent,
     GoodsItemCardComponent,
     BreadcrumbsComponent,
+    AmountVisualizationDirective,
   ],
   imports: [
     SharedModule,

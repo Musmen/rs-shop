@@ -37,15 +37,11 @@
   text-align: center;
 }
 
-.card-description-price,
-.card-description-raiting {
+.card-description-price {
   margin: 2px 0;
   text-align: center;
 }
 
-.card-price-label {
-  font-weight: bold;
-}
 
 .card-description-title,
 .card-description-price,
@@ -54,4 +50,34 @@
   max-width: 130px;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+.card-raiting {
+  width: 75px;
+  height: 14px;
+  margin: 5px;
+
+  background: url('../assets/images/star-empty.svg') repeat-x;
+}
+
+.card-raiting-filled {
+  display: block;
+  width: 0;
+  height: 14px;
+
+  background: url('../assets/images/star-filled.svg') repeat-x;
+}
+
+.card-description-amount {
+  @include flex-center-aligned;
+  margin: 5px;
+  
+  font-weight: bolder;
+  color: $secondary-font-color;
+
+  fill: $secondary-font-color;
+}
+
+.card-description-amount-icon {
+  margin-right: 5px;
 }

@@ -1,4 +1,14 @@
-.goods-list {
+@import './src/scss/variables.scss';
+
+.goods-list{
   display: grid;
   grid-template-columns: repeat(4, 25%);
+}
+
+.goods-item:not(:nth-last-child(-n + 4)) {
+  border-bottom: 1px solid $main-divider-color;
+}
+
+.goods-item:not(:nth-child(4n)) {
+  border-right: 1px solid $main-divider-color;
 }
