@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy, Component, EventEmitter, Input, Output,
+} from '@angular/core';
 import { IGoods } from '@core/models/goods.model';
 
 @Component({
@@ -9,6 +11,7 @@ import { IGoods } from '@core/models/goods.model';
 })
 export class GoodsItemCardComponent {
   @Input() goodsItem?: IGoods;
+  @Output() openDetailedPageEvent = new EventEmitter<IGoods>();
 
   onCartButtonClick(): void {
     if (!this.goodsItem) return;
@@ -18,5 +21,9 @@ export class GoodsItemCardComponent {
   onFavoriteButtonClick(): void {
     if (!this.goodsItem) return;
     this.goodsItem.isFavorite = !this.goodsItem.isFavorite;
+  }
+
+  onOpenDetailedPageClick(goodsItem: IGoods): void {
+    this.openDetailedPageEvent.emit(goodsItem);
   }
 }

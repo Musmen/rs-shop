@@ -1,8 +1,12 @@
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnChanges, OnDestroy, OnInit,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+
+import {
+  Observable, of, Subscription, combineLatest,
+} from 'rxjs';
 import { take } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
@@ -24,20 +28,24 @@ import { GOODS_COUNT_IN_GROUP } from '@catalog/common/constants';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
-  @Input() category?: ICategory | null;
-  @Input() subcategory?: ICategory | null;
+  @Input() category$: Observable<ICategory | null> = of(null);
+  @Input() subcategory$: Observable<ICategory | null> = of(null);
 
   private subscriptions = new Subscription();
   private goodsStartIndex = 0;
 
-  goods: IGoods[] = [];
-  sortState: ISortState = { ...initialSortState };
+  category?: ICategory | null;
+  subcategory?: ICategory | null;
 
+  goods: IGoods[] = [];
   isGoodsMaxCountReached: boolean = false;
+
+  sortState: ISortState = { ...initialSortState };
 
   constructor(
     private store: Store<IAppState>,
     private http: HttpClient,
+    private router: Router,
     private ref: ChangeDetectorRef,
   ) { }
 
@@ -50,6 +58,14 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   ngOnChanges(): void {
+    this.setCategories();
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
+
+  private initGoodsList(): void {
     this.goods = [];
     this.goodsStartIndex = 0;
     this.isGoodsMaxCountReached = false;
@@ -57,18 +73,17 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
     this.addNextGoodsGroup(this.category?.id, this.subcategory?.id);
   }
 
-  ngOnDestroy(): void {
-    this.subscriptions.unsubscribe();
-  }
-
-  changeSortState(newSortingBy: string): void {
-    if (this.sortState.sortingBy === newSortingBy) {
-      this.sortState.ascending *= -1;
-    } else {
-      this.sortState.sortingBy = newSortingBy;
-    }
-
-    this.store.dispatch(setNewSortState({ newSortState: this.sortState }));
+  private setCategories(): void {
+    const categoriesSubscription = combineLatest([this.category$, this.subcategory$]).pipe(
+      take(1),
+    )
+      .subscribe(([category, subcategory]) => {
+        this.category = category;
+        this.subcategory = subcategory;
+        this.initGoodsList();
+        this.ref.detectChanges();
+      });
+    this.subscriptions.add(categoriesSubscription);
   }
 
   private updateGoodsStartIndex(): void {
@@ -101,6 +116,16 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
     this.subscriptions.add(goodsSubscription);
   }
 
+  changeSortState(newSortingBy: string): void {
+    if (this.sortState.sortingBy === newSortingBy) {
+      this.sortState.ascending *= -1;
+    } else {
+      this.sortState.sortingBy = newSortingBy;
+    }
+
+    this.store.dispatch(setNewSortState({ newSortState: this.sortState }));
+  }
+
   addNextGoodsGroup(
     categoryId = this.category?.id,
     subcategoryId = this.subcategory?.id,
@@ -108,5 +133,24 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
   ): void {
     this.fetchNextGoodsGroup(categoryId, subcategoryId, goodsStartIndex);
     this.updateGoodsStartIndex();
+  }
+
+  goToGoodsItemDetailedPage(goodsItem: IGoods): void {
+    // if (this.category?.id && this.subcategory?.id) {
+    this.router.navigate(
+      ['/', this.category?.id || '', this.subcategory?.id || '', goodsItem.id],
+      { state: { goodsItem } },
+    );
+    // } else {
+    //   const goodsItemSubscription = this.http.get<IGoods>(`http://localhost:3004/goods/item/${goodsItem.id}`)
+    //     .pipe(take(1))
+    //     .subscribe((fetchedsGoodsItem) => {
+    //       this.router.navigate(
+    //       ['/', fetchedsGoodsItem.category, fetchedsGoodsItem.subcategory, fetchedsGoodsItem.id],
+    //         { state: { fetchedsGoodsItem } },
+    //       );
+    //     });
+    //   this.subscriptions.add(goodsItemSubscription);
+    // }
   }
 }

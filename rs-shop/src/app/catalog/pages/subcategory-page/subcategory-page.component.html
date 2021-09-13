@@ -1,3 +1,8 @@
-<app-breadcrumbs [category]="category" [subcategory]="subcategory"></app-breadcrumbs>
-<h2 *ngIf="subcategory" class="subcategory-title">{{ subcategory.name }}</h2>
-<app-goods-list [category]="category" [subcategory]="subcategory"></app-goods-list>
+<app-breadcrumbs [category$]="category$" [subcategory$]="subcategory$"></app-breadcrumbs>
+<h2 
+  class="subcategory-title"
+  *ngIf="(subcategory$ | async) as subcategory" 
+>
+  {{ subcategory.name }}
+</h2>
+<app-goods-list [category$]="category$" [subcategory$]="subcategory$"></app-goods-list>

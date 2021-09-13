@@ -44,7 +44,11 @@
     class="goods-item" 
     *ngFor="let goodsItem of goods | sort: sortState"
   >
-    <app-goods-item-card [goodsItem]="goodsItem"></app-goods-item-card>
+    <app-goods-item-card 
+      [goodsItem]="goodsItem"
+      (openDetailedPageEvent)="goToGoodsItemDetailedPage($event)"
+    >
+    </app-goods-item-card>
   </li>
 </ul>
 

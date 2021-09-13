@@ -11,6 +11,7 @@ import { GoodsItemCardComponent } from './components/goods-item-card/goods-item-
 import { BreadcrumbsComponent } from './components/breadcrumbs/breadcrumbs.component';
 import { AmountVisualizationDirective } from './directives/amount-visualization/amount-visualization.directive';
 import { SortPipe } from './pipes/sort/sort.pipe';
+import { GoodsItemPageComponent } from './pages/goods-item-page/goods-item-page.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { SortPipe } from './pipes/sort/sort.pipe';
     BreadcrumbsComponent,
     AmountVisualizationDirective,
     SortPipe,
+    GoodsItemPageComponent,
   ],
   imports: [
     SharedModule,

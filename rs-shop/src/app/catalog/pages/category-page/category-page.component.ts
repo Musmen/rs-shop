@@ -19,9 +19,7 @@ import { ICategory } from '@core/models/category.model';
 })
 export class CategoryPageComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
-
-  category$?: Observable<ICategory | null>;
-  category?: ICategory | null;
+  category$!: Observable<ICategory | null>;
 
   constructor(
     private store: Store<IAppState>,
@@ -32,15 +30,8 @@ export class CategoryPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const subscription = this.route.params.subscribe(({ categoryId }) => {
       this.category$ = this.store.select(selectCategoryById(categoryId));
-
-      const categorySubscription = this.category$
-        .subscribe((category) => {
-          this.category = category;
-        });
-      this.subscriptions.add(categorySubscription);
       this.ref.detectChanges();
     });
-
     this.subscriptions.add(subscription);
   }
 

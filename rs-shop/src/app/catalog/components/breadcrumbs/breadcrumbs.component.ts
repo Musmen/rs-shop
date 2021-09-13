@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnChanges,
+} from '@angular/core';
+
+import {
+  combineLatest, Observable, of, Subscription,
+} from 'rxjs';
+
 import { ICategory } from '@app/core/models/category.model';
 
 @Component({
@@ -8,12 +15,31 @@ import { ICategory } from '@app/core/models/category.model';
   styleUrls: ['./breadcrumbs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BreadcrumbsComponent {
-  @Input() category?: ICategory | null;
-  @Input() subcategory?: ICategory | null;
+export class BreadcrumbsComponent implements OnChanges, OnDestroy {
+  @Input() category$: Observable<ICategory | null> = of(null);
+  @Input() subcategory$: Observable<ICategory | null> = of(null);
   @Input() disableSubcategoryLink?: boolean = true;
 
-  constructor(private router: Router) { }
+  category?: ICategory | null;
+  subcategory?: ICategory | null;
+
+  private subscriptions = new Subscription();
+
+  constructor(private router: Router, private ref: ChangeDetectorRef) { }
+
+  ngOnChanges(): void {
+    const subscription = combineLatest([this.category$, this.subcategory$])
+      .subscribe(([category, subcategory]) => {
+        this.category = category;
+        this.subcategory = subcategory;
+        this.ref.detectChanges();
+      });
+    this.subscriptions.add(subscription);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   onBreadcrumbsLinkClick(categoryId: string, subcategoryId?: string): void {
     if (subcategoryId) {

@@ -9,9 +9,14 @@
   </div>
 
   <div class="goods-item-card-description-wrapper card-description-wrapper">
-    <h3 class="goods-item-card-description-title card-description-title">
-      {{ goodsItem.name }}
-    </h3>
+    <a 
+      class="goods-item-card-link card-link link"
+      (click)="onOpenDetailedPageClick(goodsItem)"
+    >
+      <h3 class="goods-item-card-description-title card-description-title">
+        {{ goodsItem.name }}
+      </h3>
+    </a>
     <p 
       class="goods-item-card-description-amount card-description-amount" 
       [appAmountVisualization]="goodsItem.availableAmount"

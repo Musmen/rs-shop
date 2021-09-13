@@ -4,7 +4,8 @@
   margin: 10px 0; 
 }
 
-.breadcrumbs-category-link {
+.breadcrumbs-category-link,
+.breadcrumbs-subcategory-link {
   color: $secondary-light-font-color;
 
   text-decoration: underline;
