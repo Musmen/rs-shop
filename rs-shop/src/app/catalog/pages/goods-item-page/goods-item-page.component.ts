@@ -7,11 +7,12 @@ import {
 import { Observable, Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 
-import { IGoods } from '@core/models/goods.model';
-import { ICategory } from '@core/models/category.model';
 import { Store } from '@ngrx/store';
 import { IAppState } from '@redux/state.model';
 import { selectCategoryById, selectSubcategoryById } from '@redux/selectors/categories.selectors';
+
+import { IGoods } from '@core/models/goods.model';
+import { ICategory } from '@core/models/category.model';
 
 @Component({
   selector: 'app-goods-item-page',
@@ -47,7 +48,10 @@ export class GoodsItemPageComponent implements OnInit, OnDestroy {
         .subscribe((goodsItem) => {
           this.router.navigate(
             ['/', goodsItem.category, goodsItem.subCategory, goodsItem.id],
-            { state: { goodsItem } },
+            {
+              state: { goodsItem },
+              replaceUrl: true,
+            },
           );
           this.goodsItem = goodsItem;
           this.category$ = this.store.select(selectCategoryById(goodsItem.category || ''));

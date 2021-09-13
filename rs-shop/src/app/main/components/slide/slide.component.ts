@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import {
   Component, ChangeDetectionStrategy, Input, ViewEncapsulation,
 } from '@angular/core';
@@ -12,4 +13,13 @@ import { IGoods } from '@core/models/goods.model';
 })
 export class SlideComponent {
   @Input() content?: IGoods;
+
+  constructor(private router: Router) { }
+
+  goToGoodsItemDetailedPage(goodsItem: IGoods): void {
+    this.router.navigate(
+      ['/', '.', '', goodsItem.id],
+      { state: { goodsItem } },
+    );
+  }
 }

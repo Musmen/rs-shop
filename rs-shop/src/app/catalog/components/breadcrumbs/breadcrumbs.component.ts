@@ -7,7 +7,7 @@ import {
   combineLatest, Observable, of, Subscription,
 } from 'rxjs';
 
-import { ICategory } from '@app/core/models/category.model';
+import { ICategory } from '@core/models/category.model';
 
 @Component({
   selector: 'app-breadcrumbs',
@@ -28,6 +28,8 @@ export class BreadcrumbsComponent implements OnChanges, OnDestroy {
   constructor(private router: Router, private ref: ChangeDetectorRef) { }
 
   ngOnChanges(): void {
+    if (!this.category$ && !this.subcategory$) return;
+
     const subscription = combineLatest([this.category$, this.subcategory$])
       .subscribe(([category, subcategory]) => {
         this.category = category;

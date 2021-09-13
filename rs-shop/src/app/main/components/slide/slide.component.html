@@ -8,9 +8,14 @@
     >
   </div>
   <div class="slide-description-wrapper">
-    <h3 class="slide-description-title">
-      {{ content.name }}
-    </h3>
+    <a 
+      class="slide-link card-link link"
+      (click)="goToGoodsItemDetailedPage(content)"
+    >
+      <h3 class="slide-description-title">
+        {{ content.name }}
+      </h3>
+    </a>
     <p class="slide-description-raiting card-raiting">
       <span 
         class="slide-description-raiting-filled card-raiting-filled" 

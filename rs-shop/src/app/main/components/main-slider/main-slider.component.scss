@@ -1,0 +1,14 @@
+@import './src/scss/variables.scss';
+
+.swiper-link {
+  color: inherit !important;
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: $main-red !important;
+		text-decoration: none;
+    
+    cursor: pointer;
+  }    
+}

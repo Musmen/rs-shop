@@ -136,21 +136,9 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   goToGoodsItemDetailedPage(goodsItem: IGoods): void {
-    // if (this.category?.id && this.subcategory?.id) {
     this.router.navigate(
       ['/', this.category?.id || '', this.subcategory?.id || '', goodsItem.id],
       { state: { goodsItem } },
     );
-    // } else {
-    //   const goodsItemSubscription = this.http.get<IGoods>(`http://localhost:3004/goods/item/${goodsItem.id}`)
-    //     .pipe(take(1))
-    //     .subscribe((fetchedsGoodsItem) => {
-    //       this.router.navigate(
-    //       ['/', fetchedsGoodsItem.category, fetchedsGoodsItem.subcategory, fetchedsGoodsItem.id],
-    //         { state: { fetchedsGoodsItem } },
-    //       );
-    //     });
-    //   this.subscriptions.add(goodsItemSubscription);
-    // }
   }
 }

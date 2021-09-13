@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { IGoods } from '@core/models/goods.model';
@@ -19,4 +20,13 @@ export class MainSliderComponent {
   @Input() promoGoods?: IGoods[];
 
   config: SwiperOptions = MAIN_SLIDER_CONFIG;
+
+  constructor(private router: Router) { }
+
+  goToGoodsItemDetailedPage(goodsItem: IGoods): void {
+    this.router.navigate(
+      ['/', '.', '', goodsItem.id],
+      { state: { goodsItem } },
+    );
+  }
 }

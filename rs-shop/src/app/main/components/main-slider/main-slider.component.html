@@ -5,7 +5,12 @@
       swiperSlide 
       *ngFor="let promoGood of promoGoods"
     >
-      <app-slide [content]="promoGood"></app-slide>
+      <a
+        class="swiper-link"
+        (click)="goToGoodsItemDetailedPage(promoGood)"
+      >
+        <app-slide [content]="promoGood"></app-slide>
+      </a>
     </ng-template>
   </swiper>
 

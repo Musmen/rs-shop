@@ -3,7 +3,6 @@ import { SwiperOptions } from 'swiper';
 const SLIDER_BASE_CONFIG: SwiperOptions = {
   spaceBetween: 50,
   slidesPerView: 1,
-  grabCursor: true,
 };
 
 export const MAIN_SLIDER_CONFIG: SwiperOptions = {
@@ -21,6 +20,7 @@ export const MAIN_SLIDER_CONFIG: SwiperOptions = {
 
 export const POPULAR_GOODS_SLIDER_CONFIG: SwiperOptions = {
   ...SLIDER_BASE_CONFIG,
+  grabCursor: true,
   spaceBetween: 15,
   slidesPerView: 3,
   slidesPerGroup: 3,
