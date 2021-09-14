@@ -3,6 +3,7 @@
 @import 'swiper/scss/pagination';
 @import 'swiper/scss/autoplay';
 @import 'swiper/scss/grid';
+@import 'swiper/scss/thumbs';
 
 @import './src/scss/mixins.scss';
 @import './src/scss/variables.scss';
@@ -42,5 +43,41 @@
   &:hover,
   &:active {
     background-color: $main-brand-color;
+  }
+}
+
+.tumbs-slider {
+  & .swiper-slide {
+    opacity: 0.7;
+    filter: sepia(1);
+
+    border: 1px solid transparent;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    &:focus,
+    &:hover,
+    &:active {
+      border-color: $main-brand-color;
+    } 
+  }
+
+  & .swiper-slide-thumb-active {
+    opacity: 1;
+    filter: none;
+
+    border-color: $main-brand-color;
+  }
+}
+.posters-slider {
+  & .swiper-slide {
+    @include flex-center-aligned;
+  }
+}
+
+.goods-item-page-card-wrapper {
+  .swiper-pagination {
+    bottom: 0;
   }
 }

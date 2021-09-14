@@ -23,6 +23,12 @@
   max-width: 50%;
 }
 
+.goods-item-page-card-wrapper {
+  .card-poster-wrapper {
+    display: none;
+  }
+}
+
 .card-description-wrapper {
   @include flex-center-aligned;
   flex-direction: column;

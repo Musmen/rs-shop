@@ -2,7 +2,7 @@ import { Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { IGoods } from '@core/models/goods.model';
-import { MAIN_SLIDER_CONFIG } from '@app/main/common/constants';
+import { MAIN_SLIDER_CONFIG } from '@main/common/constants';
 
 import SwiperCore, {
   SwiperOptions, Pagination, Autoplay,

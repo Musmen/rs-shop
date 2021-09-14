@@ -1,3 +1,5 @@
+import { SwiperOptions } from 'swiper';
+
 export const CATEGORIES_ID_TO_ICONS: { [key: string]: string } = {
   appliances: 'kitchen',
   electronics: 'tablet_mac',
@@ -28,3 +30,20 @@ export const DEFAULT_AMOUNT_VISUALIZATION = {
 };
 
 export const GOODS_COUNT_IN_GROUP = 10;
+
+export const TUMBS_SLIDER_CONFIG: SwiperOptions = {
+  spaceBetween: 20,
+  slidesPerView: 'auto',
+  direction: 'vertical',
+  slideToClickedSlide: true,
+};
+
+export const POSTERS_SLIDER_CONFIG: SwiperOptions = {
+  spaceBetween: 50,
+  slidesPerView: 1,
+  centeredSlides: true,
+  grabCursor: true,
+  pagination: {
+    clickable: true,
+  },
+};

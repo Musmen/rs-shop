@@ -1,0 +1,138 @@
+@import 'src/scss/mixins.scss';
+@import 'src/scss/variables.scss';
+
+.goods-item-page-card-wrapper {
+  @include flex-center;
+  margin-top: 30px;
+}
+
+.tumbs-slider-wrapper,
+.tumbs-slider-image {
+  width: 120px;
+}
+
+.tumbs-slider-image {
+  max-height: 120px;
+  padding: 5px;
+
+  object-fit: contain;
+}
+
+.posters-slider-wrapper {
+  position: relative;
+  width: 500px;
+  margin: 0 50px;
+}
+
+.posters-slider {
+  padding-bottom: 30px;
+}
+
+.posters-slider-image {
+  width: 500px;
+  max-height: 500px;
+  object-fit: contain;
+}
+
+.description-wrapper {
+  align-self: flex-start;
+
+  .description-card {
+    width: 300px;
+  }
+
+  .goods-item-card-description-title,
+  .goods-item-card-description-price,
+  .goods-item-card-description-raiting,
+  .goods-item-card-price-label {
+    max-width: 300px;
+  }
+
+  .goods-item-card-description-title {
+    font-size: 1.5rem;
+  }
+
+  .goods-item-card-description-wrapper {
+    font-size: 1rem;
+  }
+
+  .goods-item-card-button {
+    width: 160px;
+    margin-bottom: 10px;
+
+    color: $main-light-font-color;
+
+    background-color: $main-brand-color;
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: $main-light-font-color;
+
+      background-color: $main-brand-color;
+      border-color: $main-brand-color;
+      box-shadow: 0 2px 4px $main-brand-color;
+    }
+
+    &.goods-item-card-button-active {
+      color: $main-brand-color;
+
+      border-color: $main-brand-color;
+      background-color: $main-button-light-color;
+      box-shadow: 0 2px 4px $main-button-shadow-color;
+
+      &:focus,
+      &:hover,
+      &:active {
+        box-shadow: 0 2px 4px $main-brand-color;
+      }
+    }
+  }
+
+  .goods-item-card-link {
+    text-decoration: none;
+
+    color: inherit !important;
+    cursor: inherit !important;
+  }
+}
+
+.goods-item-page-description-wrapper {
+  margin: 10px;
+
+  border-top: 1px solid $main-divider-color;
+}
+
+.goods-item-page-description {
+  text-align: justify;
+  padding: 10px 50px;
+}
+
+.goods-item-page-description::first-letter {
+  text-transform: uppercase;
+}
+
+.special-icon {
+  position: absolute;
+  top: -45px;
+  right: -60px;
+
+  display: block;
+  width: 60px;
+  height: 60px;
+}
+
+.promo-icon {
+  background-image: url('../../../../assets/images/special-icons.png');
+  background-position: 0 0;
+}
+
+.popular-icon {
+  right: -71px;
+
+  width: 71px;
+  height: 71px;
+
+  background-image: url('../../../../assets/images/special-icons.png');
+  background-position: -135px 0;
+}

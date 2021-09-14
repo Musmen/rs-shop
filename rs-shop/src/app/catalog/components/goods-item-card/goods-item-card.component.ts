@@ -1,5 +1,5 @@
 import {
-  ChangeDetectionStrategy, Component, EventEmitter, Input, Output,
+  ChangeDetectionStrategy, Component, EventEmitter, Input, Output, ViewEncapsulation,
 } from '@angular/core';
 import { IGoods } from '@core/models/goods.model';
 
@@ -8,6 +8,7 @@ import { IGoods } from '@core/models/goods.model';
   templateUrl: './goods-item-card.component.html',
   styleUrls: ['./goods-item-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class GoodsItemCardComponent {
   @Input() goodsItem?: IGoods;

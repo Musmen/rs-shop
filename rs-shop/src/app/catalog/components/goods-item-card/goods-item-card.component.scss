@@ -35,43 +35,45 @@
   font-size: 1rem;
 }
 
-.goods-item-card-button {
-  width: 160px;
-  margin-bottom: 10px;
-
-  color: $main-light-font-color;
-
-  background-color: $main-brand-color;
-
-  &:focus,
-  &:hover,
-  &:active {
+.goods-item-card-controller-wrapper {
+  .goods-item-card-button {
+    width: 160px;
+    margin-bottom: 10px;
+  
     color: $main-light-font-color;
-
+  
     background-color: $main-brand-color;
-    border-color: $main-brand-color;
-    box-shadow: 0 2px 4px $main-brand-color;
-  }
-
-  &.goods-item-card-button-active {
-    color: $main-brand-color;
-
-		border-color: $main-brand-color;
-    background-color: $main-button-light-color;
-    box-shadow: 0 2px 4px $main-button-shadow-color;
-
+  
     &:focus,
     &:hover,
     &:active {
+      color: $main-light-font-color;
+  
+      background-color: $main-brand-color;
+      border-color: $main-brand-color;
       box-shadow: 0 2px 4px $main-brand-color;
     }
-	}
-}
-
-.goods-item-card-button:last-of-type {
-  margin-bottom: 0;
-}
-
-.button-icon {
-  margin: 5px;
+  
+    &.goods-item-card-button-active {
+      color: $main-brand-color;
+  
+      border-color: $main-brand-color;
+      background-color: $main-button-light-color;
+      box-shadow: 0 2px 4px $main-button-shadow-color;
+  
+      &:focus,
+      &:hover,
+      &:active {
+        box-shadow: 0 2px 4px $main-brand-color;
+      }
+    }
+  }
+  
+  .goods-item-card-button:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .button-icon {
+    margin: 5px;
+  }
 }

@@ -4,4 +4,72 @@
   [disableSubcategoryLink]="false"
 >
 </app-breadcrumbs>
-<p>{{ goodsItem | json }}</p>
+
+<ng-container *ngIf="goodsItem">
+  <div class="goods-item-page-card-wrapper">
+    <div class="tumbs-slider-wrapper">  
+      <swiper 
+        class="tumbs-slider" 
+        [config]="tumbsSliderConfig" 
+        (swiper)="onTumbsSwiper($event)"
+      >
+        <ng-template 
+          swiperSlide 
+          *ngFor="let imageUrl of goodsItem.imageUrls"
+        >
+        <img
+          class="tumbs-slider-image" 
+          src="{{ imageUrl }}"
+          title="Вид товара '{{ goodsItem.name }}'"
+          alt="Вид товара '{{ goodsItem.name }}'"
+        >
+        </ng-template>
+      </swiper>
+    </div>
+
+    <div class="posters-slider-wrapper"> 
+      <swiper 
+        class="posters-slider" 
+        [config]="postersSliderConfig" 
+        (swiper)="onPostersSwiper($event)" 
+      >
+        <ng-template 
+          swiperSlide 
+          *ngFor="let imageUrl of goodsItem.imageUrls"
+        >
+          <img
+            class="posters-slider-image" 
+            src="{{ imageUrl }}"
+            title="Вид товара '{{ goodsItem.name }}'"
+            alt="Вид товара '{{ goodsItem.name }}'"
+          >
+        </ng-template>
+        <div class="posters-slider-pagination swiper-pagination"></div>
+      </swiper>
+      <span 
+        class="special-icon" 
+        [class.promo-icon]="goodsItem.rating === 0"
+        [class.popular-icon]="goodsItem.rating === 5"
+      ></span>
+    </div>
+
+    <div class="description-wrapper">
+      <app-goods-item-card 
+        class="description-card"
+        [goodsItem]="goodsItem"
+      >
+      </app-goods-item-card>
+    </div>
+  </div>
+
+  <div class="goods-item-page-description-wrapper">
+    <article>
+      <h4 class="goods-item-page-description-title">
+        Описание и характеристики:
+      </h4>
+      <p class="goods-item-page-description">
+        {{ goodsItem.description }}
+      </p>
+    </article>
+  </div>
+</ng-container>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { SharedModule } from '@shared/shared.module';
+import { SwiperModule } from 'swiper/angular';
 import { CatalogRoutingModule } from './catalog-routing.module';
 
 import { CategoryInfoComponent } from './components/category-info/category-info.component';
@@ -29,6 +30,7 @@ import { GoodsItemPageComponent } from './pages/goods-item-page/goods-item-page.
   imports: [
     SharedModule,
     CatalogRoutingModule,
+    SwiperModule,
   ],
 })
 export class CatalogModule { }

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation,
 } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
@@ -14,17 +14,33 @@ import { selectCategoryById, selectSubcategoryById } from '@redux/selectors/cate
 import { IGoods } from '@core/models/goods.model';
 import { ICategory } from '@core/models/category.model';
 
+import SwiperCore, {
+  SwiperOptions, Pagination, Thumbs, Swiper,
+} from 'swiper';
+import { POSTERS_SLIDER_CONFIG, TUMBS_SLIDER_CONFIG } from '@catalog/common/constants';
+
+SwiperCore.use([Pagination, Thumbs]);
+
 @Component({
   selector: 'app-goods-item-page',
   templateUrl: './goods-item-page.component.html',
   styleUrls: ['./goods-item-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class GoodsItemPageComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
+
   goodsItem: IGoods | null;
+
   category$!: Observable<ICategory | null>;
   subcategory$!: Observable<ICategory | null>;
+
+  tumbsSlider!: Swiper;
+  postersSlider!: Swiper;
+
+  tumbsSliderConfig: SwiperOptions = TUMBS_SLIDER_CONFIG;
+  postersSliderConfig: SwiperOptions = POSTERS_SLIDER_CONFIG;
 
   constructor(
     private http: HttpClient,
@@ -67,5 +83,15 @@ export class GoodsItemPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  onTumbsSwiper(tumbsSlider: Swiper) {
+    this.tumbsSlider = tumbsSlider;
+  }
+
+  onPostersSwiper(postersSlider: Swiper) {
+    this.postersSlider = postersSlider;
+    this.postersSlider.params.thumbs!.swiper = this.tumbsSlider;
+    this.postersSlider.thumbs.init();
   }
 }
