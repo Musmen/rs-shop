@@ -11,7 +11,6 @@ import { StateEffects } from '@redux/effects/state.effects';
 import { CategoriesEffects } from '@redux/effects/categories.effects';
 
 import { CoreModule } from '@core/core.module';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -24,7 +23,6 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     HttpClientModule,
     CoreModule,
-    NgbModule,
     StoreModule.forRoot(appState, {
       runtimeChecks: {
         strictStateImmutability: true,

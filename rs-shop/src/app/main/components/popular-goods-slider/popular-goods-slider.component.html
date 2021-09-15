@@ -5,7 +5,7 @@
       swiperSlide 
       *ngFor="let popularGood of popularGoods"
     >
-      <app-slide [content]="popularGood"></app-slide>
+      <app-goods-item-minimal-card [goodsItem]="popularGood"></app-goods-item-minimal-card>
     </ng-template>
   </swiper>
 

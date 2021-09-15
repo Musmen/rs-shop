@@ -2,34 +2,85 @@
 
 .header {
   background-color: $secondary-bg-color-light;
+
+  .minimal-card {
+    justify-content: flex-start;
+  }
+
+  .minimal-card,
+  .minimal-card-poster {
+    height: 70px;
+  }
+  
+  .minimal-card-poster {
+    width: 70px;
+    min-height: 70px;
+  }
+
+  .minimal-card-poster-wrapper {
+    overflow: hidden;
+  }
+
+  .minimal-card-description-wrapper {
+    align-items: flex-start;
+    width: 500px;
+    max-width: initial;
+    margin-left: 10px;
+
+    font-size: 1rem;
+  }
+
+  .minimal-card-description-title {
+    width: 600px;
+    font-size: 1rem;
+    
+    text-align: left;
+    text-overflow: ellipsis;
+    
+    overflow: hidden;
+  }
+
+  .minimal-card-description-price {
+    font-size: 1rem;
+  }
 }
 
-.dropdown-toggle::after {
-  content: none;
+.search-results-drop-down {
+  .dropdown-toggle::after {
+    content: none;
+  }
+  
+  .dropdown-item {
+    padding: 0;
+  }
+
+  .dropdown-item:last-of-type .dropdown-link {
+    border: none;
+  }
+  
+  .dropdown-link {
+    display: block;
+    padding: 1rem 1.5rem;
+  
+    border-bottom: 1px solid $main-divider-color;
+    
+  }
+  
+  .text-decoration {
+    text-decoration: underline;
+  }
 }
 
-.dropdown-menu {
+.search-results-drop-down-menu {
+  max-height: 70vh;
+
   left: 20% !important;
-  right: 20%;
+  right: 20% !important;
+
+  overflow-x: hidden;
+  overflow-y: auto;
 
   box-shadow: 0 2px 4px $main-bg-color-dark;
-}
-
-.dropdown-item {
-  padding: 0;
-}
-
-.dropdown-link {
-  display: block;
-  padding: 1rem 1.5rem;
-
-  text-decoration: underline;
-
-  border-bottom: 1px solid $main-divider-color;
-}
-
-.dropdown-item:last-of-type .dropdown-link {
-  border: none;
 }
 
 .dropdown-item-not-active {
@@ -37,11 +88,19 @@
   padding: 0.25rem 1.5rem;
   color: $main-brand-color;
 
+  text-align: center;
+
   &:hover,
   &:focus,
   &:active {
     color: $main-brand-color;
     text-decoration: inherit;
+    background-color: inherit;
+  }
+}
+
+.dropdown-item {
+  &:active {
     background-color: inherit;
   }
 }

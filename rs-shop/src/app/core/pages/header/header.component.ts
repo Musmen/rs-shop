@@ -1,6 +1,7 @@
 import { Router } from '@angular/router';
 import {
-  ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild,
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy,
+  OnInit, ViewChild, ViewEncapsulation,
 } from '@angular/core';
 
 import {
@@ -33,6 +34,7 @@ import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  encapsulation: ViewEncapsulation.None,
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   @ViewChild('myDrop') dropDown!: NgbDropdown;

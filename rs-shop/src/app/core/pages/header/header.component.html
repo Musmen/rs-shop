@@ -4,7 +4,7 @@
     (changeLocationEvent)="changeLocation($event)"
   ></app-info-block>
 
-  <div ngbDropdown #myDrop="ngbDropdown">
+  <div class="search-results-drop-down" ngbDropdown #myDrop="ngbDropdown">
     <app-main-menu
       (catalogButtonClickEvent)="onCatalogButtonClick()"
       (logoClickEvent)="goToMainPage()"
@@ -12,7 +12,8 @@
       ngbDropdownAnchor
     >
     </app-main-menu>
-    <div 
+    <div
+      class="search-results-drop-down-menu" 
       ngbDropdownMenu 
       aria-labelledby="dropdownManual" 
       *ngIf="!isResultsNotEmpty(); else searchResultsList"
@@ -26,10 +27,10 @@
     </div>
 
     <ng-template #searchResultsList>
-      <ul ngbDropdownMenu aria-labelledby="dropdownManual">
+      <ul class="search-results-drop-down-menu list" ngbDropdownMenu aria-labelledby="dropdownManual">
         <li ngbDropdownItem *ngFor="let searchedReslut of searchedCategories">
           <a 
-            class="dropdown-link link" 
+            class="dropdown-link link text-decoration" 
             (click)="onRouterLinkClick(searchedReslut.category.id, searchedReslut.subcategory?.id)"
           >
             {{ (searchedReslut.subcategory || searchedReslut.category).name }}
@@ -42,24 +43,7 @@
               searchedGoodsItem.category || '.', searchedGoodsItem.subCategory || '', searchedGoodsItem.id
             )"
           >
-            <article class="goods-item" *ngIf="searchedGoodsItem">
-              <div class="goods-item-poster-wrapper">
-                <img 
-                  class="goods-item-poster" 
-                  src="{{ searchedGoodsItem.imageUrls[0] }}" 
-                  alt="{{ searchedGoodsItem.name }}"
-                  title="{{ searchedGoodsItem.name }}"
-                >
-              </div>
-              <div class="goods-item-description-wrapper">
-                <h4 class="goods-item-description-title">
-                  {{ searchedGoodsItem.name }}
-                </h4>
-                <p class="goods-item-description-price">
-                  {{ searchedGoodsItem.price | number:'.2-2' }} бел.&nbsp;рублей
-                </p>
-              </div>
-            </article>
+            <app-goods-item-minimal-card [goodsItem]="searchedGoodsItem"></app-goods-item-minimal-card>
           </a>
         </li>
       </ul>

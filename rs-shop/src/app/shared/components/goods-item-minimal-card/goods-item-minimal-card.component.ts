@@ -5,14 +5,14 @@ import {
 import { IGoods } from '@core/models/goods.model';
 
 @Component({
-  selector: 'app-slide',
-  templateUrl: './slide.component.html',
-  styleUrls: ['./slide.component.scss'],
+  selector: 'app-goods-item-minimal-card',
+  templateUrl: './goods-item-minimal-card.component.html',
+  styleUrls: ['./goods-item-minimal-card.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
 })
-export class SlideComponent {
-  @Input() content?: IGoods;
+export class GoodsItemMinimalCardComponent {
+  @Input() goodsItem?: IGoods;
 
   constructor(private router: Router) { }
 

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SlideComponent } from './slide.component';
+import { GoodsItemMinimalCardComponent } from './goods-item-minimal-card.component';
 
 describe('SlideComponent', () => {
-  let component: SlideComponent;
-  let fixture: ComponentFixture<SlideComponent>;
+  let component: GoodsItemMinimalCardComponent;
+  let fixture: ComponentFixture<GoodsItemMinimalCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SlideComponent],
+      declarations: [GoodsItemMinimalCardComponent],
     })
       .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SlideComponent);
+    fixture = TestBed.createComponent(GoodsItemMinimalCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -5,26 +5,26 @@
   display: block;
 }
 
-.slide,
-.slide-poster {
+.minimal-card,
+.minimal-card-poster {
   height: 200px;
 }
 
-.slide {
+.minimal-card {
   @include flex-aligned;
   justify-content: center;
 }
 
-.slide-poster-wrapper {
+.minimal-card-poster-wrapper {
   @include flex-center-aligned;
 }
 
-.slide-poster {
+.minimal-card-poster {
   min-height: 200px;
   object-fit: contain;
 }
 
-.slide-description-wrapper {
+.minimal-card-description-wrapper {
   @include flex-center-aligned;
   flex-direction: column;
   max-width: 50%;
@@ -33,11 +33,11 @@
   font-size: 1.5rem;
 }
 
-.slide-description-title {
+.minimal-card-description-title {
   text-align: center;
 }
 
-.slide-description-price {
+.minimal-card-description-price {
   margin: 5px 0;
 
   font-weight: bold;

@@ -1,0 +1,30 @@
+<article class="minimal-card" *ngIf="goodsItem">
+  <div class="minimal-card-poster-wrapper">
+    <img 
+      class="minimal-card-poster" 
+      src="{{ goodsItem.imageUrls[0] }}" 
+      alt="{{ goodsItem.name }}"
+      title="{{ goodsItem.name }}"
+    >
+  </div>
+  <div class="minimal-card-description-wrapper">
+    <a 
+      class="minimal-card-link card-link link"
+      (click)="goToGoodsItemDetailedPage(goodsItem)"
+    >
+      <h3 class="minimal-card-description-title">
+        {{ goodsItem.name }}
+      </h3>
+    </a>
+    <p class="minimal-card-description-raiting card-raiting">
+      <span 
+        class="minimal-card-description-raiting-filled card-raiting-filled" 
+        [style.width]="15*goodsItem.rating + 'px'"
+      >
+      </span>
+    </p>
+    <p class="minimal-card-description-price">
+      {{ goodsItem.price | number:'.2-2' }} бел.&nbsp;рублей
+    </p>
+  </div>
+</article>
