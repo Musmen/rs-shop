@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { Store } from '@ngrx/store';
 import { IAppState } from '@redux/state.model';
@@ -14,15 +16,28 @@ import { ICategory } from '@core/models/category.model';
   styleUrls: ['./subcategory-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SubcategoryPageComponent implements OnInit {
+export class SubcategoryPageComponent implements OnInit, OnDestroy {
+  private subscriptions = new Subscription();
+
   category$!: Observable<ICategory | null>;
   subcategory$!: Observable<ICategory | null>;
 
-  constructor(private store: Store<IAppState>, private route: ActivatedRoute) { }
+  constructor(
+    private store: Store<IAppState>,
+    private route: ActivatedRoute,
+    private ref: ChangeDetectorRef,
+  ) { }
 
   ngOnInit(): void {
-    const { categoryId, subcategoryId } = this.route.snapshot.params;
-    this.category$ = this.store.select(selectCategoryById(categoryId));
-    this.subcategory$ = this.store.select(selectSubcategoryById(subcategoryId));
+    const subscription = this.route.params.subscribe(({ categoryId, subcategoryId }) => {
+      this.category$ = this.store.select(selectCategoryById(categoryId));
+      this.subcategory$ = this.store.select(selectSubcategoryById(subcategoryId));
+      this.ref.detectChanges();
+    });
+    this.subscriptions.add(subscription);
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.unsubscribe();
   }
 }

@@ -12,3 +12,13 @@ export const initialSortState: ISortState = {
   ascending: 1,
   sortingBy: SortingValues.price,
 };
+
+const BASE_MAIN_DB_API_URL = 'http://localhost:3004/';
+
+export const MAIN_DB_API_URL = {
+  SEARCH_GOODS: `${BASE_MAIN_DB_API_URL}goods/search?text=`,
+};
+
+export const DEBOUNCE_TIME_IN_MS: number = 700;
+
+export const MIN_SEARCH_VALUE_LENGTH: number = 3;

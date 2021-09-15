@@ -138,7 +138,6 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
   goToGoodsItemDetailedPage(goodsItem: IGoods): void {
     this.router.navigate(
       ['/', this.category?.id || '', this.subcategory?.id || '', goodsItem.id],
-      { state: { goodsItem } },
     );
   }
 }

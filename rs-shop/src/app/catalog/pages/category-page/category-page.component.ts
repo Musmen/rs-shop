@@ -1,13 +1,13 @@
+import { ActivatedRoute } from '@angular/router';
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 
 import { Observable, Subscription } from 'rxjs';
 
 import { Store } from '@ngrx/store';
-import { IAppState } from '@redux/state.model';
 import { selectCategoryById } from '@redux/selectors/categories.selectors';
+import { IAppState } from '@redux/state.model';
 
 import { ICategory } from '@core/models/category.model';
 

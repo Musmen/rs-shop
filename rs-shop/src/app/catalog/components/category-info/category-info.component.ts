@@ -1,7 +1,7 @@
+import { Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICategory } from '@core/models/category.model';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-category-info',

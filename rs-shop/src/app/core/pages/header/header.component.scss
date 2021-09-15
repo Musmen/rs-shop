@@ -3,3 +3,11 @@
 .header {
   background-color: $secondary-bg-color-light;
 }
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.dropdown-menu {
+  right: 20px;
+}

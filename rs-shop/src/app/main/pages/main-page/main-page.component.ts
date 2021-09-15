@@ -28,7 +28,7 @@ export class MainPageComponent {
           previousSubCategoryPromoGoods,
         ) => currentSubCategoryPromoGoods.concat(previousSubCategoryPromoGoods),
       );
-
+    console.log('refactor');
     this.popularGoods = allGoods;
     this.promoGoods = allGoods.filter((item, index) => index % 2 === 0).slice(-10);
 

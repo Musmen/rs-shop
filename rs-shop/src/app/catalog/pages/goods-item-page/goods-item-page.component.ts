@@ -5,11 +5,11 @@ import {
 } from '@angular/core';
 
 import { Observable, Subscription } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
-import { IAppState } from '@redux/state.model';
 import { selectCategoryById, selectSubcategoryById } from '@redux/selectors/categories.selectors';
+import { IAppState } from '@redux/state.model';
 
 import { IGoods } from '@core/models/goods.model';
 import { ICategory } from '@core/models/category.model';
@@ -31,7 +31,7 @@ SwiperCore.use([Pagination, Thumbs]);
 export class GoodsItemPageComponent implements OnInit, OnDestroy {
   private subscriptions = new Subscription();
 
-  goodsItem: IGoods | null;
+  goodsItem?: IGoods | null;
 
   category$!: Observable<ICategory | null>;
   subcategory$!: Observable<ICategory | null>;
@@ -48,37 +48,33 @@ export class GoodsItemPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private ref: ChangeDetectorRef,
     private store: Store<IAppState>,
-  ) {
-    const currentNavigation = this.router.getCurrentNavigation();
-    this.goodsItem = currentNavigation && currentNavigation.extras?.state?.goodsItem as IGoods;
-  }
+  ) { }
 
   ngOnInit(): void {
-    const { categoryId, subcategoryId, goodsItemId } = this.route.snapshot.params;
+    let currentSubcategoryId = '';
 
-    if (!this.goodsItem || !categoryId || !subcategoryId) {
-      const goodsItemSubscription = this.http.get<IGoods>(
-        `http://localhost:3004/goods/item/${goodsItemId}`,
-      )
-        .pipe(take(1))
-        .subscribe((goodsItem) => {
+    const subscription = this.route.params.pipe(
+      switchMap(({ subcategoryId, goodsItemId }) => {
+        currentSubcategoryId = subcategoryId;
+        return this.http.get<IGoods>(
+          `http://localhost:3004/goods/item/${goodsItemId}`,
+        );
+      }),
+    )
+      .subscribe((goodsItem: IGoods) => {
+        if (currentSubcategoryId !== goodsItem.subCategory) {
           this.router.navigate(
             ['/', goodsItem.category, goodsItem.subCategory, goodsItem.id],
-            {
-              state: { goodsItem },
-              replaceUrl: true,
-            },
+            { replaceUrl: true },
           );
-          this.goodsItem = goodsItem;
-          this.category$ = this.store.select(selectCategoryById(goodsItem.category || ''));
-          this.subcategory$ = this.store.select(selectSubcategoryById(goodsItem.subCategory || ''));
-          this.ref.detectChanges();
-        });
-      this.subscriptions.add(goodsItemSubscription);
-    } else {
-      this.category$ = this.store.select(selectCategoryById(categoryId));
-      this.subcategory$ = this.store.select(selectSubcategoryById(subcategoryId));
-    }
+          return;
+        }
+        this.category$ = this.store.select(selectCategoryById(goodsItem.category || ''));
+        this.subcategory$ = this.store.select(selectSubcategoryById(goodsItem.subCategory || ''));
+        this.goodsItem = goodsItem;
+        this.ref.detectChanges();
+      });
+    this.subscriptions.add(subscription);
   }
 
   ngOnDestroy(): void {

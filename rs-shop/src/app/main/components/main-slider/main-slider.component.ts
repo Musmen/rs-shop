@@ -24,9 +24,6 @@ export class MainSliderComponent {
   constructor(private router: Router) { }
 
   goToGoodsItemDetailedPage(goodsItem: IGoods): void {
-    this.router.navigate(
-      ['/', '.', '', goodsItem.id],
-      { state: { goodsItem } },
-    );
+    this.router.navigate(['/', '.', '', goodsItem.id]);
   }
 }

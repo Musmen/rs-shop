@@ -3,12 +3,40 @@
     [location]="location$ | async" 
     (changeLocationEvent)="changeLocation($event)"
   ></app-info-block>
-  <app-main-menu
-    (catalogButtonClickEvent)="onCatalogButtonClick()"
-    (logoClickEvent)="goToMainPage()"
-  ></app-main-menu>
+
+  <div ngbDropdown #myDrop="ngbDropdown">
+    <app-main-menu
+      (catalogButtonClickEvent)="onCatalogButtonClick()"
+      (logoClickEvent)="goToMainPage()"
+      (setSearchValueEvent)="setSearchValue($event)"
+      ngbDropdownAnchor
+    >
+    </app-main-menu>
+
+    <ul ngbDropdownMenu aria-labelledby="dropdownManual">
+      <li ngbDropdownItem *ngFor="let searchedReslut of searchedCategories">
+        <a 
+          class="link" 
+          (click)="onRouterLinkClick(searchedReslut.category.id, searchedReslut.subcategory?.id)"
+        >
+          {{ (searchedReslut.subcategory || searchedReslut.category).name }}
+        </a>
+      </li>
+      <li ngbDropdownItem *ngFor="let searchedGoodsItem of searchedGoods">
+        <a 
+          class="link"
+          (click)="onRouterLinkClick(
+            searchedGoodsItem.category || '', searchedGoodsItem.subCategory || '', searchedGoodsItem.id
+          )"
+        >
+          {{ searchedGoodsItem.name }}
+        </a>
+      </li>
+    </ul>
+  </div>
+
   <app-nav-bar 
     [categories]="categories$ | async"
-    (categoryClickEvent)="onCategoryClick($event)"
+    (categoryClickEvent)="onRouterLinkClick($event)"
   ></app-nav-bar>
 </header>
