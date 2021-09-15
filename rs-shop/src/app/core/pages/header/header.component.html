@@ -12,27 +12,58 @@
       ngbDropdownAnchor
     >
     </app-main-menu>
+    <div 
+      ngbDropdownMenu 
+      aria-labelledby="dropdownManual" 
+      *ngIf="!isResultsNotEmpty(); else searchResultsList"
+    >
+      <span 
+        class="dropdown-item-not-active"
+        ngbDropdownItem
+      >
+       :( По Вашему запросу ничего не найдено...
+      </span>
+    </div>
 
-    <ul ngbDropdownMenu aria-labelledby="dropdownManual">
-      <li ngbDropdownItem *ngFor="let searchedReslut of searchedCategories">
-        <a 
-          class="link" 
-          (click)="onRouterLinkClick(searchedReslut.category.id, searchedReslut.subcategory?.id)"
-        >
-          {{ (searchedReslut.subcategory || searchedReslut.category).name }}
-        </a>
-      </li>
-      <li ngbDropdownItem *ngFor="let searchedGoodsItem of searchedGoods">
-        <a 
-          class="link"
-          (click)="onRouterLinkClick(
-            searchedGoodsItem.category || '', searchedGoodsItem.subCategory || '', searchedGoodsItem.id
-          )"
-        >
-          {{ searchedGoodsItem.name }}
-        </a>
-      </li>
-    </ul>
+    <ng-template #searchResultsList>
+      <ul ngbDropdownMenu aria-labelledby="dropdownManual">
+        <li ngbDropdownItem *ngFor="let searchedReslut of searchedCategories">
+          <a 
+            class="dropdown-link link" 
+            (click)="onRouterLinkClick(searchedReslut.category.id, searchedReslut.subcategory?.id)"
+          >
+            {{ (searchedReslut.subcategory || searchedReslut.category).name }}
+          </a>
+        </li>
+        <li ngbDropdownItem *ngFor="let searchedGoodsItem of searchedGoods">
+          <a 
+            class="dropdown-link link"
+            (click)="onRouterLinkClick(
+              searchedGoodsItem.category || '.', searchedGoodsItem.subCategory || '', searchedGoodsItem.id
+            )"
+          >
+            <article class="goods-item" *ngIf="searchedGoodsItem">
+              <div class="goods-item-poster-wrapper">
+                <img 
+                  class="goods-item-poster" 
+                  src="{{ searchedGoodsItem.imageUrls[0] }}" 
+                  alt="{{ searchedGoodsItem.name }}"
+                  title="{{ searchedGoodsItem.name }}"
+                >
+              </div>
+              <div class="goods-item-description-wrapper">
+                <h4 class="goods-item-description-title">
+                  {{ searchedGoodsItem.name }}
+                </h4>
+                <p class="goods-item-description-price">
+                  {{ searchedGoodsItem.price | number:'.2-2' }} бел.&nbsp;рублей
+                </p>
+              </div>
+            </article>
+          </a>
+        </li>
+      </ul>
+    </ng-template>
   </div>
 
   <app-nav-bar 

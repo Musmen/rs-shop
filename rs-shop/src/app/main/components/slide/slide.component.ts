@@ -17,6 +17,6 @@ export class SlideComponent {
   constructor(private router: Router) { }
 
   goToGoodsItemDetailedPage(goodsItem: IGoods): void {
-    this.router.navigate(['/', '.', '', goodsItem.id]);
+    this.router.navigate(['/', goodsItem.category || '.', goodsItem.subCategory || '', goodsItem.id]);
   }
 }

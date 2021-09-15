@@ -97,6 +97,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
       );
   }
 
+  isResultsNotEmpty(): boolean {
+    return Boolean(this.searchedCategories?.length || this.searchedGoods?.length);
+  }
+
   setSearchValue(searchValue: string): void {
     this.searchValue$.next(searchValue);
   }

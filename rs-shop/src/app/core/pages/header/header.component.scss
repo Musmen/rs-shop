@@ -9,5 +9,39 @@
 }
 
 .dropdown-menu {
-  right: 20px;
+  left: 20% !important;
+  right: 20%;
+
+  box-shadow: 0 2px 4px $main-bg-color-dark;
+}
+
+.dropdown-item {
+  padding: 0;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 1rem 1.5rem;
+
+  text-decoration: underline;
+
+  border-bottom: 1px solid $main-divider-color;
+}
+
+.dropdown-item:last-of-type .dropdown-link {
+  border: none;
+}
+
+.dropdown-item-not-active {
+  margin: 20px 0;
+  padding: 0.25rem 1.5rem;
+  color: $main-brand-color;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $main-brand-color;
+    text-decoration: inherit;
+    background-color: inherit;
+  }
 }
