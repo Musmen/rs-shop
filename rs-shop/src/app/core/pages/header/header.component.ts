@@ -16,6 +16,7 @@ import { checkLoginStatus } from '@redux/actions/user.actions';
 import { updateCategories } from '@redux/actions/categories.actions';
 import { selectLocation } from '@redux/selectors/state.selectors';
 import { selectAllCategories } from '@redux/selectors/categories.selectors';
+import { selectIsUserLogged, selectUserFullName } from '@app/redux/selectors/user.selectors';
 import { IAppState } from '@redux/state.model';
 
 import { MainDbService } from '@core/services/main-db/main-db.service';
@@ -28,6 +29,7 @@ import { getSearchedCategories } from '@common/helpers';
 import { DEBOUNCE_TIME_IN_MS, MIN_SEARCH_VALUE_LENGTH } from '@common/constants';
 
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '@app/core/services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -50,10 +52,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
   searchedCategories?: ISearchedCategory[];
   searchedGoods?: IGoods[];
 
+  isUserLogged$?: Observable<boolean>;
+  userFullName$?: Observable<string>;
+
   constructor(
     private store: Store<IAppState>,
     private mainDb: MainDbService,
     private ref: ChangeDetectorRef,
+    private userService: UserService,
   ) {
     this.store.dispatch(detectLocation());
     this.store.dispatch(updateCategories());
@@ -63,6 +69,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.location$ = this.store.select(selectLocation);
     this.categories$ = this.store.select(selectAllCategories);
+    this.isUserLogged$ = this.store.select(selectIsUserLogged);
+    this.userFullName$ = this.store.select(selectUserFullName);
 
     this.searchGoodsResults$ = this.getSearchValue$().pipe(
       switchMap(
@@ -110,5 +118,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   changeLocation(newLocation: string | null): void {
     if (!newLocation) return;
     this.store.dispatch(setNewLocation({ newLocation }));
+  }
+
+  logout(): void {
+    this.userService.logout();
   }
 }

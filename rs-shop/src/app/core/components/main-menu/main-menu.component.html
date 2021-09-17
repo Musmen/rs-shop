@@ -55,12 +55,12 @@
       <mat-icon>arrow_drop_down</mat-icon>
     </button>
     <div class="profile-dropdown-menu py-3" ngbDropdownMenu aria-labelledby="dropdownUserProfile">
-      <p class="user-icon">
+      <p class="user-icon" [class.logged]="isUserLogged$ | async">
         <mat-icon>account_circle</mat-icon>
       </p>
       <p class="user-info">
-        <span class="user-name">
-          Фамилия Имя
+        <span class="user-full-name">
+          {{ userFullName$ | async }}
         </span>
       </p>
       <div class="dropdown-divider"></div>
@@ -68,9 +68,10 @@
         <button 
           class="dropdown-link link dropdown-login-button dropdown-item-not-active" 
           ngbDropdownItem 
-          [routerLink]="['login']"
+          *ngIf="isUserLogged$ | async; else loginButton"
+          (click)="onLogoutButtonClick()"
         >
-          Войти
+          Выйти
         </button>
       </div>
       <div class="dropdown-divider"></div>
@@ -119,3 +120,13 @@
     Корзина
   </button>
 </div>
+
+<ng-template #loginButton>
+  <button 
+    class="dropdown-link link dropdown-login-button dropdown-item-not-active" 
+    ngbDropdownItem
+    [routerLink]="['login']"
+  >
+    Войти
+  </button>
+</ng-template>

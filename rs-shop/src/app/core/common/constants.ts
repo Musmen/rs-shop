@@ -43,10 +43,11 @@ export const DEFAULT_CREDENTIALS: ICredentials = {
   lastName: '',
   login: '',
   password: '',
-  token: '',
 };
 
 export const STORAGE_KEYS = {
   AUTH_TOKEN: 'authToken-rs-shop',
   USER: 'user-rs-shop',
 };
+
+export const DEFAULT_USER_FULL_NAME = 'Неизвестный посетитель';

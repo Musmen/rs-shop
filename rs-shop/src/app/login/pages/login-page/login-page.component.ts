@@ -12,21 +12,7 @@ import { DEFAULT_CREDENTIALS } from '@common/constants';
 export class LoginPageComponent {
   credentials: ICredentials = DEFAULT_CREDENTIALS;
 
-  // myUserCredentials: ICredentials = {
-  //   firstName: 'Igor',
-  //   lastName: 'Sam',
-  //   login: 'Musmen',
-  //   password: '123',
-  //   token: '',
-  // };
-
-  constructor(private userService: UserService) {
-    // debugger;
-    // this.userService.getUserInfo$('qzn9d58sym0vn2qs936uwuqq').subscribe(
-    //   (userInfo) => console.log(userInfo),
-    // );
-    // this.register(this.myUserCredentials);
-  }
+  constructor(private userService: UserService) { }
 
   login(credentials: ICredentials): void {
     this.userService.login(credentials);
@@ -39,8 +25,4 @@ export class LoginPageComponent {
   logout(): void {
     this.userService.logout();
   }
-
-  // getIsUserLogged$(): Observable<boolean> {
-  //   return this._loginService.getIsUserLogged$();
-  // }
 }

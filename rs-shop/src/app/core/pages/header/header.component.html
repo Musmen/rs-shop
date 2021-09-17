@@ -6,7 +6,13 @@
   </app-info-block>
 
   <div class="search-results-drop-down" ngbDropdown #myDrop="ngbDropdown">
-    <app-main-menu (setSearchValueEvent)="setSearchValue($event)" ngbDropdownAnchor></app-main-menu>
+    <app-main-menu 
+      [userFullName$]="userFullName$"
+      [isUserLogged$]="isUserLogged$"
+      (setSearchValueEvent)="setSearchValue($event)"
+      (logoutEvent)="logout()"
+      ngbDropdownAnchor>
+    </app-main-menu>
 
     <div
       class="search-results-drop-down-menu" 
