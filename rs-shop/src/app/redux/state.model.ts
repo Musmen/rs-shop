@@ -3,17 +3,18 @@ import { ICategory } from '@core/models/category.model';
 import { IGoods } from '@core/models/goods.model';
 
 import ISortState from '@core/models/sort-state.model';
-import { initialSortState } from '@common/constants';
+import { DEFAULT_USER, initialSortState } from '@common/constants';
 
 export interface IAppState {
-  users: IUsersState,
+  user: IUsersState,
   categories: ICategoriesState,
   goods: IGoodsState,
   state: IState,
 }
 
 export interface IUsersState {
-  users: IUser[],
+  user: IUser,
+  isUserLogged: boolean,
 }
 
 export interface ICategoriesState {
@@ -29,8 +30,9 @@ export interface IState {
   sort: ISortState,
 }
 
-export const initialUsersState: IUsersState = {
-  users: [],
+export const initialUserState: IUsersState = {
+  user: DEFAULT_USER,
+  isUserLogged: false,
 };
 
 export const initialCategoriesState: ICategoriesState = {
@@ -47,7 +49,7 @@ export const initialState: IState = {
 };
 
 export const initialAppState: IAppState = {
-  users: initialUsersState,
+  user: initialUserState,
   categories: initialCategoriesState,
   goods: initialGoodsState,
   state: initialState,

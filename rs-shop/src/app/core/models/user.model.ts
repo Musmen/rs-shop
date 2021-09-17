@@ -1,12 +1,24 @@
-import { IGoods } from './goods.model';
+import { IOrder } from './order.model';
 
 export interface IUser {
   firstName: string,
   lastName: string,
-  token: string,
+  cart: string[],
+  favorites: string[],
+  orders: IOrder[]
+}
+
+export interface ICredentials extends ILoginCredentials {
+  firstName: string,
+  lastName: string,
+}
+
+export interface ILoginCredentials {
   login: string,
   password: string,
-  cart: IGoods[],
-  favorites: IGoods[],
-  orders: IGoods[]
+  token?: string,
+}
+
+export interface IToken {
+  token: string,
 }

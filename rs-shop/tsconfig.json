@@ -12,6 +12,7 @@
       "@redux/*": ["src/app/redux/*"],
       "@catalog/*": ["src/app/catalog/*"],
       "@main/*": ["src/app/main/*"],
+      "@login/*": ["src/app/login/*"],
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

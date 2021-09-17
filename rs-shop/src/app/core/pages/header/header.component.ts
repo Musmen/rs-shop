@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy,
   OnInit, ViewChild, ViewEncapsulation,
@@ -13,6 +12,7 @@ import {
 
 import { Store } from '@ngrx/store';
 import { detectLocation, setNewLocation } from '@redux/actions/state.actions';
+import { checkLoginStatus } from '@redux/actions/user.actions';
 import { updateCategories } from '@redux/actions/categories.actions';
 import { selectLocation } from '@redux/selectors/state.selectors';
 import { selectAllCategories } from '@redux/selectors/categories.selectors';
@@ -52,12 +52,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   constructor(
     private store: Store<IAppState>,
-    private router: Router,
     private mainDb: MainDbService,
     private ref: ChangeDetectorRef,
   ) {
     this.store.dispatch(detectLocation());
     this.store.dispatch(updateCategories());
+    this.store.dispatch(checkLoginStatus());
   }
 
   ngOnInit(): void {
@@ -110,27 +110,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
   changeLocation(newLocation: string | null): void {
     if (!newLocation) return;
     this.store.dispatch(setNewLocation({ newLocation }));
-  }
-
-  onRouterLinkClick(categoryId: string, subcategoryId?: string, goodsItemId?: string): void {
-    if (goodsItemId) {
-      this.router.navigate(['/', categoryId, subcategoryId, goodsItemId]);
-      return;
-    }
-
-    if (subcategoryId) {
-      this.router.navigate(['/', categoryId, subcategoryId]);
-      return;
-    }
-
-    this.router.navigate(['/', categoryId]);
-  }
-
-  onCatalogButtonClick(): void {
-    this.router.navigate(['']);
-  }
-
-  goToMainPage(): void {
-    this.router.navigate(['/main']);
   }
 }

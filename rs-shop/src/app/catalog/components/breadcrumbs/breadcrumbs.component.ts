@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnChanges,
 } from '@angular/core';
@@ -25,7 +24,7 @@ export class BreadcrumbsComponent implements OnChanges, OnDestroy {
 
   private subscriptions = new Subscription();
 
-  constructor(private router: Router, private ref: ChangeDetectorRef) { }
+  constructor(private ref: ChangeDetectorRef) { }
 
   ngOnChanges(): void {
     if (!this.category$ && !this.subcategory$) return;
@@ -41,14 +40,5 @@ export class BreadcrumbsComponent implements OnChanges, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
-  }
-
-  onBreadcrumbsLinkClick(categoryId: string, subcategoryId?: string): void {
-    if (subcategoryId) {
-      this.router.navigate(['', categoryId, subcategoryId]);
-      return;
-    }
-
-    this.router.navigate(['', categoryId]);
   }
 }

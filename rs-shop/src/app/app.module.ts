@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { appState } from '@redux/app.state';
 import { StateEffects } from '@redux/effects/state.effects';
 import { CategoriesEffects } from '@redux/effects/categories.effects';
+import { UserEffects } from '@redux/effects/user.effects';
 
 import { CoreModule } from '@core/core.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +37,7 @@ import { AppComponent } from './app.component';
     StoreDevtoolsModule.instrument({
       maxAge: 25,
     }),
-    EffectsModule.forRoot([CategoriesEffects, StateEffects]),
+    EffectsModule.forRoot([CategoriesEffects, StateEffects, UserEffects]),
   ],
   bootstrap: [AppComponent],
 })

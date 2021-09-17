@@ -10,20 +10,10 @@ import {
 })
 export class MainMenuComponent {
   @Output() setSearchValueEvent = new EventEmitter<string>();
-  @Output() catalogButtonClickEvent = new EventEmitter<void>();
-  @Output() logoClickEvent = new EventEmitter<void>();
 
   searchValue: string = '';
 
   setSearchValue(searchValue: string = this.searchValue): void {
     this.setSearchValueEvent.emit(searchValue);
-  }
-
-  onCatalogButtonClick(): void {
-    this.catalogButtonClickEvent.emit();
-  }
-
-  onLogoClick(): void {
-    this.logoClickEvent.emit();
   }
 }

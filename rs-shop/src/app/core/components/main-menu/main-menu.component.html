@@ -1,6 +1,6 @@
 <div class="centralizer">
-  <a class="logo-link link" (click)="onLogoClick()" title="На главную страницу">
-    <h1 class="visually-hidden">RS Shop – приложение - интернет-магазин (Angular)</h1>
+  <a class="logo-link link" [routerLink]="['main']" title="На главную страницу">
+    <h1 class="visually-hidden">RS Shop: приложение – интернет-магазин (Angular)</h1>
     <img class="logo" src="../../../assets/images/logo.svg" alt="Логотип Angular">
   </a>
 
@@ -9,7 +9,7 @@
     mat-icon-button
     aria-label="Открыть каталог товаров"
     title="Открыть каталог товаров"
-    (click)="onCatalogButtonClick()"
+    [routerLink]="['']"
   >
     <mat-icon>apps</mat-icon>
     Каталог товаров
@@ -41,24 +41,79 @@
     </mat-form-field>
   </form>
 
-  <button
-    class="profile-button main-button shadow"
-    mat-icon-button
-    aria-label="Открыть профиль пользователя"
-    title="Открыть профиль пользователя"
-    (click)="searchValue=''"
-  >
-    <mat-icon>login</mat-icon>
-    Аккаунт
-    <mat-icon>arrow_drop_down</mat-icon>
-  </button>
+  <div ngbDropdown placement="bottom" class="profile-dropdown d-inline-block">
+    <button
+      id="dropdownUserProfile"
+      class="profile-button main-button shadow"
+      mat-icon-button
+      aria-label="Открыть профиль пользователя"
+      title="Открыть профиль пользователя"
+      ngbDropdownToggle
+    >
+      <mat-icon>login</mat-icon>
+      Аккаунт
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <div class="profile-dropdown-menu py-3" ngbDropdownMenu aria-labelledby="dropdownUserProfile">
+      <p class="user-icon">
+        <mat-icon>account_circle</mat-icon>
+      </p>
+      <p class="user-info">
+        <span class="user-name">
+          Фамилия Имя
+        </span>
+      </p>
+      <div class="dropdown-divider"></div>
+      <div class="dropdown-login-button-wrapper">
+        <button 
+          class="dropdown-link link dropdown-login-button dropdown-item-not-active" 
+          ngbDropdownItem 
+          [routerLink]="['login']"
+        >
+          Войти
+        </button>
+      </div>
+      <div class="dropdown-divider"></div>
+      <ul class="list">
+        <li class="px-4" ngbDropdownItem>
+          <a
+            class="dropdown-link link"
+            aria-label="Открыть корзину товаров"
+            title="Открыть корзину товаров"
+          >
+            <mat-icon class="dropdown-item-icon">shopping_cart</mat-icon>
+            Корзина
+          </a>
+        </li>
+        <li class="px-4" ngbDropdownItem>
+          <a
+            class="dropdown-link link"
+            aria-label="Открыть избранные товары"
+            title="Открыть избранные товары"
+          >
+            <mat-icon class="dropdown-item-icon">favorite</mat-icon>
+            Избранные товары
+          </a>
+        </li>
+        <li class="px-4" ngbDropdownItem>
+          <a
+            class="dropdown-link link"
+            aria-label="Открыть лист ожидания"
+            title="Открыть лист ожидания"
+          >
+            <mat-icon class="dropdown-item-icon">list_alt</mat-icon>
+            Лист ожидания
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
 
   <button
     class="cart-button main-button shadow"
     mat-icon-button
     aria-label="Открыть корзину товаров"
     title="Открыть корзину товаров"
-    (click)="searchValue=''"
   >
     <mat-icon>shopping_cart</mat-icon>
     Корзина

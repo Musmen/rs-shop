@@ -13,6 +13,7 @@ import { CITIES } from '@common/constants';
 export class InfoBlockComponent implements OnChanges {
   @Input() location?: string | null;
   @Output() changeLocationEvent = new EventEmitter<string | null>();
+
   cities = CITIES;
 
   ngOnChanges(): void {

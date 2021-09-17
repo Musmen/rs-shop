@@ -46,7 +46,7 @@
 }
 
 .search-results-drop-down {
-  .dropdown-toggle::after {
+  & .dropdown-toggle::after {
     content: none;
   }
   

@@ -1,8 +1,6 @@
 import { SwiperModule } from 'swiper/angular';
-
-import { SharedModule } from '@shared/shared.module';
-
 import { NgModule } from '@angular/core';
+import { SharedModule } from '@shared/shared.module';
 import { CatalogRoutingModule } from './catalog-routing.module';
 
 import { AmountVisualizationDirective } from './directives/amount-visualization/amount-visualization.directive';

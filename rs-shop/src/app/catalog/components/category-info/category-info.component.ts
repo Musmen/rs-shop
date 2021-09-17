@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ICategory } from '@core/models/category.model';
@@ -11,10 +10,4 @@ import { ICategory } from '@core/models/category.model';
 })
 export class CategoryInfoComponent {
   @Input() category$?: Observable<ICategory | null>;
-
-  constructor(private router: Router) { }
-
-  onSubCategoryLinkClick(categoryId: string, subcategoryId: string): void {
-    this.router.navigate(['/', categoryId, subcategoryId]);
-  }
 }

@@ -2,7 +2,7 @@
   <a 
     class="breadcrumbs-category-link link" 
     *ngIf="category"
-    (click)="onBreadcrumbsLinkClick(category.id)"
+    [routerLink]="['', category.id]"
     >
     <span class="category-name">{{ category.name }}</span>
   </a>
@@ -15,9 +15,9 @@
 
 <ng-template #subcategoryLink>
   <a 
-   class="breadcrumbs-subcategory-link link"
-   *ngIf="category && subcategory"
-    (click)="onBreadcrumbsLinkClick(category.id, subcategory.id)"
+    class="breadcrumbs-subcategory-link link"
+    *ngIf="category && subcategory"
+    [routerLink]="['', category.id, subcategory.id]"
   >
     <span class="subcategory-name">{{ subcategory.name }}</span>
   </a>

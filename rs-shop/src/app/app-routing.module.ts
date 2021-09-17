@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: 'categories', redirectTo: '' },
-  // { path: 'auth', redirectTo: 'login' },
+  { path: 'auth', redirectTo: 'login' },
   { path: 'home', redirectTo: 'main' },
   {
     path: 'main',
@@ -11,17 +11,17 @@ const routes: Routes = [
       .then((m) => m.MainModule),
   },
   {
+    path: 'login',
+    loadChildren: () => import('@login/login.module')
+      .then((m) => m.LoginModule),
+    // canLoad: [AuthGuard],
+    // canActivate: [AuthGuard],
+  },
+  {
     path: '',
     loadChildren: () => import('@catalog/catalog.module')
       .then((m) => m.CatalogModule),
   },
-  // {
-  //   path: 'admin',
-  //   loadChildren: () => import('@admin/admin.module')
-  //     .then((m) => m.AdminModule),
-  //   canLoad: [AuthGuard],
-  //   canActivate: [AuthGuard],
-  // },
   // { path: '**', component: NotFoundComponent },
 ];
 

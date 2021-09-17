@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
+import { LocationService } from '@core/services/location/location.service';
+
 import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { LocationService } from '@app/core/services/location/location.service';
 import { detectLocation, detectLocationFailed, detectLocationSuccessfully } from '../actions/state.actions';
 
 @Injectable({ providedIn: 'any' })

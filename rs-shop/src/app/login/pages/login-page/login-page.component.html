@@ -1,0 +1,135 @@
+<form class="login-form" name="login-form" (submit)="$event.preventDefault()">
+  <fieldset class="login-fieldset">
+    <legend class="login-form-legend">Для входа:</legend>
+    
+    <mat-form-field class="login-form-field" appearance="outline">
+      <mat-label>Логин (необходим для входа и регистрации)</mat-label> 
+      <input
+        class="form-input login-form-input"
+        type="text"
+        name="login-form-input"
+        autocomplete="off"
+        [(ngModel)]="credentials.login"
+        matInput
+      >
+      <button
+        class="form-clear-button login-form-clear-button"
+        type="button"
+        aria-label="Очистить логин"
+        mat-button
+        *ngIf="credentials.login"
+        (click)="credentials.login=''"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="login-form-field" appearance="outline">
+      <mat-label>Пароль (необходим для входа и регистрации)</mat-label>
+      <input
+        class="form-input login-form-input"
+        type="password"
+        name="password-form-input"
+        autocomplete="off"
+        [(ngModel)]="credentials.password"
+        matInput
+      >
+      <button
+        class="form-clear-button login-form-clear-button"
+        type="button"
+        aria-label="Очистить пароль"
+        mat-button
+        *ngIf="credentials.password"
+        (click)="credentials.password=''"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="form-container">
+      <button
+        class="login-form-button form-button main-button button shadow"
+        type="button"
+        aria-label="Войти зарегистрированному пользователю"
+        title="Войти зарегистрированному пользователю"
+        mat-button
+        (click)="login(credentials)"
+      >
+        Вход
+      </button>
+      <button
+        class="login-form-button form-button main-button button shadow"
+        type="button"
+        aria-label="Выйти из зарегистрированного пользователя"
+        title="Выйти из зарегистрированного пользователя"
+        mat-button
+        (click)="logout()"
+      >
+        Выход
+      </button>
+    </div>
+  </fieldset>
+
+  <fieldset class="registration-fieldset">
+    <legend class="login-form-legend registration-form-legend">
+      Дополнительно для регистрации:
+    </legend>
+
+    <mat-form-field class="login-form-field" appearance="outline">
+      <mat-label>Фамилия (необходима только для регистрации)</mat-label>
+      <input
+        class="form-input login-form-input"
+        type="text"
+        name="lastName-form-input"
+        autocomplete="off"
+        [(ngModel)]="credentials.lastName"
+        matInput
+      >
+      <button
+        class="form-clear-button login-form-clear-button"
+        type="button"
+        aria-label="Очистить фамилию"
+        mat-button
+        *ngIf="credentials.lastName"
+        (click)="credentials.lastName=''"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="login-form-field" appearance="outline">
+      <mat-label>Имя (необходимо только для регистрации)</mat-label>
+      <input
+        class="form-input login-form-input"
+        type="text"
+        name="firstName-form-input"
+        autocomplete="off"
+        [(ngModel)]="credentials.firstName"
+        matInput
+      >
+      <button
+        class="form-clear-button login-form-clear-button"
+        type="button"
+        aria-label="Очистить имя"
+        mat-button
+        *ngIf="credentials.firstName"
+        (click)="credentials.firstName=''"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <div class="form-container">
+      <button
+        class="login-form-button form-button main-button button shadow"
+        type="button"
+        aria-label="Зарегистрироваться"
+        title="Зарегистрироваться"
+        mat-button
+        (click)="register(credentials)"
+      >
+        Регистрация
+      </button>
+    </div>
+  </fieldset>
+</form>                                             

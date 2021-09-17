@@ -1,10 +1,7 @@
 <nav class="navigation-block centralizer">
   <ul class="navigation-list list"> 
     <li class="navigation-item" *ngFor="let category of categories">
-      <a 
-        class="navigation-link link" 
-        (click)="onCategoryClick(category.id)"
-      >
+      <a class="navigation-link link" [routerLink]="['/', category.id]">
         {{ category.name }}
       </a>
     </li>

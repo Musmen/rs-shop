@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
@@ -25,12 +26,14 @@ const materialModules = [
   imports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     NgbModule,
     ...materialModules,
   ],
   exports: [
     CommonModule,
     FormsModule,
+    RouterModule,
     NgbModule,
     ...materialModules,
     GoodsItemMinimalCardComponent,

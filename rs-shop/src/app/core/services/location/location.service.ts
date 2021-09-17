@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { ILocation } from '@core/models/location.model';
-import { LOCATION_API_URL } from '../common/constants';
+import { LOCATION_API_URL } from '@common/constants';
 
 @Injectable()
 export class LocationService {
