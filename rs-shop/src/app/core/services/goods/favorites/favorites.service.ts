@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin, Observable, of } from 'rxjs';
+import { switchMap } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import { selectFavoritesGoodsIds } from '@redux/selectors/user.selectors';
-import {
-  setFavoriteGoodsIdsInLoggedUser, setFavoriteGoodsIdsInNotloggedUser,
-} from '@redux/actions/user.actions';
+import { setFavoriteGoodsIdsInLoggedUser } from '@redux/actions/user.actions';
 import { IAppState } from '@redux/state.model';
 
-import { IGoods } from '@core/models/goods.model';
-
 import { MainDbService } from '@core/services/main-db/main-db.service';
-import { IUser } from '@app/core/models/user.model';
+
+import { IGoods } from '@core/models/goods.model';
+import { IUser } from '@core/models/user.model';
 
 @Injectable({ providedIn: 'root' })
 export class FavoritesService {
@@ -29,16 +27,17 @@ export class FavoritesService {
     );
   }
 
-  getFavoritesGoods$(): Observable<Observable<IGoods[]>> {
+  getFavoritesGoods$(): Observable<IGoods[]> {
     return this.store.select(selectFavoritesGoodsIds)
       .pipe(
-        map(
-          (favoritesGoodsItemsIds) => forkJoin(
-            favoritesGoodsItemsIds.map(
+        switchMap((favoritesGoodsIds) => {
+          if (!favoritesGoodsIds.length) return of([]);
+          return forkJoin(
+            favoritesGoodsIds.map(
               (favoritesGoodsItemId) => this.mainDbService.getGoodsItem$(favoritesGoodsItemId),
             ),
-          ),
-        ),
+          );
+        }),
       );
   }
 
@@ -51,16 +50,10 @@ export class FavoritesService {
       ? this.favoritesGoodsItemsIds
       : this.favoritesGoodsItemsIds.concat(goodsItemId);
 
-    if (isUserLogged) {
-      this.store.dispatch(setFavoriteGoodsIdsInLoggedUser(
-        { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
-      ));
-      this.mainDbService.addFavoritesGoodsItem(goodsItemId);
-    } else {
-      this.store.dispatch(setFavoriteGoodsIdsInNotloggedUser(
-        { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
-      ));
-    }
+    this.store.dispatch(setFavoriteGoodsIdsInLoggedUser(
+      { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
+    ));
+    if (isUserLogged) this.mainDbService.addFavoritesGoodsItem(goodsItemId);
   }
 
   deleteFavoriteGoodsItem(isUserLogged: boolean, goodsItemId: string): void {
@@ -68,16 +61,10 @@ export class FavoritesService {
       (favoritesGoodsItemId) => favoritesGoodsItemId !== goodsItemId,
     );
 
-    if (isUserLogged) {
-      this.store.dispatch(setFavoriteGoodsIdsInLoggedUser(
-        { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
-      ));
-      this.mainDbService.deleteFavoritesGoodsItem(goodsItemId);
-    } else {
-      this.store.dispatch(setFavoriteGoodsIdsInNotloggedUser(
-        { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
-      ));
-    }
+    this.store.dispatch(setFavoriteGoodsIdsInLoggedUser(
+      { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
+    ));
+    if (isUserLogged) this.mainDbService.deleteFavoritesGoodsItem(goodsItemId);
   }
 
   getUserUpdatedFavorites(loggedUser: IUser): string[] {
@@ -90,11 +77,5 @@ export class FavoritesService {
     );
 
     return Array.from(new Set([...this.favoritesGoodsItemsIds, ...loggedUser.favorites]));
-  }
-
-  updateNotLoggedUserFavorites(): void {
-    this.store.dispatch(setFavoriteGoodsIdsInNotloggedUser(
-      { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
-    ));
   }
 }

@@ -22,9 +22,5 @@ export const selectUserFullName = createSelector(
 
 export const selectFavoritesGoodsIds = createSelector(
   selectState,
-  (state: IUsersState) => (state.user.favorites.length
-    ? state.user.favorites
-    : state.favorites
-  ),
-  // (state: IUsersState) => [...state.user.favorites, ...state.favorites],
+  (state: IUsersState) => state.user.favorites,
 );

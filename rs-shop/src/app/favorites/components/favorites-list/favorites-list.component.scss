@@ -1,0 +1,19 @@
+@import './src/scss/variables.scss';
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  margin: 20px 10px;
+}
+
+.favorites-item {
+  padding: 10px;
+}
+
+.favorites-item:not(:nth-last-child(-n + 4)) {
+  border-bottom: 1px solid $main-divider-color;
+}
+
+.favorites-item:not(:nth-child(4n)) {
+  border-right: 1px solid $main-divider-color;
+}

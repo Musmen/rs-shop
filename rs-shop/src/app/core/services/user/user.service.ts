@@ -97,12 +97,12 @@ export class UserService {
   }
 
   logout(): void {
-    this.favoritesService.updateNotLoggedUserFavorites();
-
     this.clearToken();
     this.userStorageService.clearUserStorage();
     this.store.dispatch(setUserLoginStatus({ isLogged: false }));
-    this.store.dispatch(setNewUser({ user: DEFAULT_USER }));
+    this.store.dispatch(setNewUser(
+      { user: { ...DEFAULT_USER, favorites: this.favoritesService.favoritesGoodsItemsIds } },
+    ));
   }
 
   updateLoginStatus$(): Observable<IUser> {
