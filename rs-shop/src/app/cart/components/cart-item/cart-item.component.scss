@@ -4,8 +4,6 @@
 .cart-goods-item {
   @include flex-column;
   justify-content: space-between;
-  height: 260px;
-  height: 260px;
 
   .minimal-card {
     justify-content: space-around;
@@ -19,7 +17,7 @@
   }
   
   .minimal-card-description-wrapper {
-    max-width: 150px;
+    max-width: 300px;
     margin-left: 10px;
   
     font-size: 1rem;
@@ -38,7 +36,7 @@
   .minimal-card-description-price,
   .minimal-card-description-raiting,
   .minimal-card-price-label {
-    max-width: 140px;
+    max-width: 280px;
   
     text-overflow: ellipsis;
     overflow: hidden;
@@ -49,7 +47,7 @@
   @include flex-center;
 
   .cart-item-button {
-    width: 150px;
+    width: 100px;
     margin-bottom: 10px;
   
     font-size: 12px;
