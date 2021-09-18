@@ -13,6 +13,7 @@
       "@catalog/*": ["src/app/catalog/*"],
       "@main/*": ["src/app/main/*"],
       "@login/*": ["src/app/login/*"],
+      "@favorites/*": ["src/app/favorites/*"],
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

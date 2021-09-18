@@ -4,16 +4,14 @@ import { CanActivate, CanLoad, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { Store } from '@ngrx/store';
-import { selectIsUserLogged } from '@redux/selectors/user.selectors';
-import { IAppState } from '@redux/state.model';
+import { UserService } from '@app/core/services/user/user.service';
 
 @Injectable({ providedIn: 'root' })
 export class LoginPageGuard implements CanActivate, CanLoad {
-  constructor(private store: Store<IAppState>, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   canActivate(): Observable<boolean> {
-    return this.store.select(selectIsUserLogged).pipe(
+    return this.userService.getIsUserLogged$().pipe(
       switchMap((isUserLogged) => {
         if (isUserLogged) this.router.navigate(['main']);
         return of(!isUserLogged);

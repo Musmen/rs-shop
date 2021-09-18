@@ -5,7 +5,6 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { MainDbService } from '@core/services/main-db/main-db.service';
 import { ICategory } from '@core/models/category.model';
-import CATEGORIES from '@app/mock-data/categories';
 
 import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
@@ -20,8 +19,7 @@ export class CategoriesEffects {
   getCategories$: Observable<Action> = createEffect(() => this.actions$
     .pipe(
       ofType(updateCategories.type),
-      switchMap(() => this.mainDBService.getAllCategories()
-      // switchMap(() => of(CATEGORIES)
+      switchMap(() => this.mainDBService.getAllCategories$()
         .pipe(
           map(
             (categories: ICategory[]) => updateCategoriesSuccessfully({ categories }),

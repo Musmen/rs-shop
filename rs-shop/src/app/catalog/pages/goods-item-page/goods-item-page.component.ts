@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewEncapsulation,
@@ -10,6 +9,8 @@ import { switchMap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 import { selectCategoryById, selectSubcategoryById } from '@redux/selectors/categories.selectors';
 import { IAppState } from '@redux/state.model';
+
+import { MainDbService } from '@core/services/main-db/main-db.service';
 
 import { IGoods } from '@core/models/goods.model';
 import { ICategory } from '@core/models/category.model';
@@ -43,7 +44,7 @@ export class GoodsItemPageComponent implements OnInit, OnDestroy {
   postersSliderConfig: SwiperOptions = POSTERS_SLIDER_CONFIG;
 
   constructor(
-    private http: HttpClient,
+    private mainDbService: MainDbService,
     private router: Router,
     private route: ActivatedRoute,
     private ref: ChangeDetectorRef,
@@ -56,9 +57,7 @@ export class GoodsItemPageComponent implements OnInit, OnDestroy {
     const subscription = this.route.params.pipe(
       switchMap(({ subcategoryId, goodsItemId }) => {
         currentSubcategoryId = subcategoryId;
-        return this.http.get<IGoods>(
-          `http://localhost:3004/goods/item/${goodsItemId}`,
-        );
+        return this.mainDbService.getGoodsItem$(goodsItemId);
       }),
     )
       .subscribe((goodsItem: IGoods) => {

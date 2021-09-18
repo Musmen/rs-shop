@@ -19,3 +19,12 @@ export const selectUserFullName = createSelector(
   (state: IUsersState) => `${state.user.lastName ? `${state.user.lastName} ` : ''}${state.user.firstName}`
     || DEFAULT_USER_FULL_NAME,
 );
+
+export const selectFavoritesGoodsIds = createSelector(
+  selectState,
+  (state: IUsersState) => (state.user.favorites.length
+    ? state.user.favorites
+    : state.favorites
+  ),
+  // (state: IUsersState) => [...state.user.favorites, ...state.favorites],
+);

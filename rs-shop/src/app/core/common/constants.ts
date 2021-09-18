@@ -21,9 +21,12 @@ const BASE_MAIN_DB_API_URL = 'http://localhost:3004/';
 export const MAIN_DB_API_URL = {
   CATEGORIES: `${BASE_MAIN_DB_API_URL}categories`,
   SEARCH_GOODS: `${BASE_MAIN_DB_API_URL}goods/search?text=`,
+  GOODS_ITEM: `${BASE_MAIN_DB_API_URL}goods/item/`,
   REGISTER: `${BASE_MAIN_DB_API_URL}users/register`,
   LOGIN: `${BASE_MAIN_DB_API_URL}users/login`,
   USER_INFO: `${BASE_MAIN_DB_API_URL}users/userInfo`,
+  FAVORITES: `${BASE_MAIN_DB_API_URL}users/favorites`,
+  FAVORITES_DELETE: `${BASE_MAIN_DB_API_URL}users/favorites?id=`,
 };
 
 export const DEBOUNCE_TIME_IN_MS: number = 700;

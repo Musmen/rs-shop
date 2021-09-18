@@ -2,6 +2,9 @@
 @import './src/scss/variables.scss';
 
 .goods-item-card {
+  @include flex-column;
+  justify-content: space-between;
+
   height: 100%;
 }
 

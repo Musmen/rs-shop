@@ -16,10 +16,10 @@ import { checkLoginStatus } from '@redux/actions/user.actions';
 import { updateCategories } from '@redux/actions/categories.actions';
 import { selectLocation } from '@redux/selectors/state.selectors';
 import { selectAllCategories } from '@redux/selectors/categories.selectors';
-import { selectIsUserLogged, selectUserFullName } from '@app/redux/selectors/user.selectors';
 import { IAppState } from '@redux/state.model';
 
 import { MainDbService } from '@core/services/main-db/main-db.service';
+import { UserService } from '@core/services/user/user.service';
 
 import { ICategory } from '@core/models/category.model';
 import { IGoods } from '@core/models/goods.model';
@@ -29,7 +29,6 @@ import { getSearchedCategories } from '@common/helpers';
 import { DEBOUNCE_TIME_IN_MS, MIN_SEARCH_VALUE_LENGTH } from '@common/constants';
 
 import { NgbDropdown } from '@ng-bootstrap/ng-bootstrap';
-import { UserService } from '@app/core/services/user/user.service';
 
 @Component({
   selector: 'app-header',
@@ -69,8 +68,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.location$ = this.store.select(selectLocation);
     this.categories$ = this.store.select(selectAllCategories);
-    this.isUserLogged$ = this.store.select(selectIsUserLogged);
-    this.userFullName$ = this.store.select(selectUserFullName);
+    this.isUserLogged$ = this.userService.getIsUserLogged$();
+    this.userFullName$ = this.userService.getUserFullName$();
 
     this.searchGoodsResults$ = this.getSearchValue$().pipe(
       switchMap(
