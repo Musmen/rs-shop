@@ -13,8 +13,13 @@ import { IGoods } from '@core/models/goods.model';
 export class FavoritesListComponent {
   @Input() favoritesGoods$?: Observable<IGoods[]>;
   @Output() deleteFavoriteGoodsItemEvent = new EventEmitter<string>();
+  @Output() cartButtonClickEvent = new EventEmitter<IGoods>();
 
   onFavoriteButtonClick(favoriteGoodsItemId: string) {
     this.deleteFavoriteGoodsItemEvent.emit(favoriteGoodsItemId);
+  }
+
+  onCartButtonClick(favoriteGoodsItem: IGoods): void {
+    this.cartButtonClickEvent.emit(favoriteGoodsItem);
   }
 }

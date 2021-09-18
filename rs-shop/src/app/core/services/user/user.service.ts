@@ -17,6 +17,7 @@ import { DEFAULT_USER } from '@common/constants';
 import { MainDbService } from '../main-db/main-db.service';
 import { UserStorageService } from '../user-storage/user-storage.service';
 import { FavoritesService } from '../goods/favorites/favorites.service';
+import { CartService } from '../goods/cart/cart.service';
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
@@ -28,6 +29,7 @@ export class UserService {
     private store: Store<IAppState>,
     private router: Router,
     private favoritesService: FavoritesService,
+    private cartService: CartService,
   ) {
     this.getIsUserLogged$().subscribe(
       (isUserLogged) => {
@@ -66,6 +68,7 @@ export class UserService {
       (user: IUser) => {
         const loggedUser = user;
         loggedUser.favorites = this.favoritesService.getUserUpdatedFavorites(loggedUser);
+        loggedUser.cart = this.cartService.getUserUpdatedCart(loggedUser);
         this.userStorageService.setTokenStorage(this.getToken());
         this.userStorageService.setUserStorage(loggedUser);
         this.store.dispatch(setNewUser({ user: loggedUser }));
@@ -100,9 +103,13 @@ export class UserService {
     this.clearToken();
     this.userStorageService.clearUserStorage();
     this.store.dispatch(setUserLoginStatus({ isLogged: false }));
-    this.store.dispatch(setNewUser(
-      { user: { ...DEFAULT_USER, favorites: this.favoritesService.favoritesGoodsItemsIds } },
-    ));
+    this.store.dispatch(setNewUser({
+      user: {
+        ...DEFAULT_USER,
+        favorites: this.favoritesService.favoritesGoodsItemsIds,
+        cart: this.cartService.cartGoodsItemsIds,
+      },
+    }));
   }
 
   updateLoginStatus$(): Observable<IUser> {

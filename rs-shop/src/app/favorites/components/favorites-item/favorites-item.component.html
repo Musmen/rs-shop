@@ -8,8 +8,8 @@
         mat-icon-button
         aria-label="Извлечь из корзины"
         title="Извлечь из корзины"
+        (click)="onCartButtonClick(favoriteGoodsItem)"
         >
-        <!-- (click)="onCartButtonClick(favoriteGoodsItem.id)" -->
         <mat-icon class="button-icon">shopping_cart</mat-icon>
         <span>В корзинe</span>
       </button>
@@ -34,8 +34,8 @@
     mat-icon-button
     aria-label="Добавить в корзину"
     title="Добавить в корзину"
+    (click)="onCartButtonClick(favoriteGoodsItem)"
     >
-    <!-- (click)="onCartButtonClick()" -->
     <mat-icon class="button-icon">shopping_cart</mat-icon>
     <span>В корзину</span>
   </button>

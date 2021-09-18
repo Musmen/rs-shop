@@ -1,0 +1,8 @@
+<section class="cart-section">
+  <h2 class="cart-title">Оформление заказа</h2>
+
+  <app-cart-list
+    [cartGoods$]="cartGoods$"
+    (deleteCartGoodsItemEvent)="onDeleteButtonClick($event)"
+  ></app-cart-list>
+</section>

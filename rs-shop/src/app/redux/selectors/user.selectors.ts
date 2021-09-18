@@ -24,3 +24,8 @@ export const selectFavoritesGoodsIds = createSelector(
   selectState,
   (state: IUsersState) => state.user.favorites,
 );
+
+export const selectCartGoodsIds = createSelector(
+  selectState,
+  (state: IUsersState) => state.user.cart,
+);

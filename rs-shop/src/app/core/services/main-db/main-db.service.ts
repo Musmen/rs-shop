@@ -86,4 +86,24 @@ export class MainDbService {
       },
     ).subscribe();
   }
+
+  deleteCartGoodsItem(cartGoodsItemId: string): void {
+    const URL_FOR_DELETE_CART_ITEM: string = `${MAIN_DB_API_URL.CART_DELETE}${cartGoodsItemId}`;
+    this.http.delete<IUser>(
+      URL_FOR_DELETE_CART_ITEM,
+      {
+        headers: { Authorization: `Bearer ${this.token}` },
+      },
+    ).subscribe();
+  }
+
+  addCartGoodsItem(cartGoodsItemId: string): void {
+    this.http.post<IUser>(
+      MAIN_DB_API_URL.CART,
+      { id: cartGoodsItemId },
+      {
+        headers: { Authorization: `Bearer ${this.token}` },
+      },
+    ).subscribe();
+  }
 }

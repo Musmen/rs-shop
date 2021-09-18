@@ -15,12 +15,12 @@ export const setUserLoginStatus = createAction(
   props<{ isLogged: boolean }>(),
 );
 
-export const setFavoriteGoodsIdsInLoggedUser = createAction(
-  '[USER SERVICE] SET FAVORITE GOODS IDS IN LOGGED USER',
+export const setFavoriteGoodsIds = createAction(
+  '[USER SERVICE] SET FAVORITE GOODS IDS',
   props<{ favoritesGoodsItemsIds: string[] }>(),
 );
 
-export const setFavoriteGoodsIdsInNotloggedUser = createAction(
-  '[USER SERVICE] SET FAVORITE GOODS IDS IN NOT LOGGED USER',
-  props<{ favoritesGoodsItemsIds: string[] }>(),
+export const setCartGoodsIds = createAction(
+  '[USER SERVICE] SET CART GOODS IDS',
+  props<{ cartGoodsItemsIds: string[] }>(),
 );

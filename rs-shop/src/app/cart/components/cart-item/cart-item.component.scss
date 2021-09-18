@@ -1,7 +1,7 @@
 @import './src/scss/mixins.scss';          
 @import './src/scss/variables.scss';
 
-.favorite-goods-item {
+.cart-goods-item {
   @include flex-column;
   justify-content: space-between;
   height: 260px;
@@ -45,10 +45,10 @@
   }
 }
 
-.favorites-item-controller-wrapper {
+.cart-item-controller-wrapper {
   @include flex-center;
 
-  .favorites-item-button {
+  .cart-item-button {
     width: 150px;
     margin-bottom: 10px;
   
@@ -67,7 +67,7 @@
       box-shadow: 0 2px 4px $main-brand-color;
     }
   
-    &.favorites-item-button-active {
+    &.cart-item-button-active {
       color: $main-brand-color;
   
       border-color: $main-brand-color;
@@ -82,7 +82,7 @@
     }
   }
   
-  .favorites-item-button:last-of-type {
+  .cart-item-button:last-of-type {
     margin-bottom: 0;
   }
   

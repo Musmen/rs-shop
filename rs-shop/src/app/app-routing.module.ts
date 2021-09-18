@@ -24,6 +24,11 @@ const routes: Routes = [
       .then((m) => m.FavoritesModule),
   },
   {
+    path: 'cart',
+    loadChildren: () => import('@cart/cart.module')
+      .then((m) => m.CartModule),
+  },
+  {
     path: '',
     loadChildren: () => import('@catalog/catalog.module')
       .then((m) => m.CatalogModule),

@@ -4,5 +4,6 @@
   <app-favorites-list
     [favoritesGoods$]="favoritesGoods$"
     (deleteFavoriteGoodsItemEvent)="onFavoriteButtonClick($event)"
+    (cartButtonClickEvent)="onCartButtonClick($event)"
   ></app-favorites-list>
 </section>

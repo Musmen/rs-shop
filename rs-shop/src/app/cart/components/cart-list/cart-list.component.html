@@ -1,0 +1,8 @@
+<ul class="cart-list list">
+  <li class="cart-item" *ngFor="let cartGoodsItem of cartGoods$ | async">
+    <app-cart-item 
+      [cartGoodsItem]="cartGoodsItem"
+      (deleteCartGoodsItemEvent)="onDeleteButtonClick($event)"
+    ></app-cart-item>
+  </li>
+</ul>

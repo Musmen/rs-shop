@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { FavoritesService } from '@core/services/goods/favorites/favorites.service';
 import { UserService } from '@core/services/user/user.service';
+import { CartService } from '@core/services/goods/cart/cart.service';
 
 import { IGoods } from '@core/models/goods.model';
 
@@ -20,6 +21,7 @@ export class FavoritesPageComponent implements OnInit {
   constructor(
     private favoritesService: FavoritesService,
     private userService: UserService,
+    private cartService: CartService,
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +32,13 @@ export class FavoritesPageComponent implements OnInit {
     this.favoritesService.deleteFavoriteGoodsItem(this.userService.getIsUserLogged(), goodsItemId);
   }
 
-  // onCartButtonClick(goodsItemId: string): void {
+  onCartButtonClick(goodsItem: IGoods): void {
+    const isUserLogged = this.userService.getIsUserLogged();
 
-  // }
+    if (goodsItem.isInCart) {
+      this.cartService.deleteCartGoodsItem(isUserLogged, goodsItem.id);
+    } else {
+      this.cartService.addCartGoodsItem(isUserLogged, goodsItem.id);
+    }
+  }
 }

@@ -27,6 +27,8 @@ export const MAIN_DB_API_URL = {
   USER_INFO: `${BASE_MAIN_DB_API_URL}users/userInfo`,
   FAVORITES: `${BASE_MAIN_DB_API_URL}users/favorites`,
   FAVORITES_DELETE: `${BASE_MAIN_DB_API_URL}users/favorites?id=`,
+  CART: `${BASE_MAIN_DB_API_URL}users/cart`,
+  CART_DELETE: `${BASE_MAIN_DB_API_URL}users/cart?id=`,
 };
 
 export const DEBOUNCE_TIME_IN_MS: number = 700;

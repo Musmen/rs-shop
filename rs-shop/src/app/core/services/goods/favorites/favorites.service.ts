@@ -4,11 +4,12 @@ import { switchMap } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
 import { selectFavoritesGoodsIds } from '@redux/selectors/user.selectors';
-import { setFavoriteGoodsIdsInLoggedUser } from '@redux/actions/user.actions';
+import { setFavoriteGoodsIds } from '@redux/actions/user.actions';
 import { IAppState } from '@redux/state.model';
 
 import { MainDbService } from '@core/services/main-db/main-db.service';
 
+import { getUniqueItemsList } from '@common/helpers';
 import { IGoods } from '@core/models/goods.model';
 import { IUser } from '@core/models/user.model';
 
@@ -50,7 +51,7 @@ export class FavoritesService {
       ? this.favoritesGoodsItemsIds
       : this.favoritesGoodsItemsIds.concat(goodsItemId);
 
-    this.store.dispatch(setFavoriteGoodsIdsInLoggedUser(
+    this.store.dispatch(setFavoriteGoodsIds(
       { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
     ));
     if (isUserLogged) this.mainDbService.addFavoritesGoodsItem(goodsItemId);
@@ -61,7 +62,7 @@ export class FavoritesService {
       (favoritesGoodsItemId) => favoritesGoodsItemId !== goodsItemId,
     );
 
-    this.store.dispatch(setFavoriteGoodsIdsInLoggedUser(
+    this.store.dispatch(setFavoriteGoodsIds(
       { favoritesGoodsItemsIds: this.favoritesGoodsItemsIds },
     ));
     if (isUserLogged) this.mainDbService.deleteFavoritesGoodsItem(goodsItemId);
@@ -76,6 +77,6 @@ export class FavoritesService {
       },
     );
 
-    return Array.from(new Set([...this.favoritesGoodsItemsIds, ...loggedUser.favorites]));
+    return getUniqueItemsList(this.favoritesGoodsItemsIds, loggedUser.favorites);
   }
 }

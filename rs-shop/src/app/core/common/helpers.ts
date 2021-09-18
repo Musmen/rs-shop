@@ -27,3 +27,7 @@ export const getSearchedCategories = (
 
   return searchedCategories;
 };
+
+export const getUniqueItemsList = <T>(
+  firstList: T[], secondList: T[],
+) => Array.from(new Set([...firstList, ...secondList]));

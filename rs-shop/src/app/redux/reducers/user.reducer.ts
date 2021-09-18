@@ -1,7 +1,7 @@
 import { createReducer, on } from '@ngrx/store';
 import {
-  setFavoriteGoodsIdsInNotloggedUser, setFavoriteGoodsIdsInLoggedUser, setNewUser,
-  setUserLoginStatus,
+  setCartGoodsIds,
+  setFavoriteGoodsIds, setNewUser, setUserLoginStatus,
 } from '../actions/user.actions';
 import { initialUserState } from '../state.model';
 
@@ -19,15 +19,15 @@ export const userReducer = createReducer(
       isUserLogged: isLogged,
     })),
 
-  on(setFavoriteGoodsIdsInLoggedUser,
+  on(setFavoriteGoodsIds,
     (state, { favoritesGoodsItemsIds }) => ({
       ...state,
       user: { ...state.user, favorites: favoritesGoodsItemsIds },
     })),
 
-  on(setFavoriteGoodsIdsInNotloggedUser,
-    (state, { favoritesGoodsItemsIds }) => ({
+  on(setCartGoodsIds,
+    (state, { cartGoodsItemsIds }) => ({
       ...state,
-      favorites: favoritesGoodsItemsIds,
+      user: { ...state.user, cart: cartGoodsItemsIds },
     })),
 );
