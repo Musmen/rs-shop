@@ -37,7 +37,6 @@
   color: $main-brand-color;
 }
 
-/********/
 .card-buttons-block {
   @include flex;
   align-items: baseline;
@@ -67,5 +66,6 @@
   border-radius: 10px;
 
   outline: none;
-  cursor: ns-resize;
+
+  cursor: initial;
 }

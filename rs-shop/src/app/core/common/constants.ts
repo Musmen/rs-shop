@@ -1,3 +1,4 @@
+import { IOrder } from '../models/order.model';
 import ISortState from '../models/sort-state.model';
 import { ICredentials, IUser } from '../models/user.model';
 
@@ -60,3 +61,14 @@ export const STORAGE_KEYS = {
 };
 
 export const DEFAULT_USER_FULL_NAME = 'Неизвестный посетитель';
+
+export const DEFAULT_ORDER: IOrder = {
+  items: [],
+  details: {
+    name: '',
+    address: '',
+    phone: '',
+    timeToDeliver: '',
+    comment: '',
+  },
+};

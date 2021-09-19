@@ -1,15 +1,15 @@
 export interface IOrder {
-  id: string,
+  id?: string,
   items: IOrderGoodsItem[],
   details: IOrderDetails,
 }
 
-interface IOrderGoodsItem {
+export interface IOrderGoodsItem {
   id: string,
   amount: number,
 }
 
-interface IOrderDetails {
+export interface IOrderDetails {
   name: string,
   address: string,
   phone: string,

@@ -1,8 +1,12 @@
 <section class="cart-section">
   <h2 class="cart-title">Оформление заказа</h2>
 
+  <p *ngIf="cartGoods?.length">{{ getOrderDescription() }}</p>
   <app-cart-list
-    [cartGoods$]="cartGoods$"
+    [cartGoods]="cartGoods"
+    [order]="getOrder()"
     (deleteCartGoodsItemEvent)="onDeleteButtonClick($event)"
+    (decreaseAmountEvent)="decreaseGoodsItemAmount($event)"
+    (increaseAmountEvent)="increaseGoodsItemAmount($event)"
   ></app-cart-list>
 </section>
