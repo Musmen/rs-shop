@@ -9,8 +9,7 @@ export const stateReducer = createReducer(
 
   on(detectLocationSuccessfully,
     (state, { location }) => ({
-      ...state,
-      location: location.city || location.regionName || '',
+      ...state, location,
     })),
 
   on(setNewLocation,

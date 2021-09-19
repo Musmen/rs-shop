@@ -4,6 +4,8 @@ import { catchError, map, switchMap } from 'rxjs/operators';
 
 import { LocationService } from '@core/services/location/location.service';
 
+import { getTranslatedLocation } from '@common/helpers';
+
 import { Action } from '@ngrx/store';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { detectLocation, detectLocationFailed, detectLocationSuccessfully } from '../actions/state.actions';
@@ -15,10 +17,12 @@ export class StateEffects {
   getLocation$: Observable<Action> = createEffect(() => this.actions$
     .pipe(
       ofType(detectLocation.type),
-      switchMap(() => this.location.getLocationByIP$()
+      switchMap(() => this.location.getTranslatedLocationByIP$()
         .pipe(
           map(
-            (location) => detectLocationSuccessfully({ location }),
+            (translatedLocationResponse) => detectLocationSuccessfully(
+              { location: getTranslatedLocation(translatedLocationResponse) },
+            ),
           ),
         )),
       catchError(() => of(detectLocationFailed())),

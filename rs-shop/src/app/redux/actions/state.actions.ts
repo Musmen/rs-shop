@@ -1,6 +1,5 @@
 import { createAction, props } from '@ngrx/store';
 
-import { ILocation } from '@app/core/models/location.model';
 import ISortState from '@core/models/sort-state.model';
 
 export const detectLocation = createAction(
@@ -9,7 +8,7 @@ export const detectLocation = createAction(
 
 export const detectLocationSuccessfully = createAction(
   '[LOCATION API FETCH] DETECT USER LOCATION SUCCESSFULLY',
-  props<{ location: ILocation }>(),
+  props<{ location: string }>(),
 );
 
 export const detectLocationFailed = createAction(

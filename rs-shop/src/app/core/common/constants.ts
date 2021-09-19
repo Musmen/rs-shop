@@ -14,7 +14,11 @@ export const initialSortState: ISortState = {
   sortingBy: SortingValues.price,
 };
 
-export const LOCATION_API_URL: string = 'http://ip-api.com/json?lang=ru';
+const LOCATION_API_KEY: string = '5a65799648ff433f9696f1a5b4fcf670';
+export const LOCATION_API_URL: string = `https://api.ipgeolocation.io/ipgeo?apiKey=${LOCATION_API_KEY}`;
+
+const TRANSLATE_API_KEY: string = 'a84e7714346540f4bc27dafd56e6e281';
+export const TRANSLATE_API_URL: string = `https://api.opencagedata.com/geocode/v1/json?key=${TRANSLATE_API_KEY}&language=ru&pretty=1&q=`;
 
 const BASE_MAIN_DB_API_URL = 'http://localhost:3004/';
 

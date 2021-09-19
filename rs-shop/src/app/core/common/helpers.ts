@@ -1,4 +1,5 @@
 import { ICategory } from '../models/category.model';
+import { ILocation, ITranslatedLocationResponse } from '../models/location.model';
 import { ISearchedCategory } from '../models/searched-category.model';
 
 const getTrimmedStringInLowerCase = (string: string) => string.trim().toLowerCase();
@@ -31,3 +32,11 @@ export const getSearchedCategories = (
 export const getUniqueItemsList = <T>(
   firstList: T[], secondList: T[],
 ) => Array.from(new Set([...firstList, ...secondList]));
+
+export const getLocation = (location: ILocation) => location.city || location.state_prov
+  || location.district || location.country_capital || location.country_name || '';
+
+export const getTranslatedLocation = (
+  location: ITranslatedLocationResponse,
+) => location.results[0].components.city || location.results[0].components.town
+ || location.results[0].components.village || location.results[0].components.county || '';
