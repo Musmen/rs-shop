@@ -10,6 +10,7 @@ import {
   ICredentials, ILoginCredentials, IToken, IUser,
 } from '@app/core/models/user.model';
 import { ICategory } from '@app/core/models/category.model';
+import { IOrder } from '@app/core/models/order.model';
 
 @Injectable({ providedIn: 'root' })
 export class MainDbService {
@@ -101,6 +102,16 @@ export class MainDbService {
     this.http.post<IUser>(
       MAIN_DB_API_URL.CART,
       { id: cartGoodsItemId },
+      {
+        headers: { Authorization: `Bearer ${this.token}` },
+      },
+    ).subscribe();
+  }
+
+  addOrder(order: IOrder): void {
+    this.http.post<IOrder>(
+      MAIN_DB_API_URL.ORDER,
+      { ...order },
       {
         headers: { Authorization: `Bearer ${this.token}` },
       },

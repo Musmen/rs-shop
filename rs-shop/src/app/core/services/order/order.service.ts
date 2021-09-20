@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
-import { IGoods } from '@app/core/models/goods.model';
-import { IOrder, IOrderGoodsItem } from '@app/core/models/order.model';
+
+import { IGoods } from '@core/models/goods.model';
+import { IOrder, IOrderDetails, IOrderGoodsItem } from '@core/models/order.model';
 import { DEFAULT_ORDER } from '@common/constants';
+
+import { MainDbService } from '../main-db/main-db.service';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService {
@@ -10,6 +13,8 @@ export class OrderService {
 
   totalAmount: number = 0;
   totalCost: number = 0;
+
+  constructor(private mainDBService: MainDbService) { }
 
   private updateOrderData(): void {
     this.totalAmount = 0;
@@ -66,7 +71,7 @@ export class OrderService {
   }
 
   getOrderDescription(): string {
-    return `В заказе товарных позиций: ${this.getTotalProducts()} (штук всего: ${this.totalAmount}) общей стоимостью ${this.totalCost.toFixed(2)} бел. рублей`;
+    return `В заказе ${this.getTotalProducts()} товарных позиций (штук всего: ${this.totalAmount}) общей стоимостью ${this.totalCost.toFixed(2)} бел. рублей`;
   }
 
   getTotalProducts(): number {
@@ -91,5 +96,12 @@ export class OrderService {
       : this.order.items[goodsItemIndex].amount;
 
     this.updateOrderData();
+  }
+
+  addOrder(orderDetails: IOrderDetails): void {
+    this.mainDBService.addOrder({
+      ...this.order,
+      details: orderDetails,
+    });
   }
 }

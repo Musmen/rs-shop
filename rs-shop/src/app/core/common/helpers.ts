@@ -40,3 +40,15 @@ export const getTranslatedLocation = (
   location: ITranslatedLocationResponse,
 ) => location.results[0].components.city || location.results[0].components.town
  || location.results[0].components.village || location.results[0].components.county || '';
+
+const defaultDeliverDay = new Date();
+const dayNow = defaultDeliverDay.getDate();
+defaultDeliverDay.setDate(dayNow + 1);
+
+export const getDefaultDeliverData = () => `${
+  defaultDeliverDay.getFullYear()
+}-${
+  `0${defaultDeliverDay.getMonth() + 1}`.slice(-2)
+}-${
+  `0${defaultDeliverDay.getDate()}`.slice(-2)
+}`;

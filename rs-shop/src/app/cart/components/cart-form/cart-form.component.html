@@ -2,7 +2,7 @@
   class="cart-form" 
   name="cart-form" 
   [formGroup]="cartForm"
-  (ngSubmit)="cartFormSubmit()"
+  (ngSubmit)="onCartFormSubmit()"
 >
   <fieldset class="cart-form-fieldset">
     <legend class="cart-form-legend">Для завершения заказа заполните, проверьте и подтвердите:</legend>
@@ -181,11 +181,10 @@
     <div class="form-container">
       <button
         class="cart-form-button form-button main-button button shadow"
-        type="button"
+        type="submit"
         aria-label="Оформить заказ"
         title="Оформить заказ"
         mat-button
-        (click)="approveOrder()"
         [disabled]="cartForm.invalid"
       >
         Оформить заказ

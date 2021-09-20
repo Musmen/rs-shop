@@ -1,22 +1,40 @@
 <section class="cart-section">
   <h2 class="cart-title">Оформление заказа</h2>
 
-  <p *ngIf="cartGoods?.length">{{ getOrderDescription() }}</p>
   <app-cart-list
     [cartGoods]="cartGoods"
     [order]="getOrder()"
+    [deliverDataDescription$]="getDeliverDataDescription$()"
     (deleteCartGoodsItemEvent)="onDeleteButtonClick($event)"
     (decreaseAmountEvent)="decreaseGoodsItemAmount($event)"
     (increaseAmountEvent)="increaseGoodsItemAmount($event)"
   ></app-cart-list>
 
+  <p class="order-summary" *ngIf="cartGoods?.length">{{ getOrderDescription() }}</p>
+  
   <ng-container *ngIf="cartGoods?.length">
-    <app-cart-form *ngIf="getIsUserLogged$() | async; else messageForUnknownUser"></app-cart-form>
+    <app-cart-form 
+      [defaultCity$] = "defaultCity$"
+      *ngIf="getIsUserLogged$() | async; else messageForUnknownUser"
+      (cartFormSubmitEvent)="cartFormSubmit($event)"
+      (changeDeliverDataEvent)="changeDeliverData($event)"
+    ></app-cart-form>
   </ng-container>
 </section>
 
 <ng-template #messageForUnknownUser>
-  <p *ngIf="cartGoods?.length">
+  <p class="message-for-unknown-user" *ngIf="cartGoods?.length">
     Для дальнейшего оформления заказа необходимо войти в свой профиль, при его отсутствии - зарегистрироваться
   </p>
+</ng-template>
+
+<ng-template #modal>
+  <div class="modal-body">
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <p class="modal-body-message">Ваш заказ создан успешно</p>
+    <p class="modal-body-order-description">{{ getOrderDescription() }}</p>
+    <p class="modal-body-deliver-data-description">Ожидайте доставку {{ getDeliverDataDescription$() | async }}</p>
+  </div>
 </ng-template>

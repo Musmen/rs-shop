@@ -1,6 +1,8 @@
 import {
   ChangeDetectionStrategy, Component, EventEmitter, Input, Output,
 } from '@angular/core';
+import { Observable } from 'rxjs';
+
 import { IOrder } from '@core/models/order.model';
 import { IGoods } from '@core/models/goods.model';
 
@@ -13,6 +15,8 @@ import { IGoods } from '@core/models/goods.model';
 export class CartListComponent {
   @Input() cartGoods?: IGoods[];
   @Input() order?: IOrder;
+  @Input() deliverDataDescription$?: Observable<string>;
+
   @Output() deleteCartGoodsItemEvent = new EventEmitter<string>();
   @Output() decreaseAmountEvent = new EventEmitter<number>();
   @Output() increaseAmountEvent = new EventEmitter<number>();

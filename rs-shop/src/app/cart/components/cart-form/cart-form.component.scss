@@ -2,15 +2,9 @@
 @import './src/scss/mixins.scss';
 
 .cart-form {
-  // width: 480px;
   min-height: 350px;
   margin-top: 40px;
   padding: 20px;
-
-  // background-color: $third-bg-color-light;
-  // border-radius: 20px;
-
-  // box-shadow: 0 2px 4px $main-bg-color-dark;
 }
 
 .cart-form-fieldset {
@@ -33,6 +27,7 @@
   padding-left: 10px;
 
   font-size: 20px;
+  font-weight: bold;
   color: $main-brand-color;
 }
 

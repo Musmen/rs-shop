@@ -5,7 +5,7 @@
       <th class="table-header-col" scope="col">Товар</th>
       <th class="table-header-col" scope="col">Описание</th>
       <th class="table-header-col" scope="col">Количество</th>
-      <th class="table-header-col" scope="col">Условия доставки</th>
+      <th class="table-header-col" scope="col">Время доставки</th>
       <th class="table-header-col" scope="col">Стоимость, бел. рублей</th>
     </tr>
   </thead>
@@ -48,7 +48,7 @@
         </button>
       </div>
     </td>
-    <td class="table-col">Доставка</td>
+    <td class="table-col">{{ deliverDataDescription$ | async }}</td>
     <td>{{ cartGoodsItem.price * order!.items[cartGoodsItemIndex].amount | number:'.2-2' }}</td>
   </tr>
   </tbody>
