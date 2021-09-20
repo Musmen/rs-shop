@@ -66,7 +66,7 @@ export class OrderService {
   }
 
   getOrderDescription(): string {
-    return `В заказе ${this.getTotalProducts()} товарных позиций из ${this.totalAmount} штук на сумму ${this.totalCost} бел. рублей`;
+    return `В заказе товарных позиций: ${this.getTotalProducts()} (штук всего: ${this.totalAmount}) общей стоимостью ${this.totalCost.toFixed(2)} бел. рублей`;
   }
 
   getTotalProducts(): number {

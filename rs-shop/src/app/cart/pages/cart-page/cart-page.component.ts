@@ -1,7 +1,7 @@
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit,
 } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 import { CartService } from '@core/services/goods/cart/cart.service';
 import { UserService } from '@core/services/user/user.service';
@@ -43,6 +43,10 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscriptions.unsubscribe();
+  }
+
+  getIsUserLogged$(): Observable<boolean> {
+    return this.userService.getIsUserLogged$();
   }
 
   getOrder(): IOrder {

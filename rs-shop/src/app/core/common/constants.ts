@@ -68,6 +68,7 @@ export const DEFAULT_ORDER: IOrder = {
     name: '',
     address: '',
     phone: '',
+    dateToDeliver: '',
     timeToDeliver: '',
     comment: '',
   },

@@ -26,7 +26,8 @@
 }
 
 .search-form-field,
-.login-form-field {
+.login-form-field,
+.cart-form-field {
   &.mat-form-field-appearance-outline .mat-form-field-outline-start {
     width: 40px !important;
     border-radius: 40px 0 0 40px;
@@ -83,7 +84,8 @@
   }
 }
 
-.login-form-field {
+.login-form-field,
+.cart-form-field {
   &.mat-form-field {
     line-height: inherit;
   }

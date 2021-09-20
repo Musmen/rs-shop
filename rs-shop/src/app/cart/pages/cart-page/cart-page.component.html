@@ -9,4 +9,14 @@
     (decreaseAmountEvent)="decreaseGoodsItemAmount($event)"
     (increaseAmountEvent)="increaseGoodsItemAmount($event)"
   ></app-cart-list>
+
+  <ng-container *ngIf="cartGoods?.length">
+    <app-cart-form *ngIf="getIsUserLogged$() | async; else messageForUnknownUser"></app-cart-form>
+  </ng-container>
 </section>
+
+<ng-template #messageForUnknownUser>
+  <p *ngIf="cartGoods?.length">
+    Для дальнейшего оформления заказа необходимо войти в свой профиль, при его отсутствии - зарегистрироваться
+  </p>
+</ng-template>
