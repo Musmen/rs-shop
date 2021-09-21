@@ -1,0 +1,15 @@
+@import './src/scss/mixins.scss';
+@import './src/scss/variables.scss';
+
+:host {
+  @include flex-center-aligned;
+  height: calc(100vh - 250px);
+}
+
+.page-not-found-description {
+  margin: 0;
+
+  font-size: 24px;
+  font-weight: bold;
+  color: $main-brand-color;
+}  

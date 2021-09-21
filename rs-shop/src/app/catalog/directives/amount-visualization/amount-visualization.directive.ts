@@ -6,14 +6,12 @@ import { getAmountVisualization } from '@catalog/common/tools';
 
 @Directive({ selector: '[appAmountVisualization]' })
 export class AmountVisualizationDirective implements OnInit {
-  @Input('appAmountVisualization') amount?: number;
+  @Input('appAmountVisualization') amount!: number;
   @Input() propertiesToChangeColor: string[] = ['color', 'fill'];
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) { }
 
   ngOnInit() {
-    if (!this.amount) return;
-
     const { color, title } = getAmountVisualization(this.amount);
     this.propertiesToChangeColor.forEach(
       (propertyToChangeColor) => this.setElementPropertyColor(propertyToChangeColor, color),

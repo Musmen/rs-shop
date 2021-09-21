@@ -5,7 +5,7 @@
       swiperSlide 
       *ngFor="let promoGood of promoGoods"
     >
-      <a class="swiper-link" [routerLink]="['', '.', '', promoGood.id]">
+      <a class="swiper-link" [routerLink]="['/catalog', '.', '', promoGood.id]">
         <app-goods-item-minimal-card [goodsItem]="promoGood"></app-goods-item-minimal-card>
       </a>
     </ng-template>

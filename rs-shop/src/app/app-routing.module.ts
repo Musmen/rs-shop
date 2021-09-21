@@ -1,11 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LoginPageGuard } from './core/guards/login-page/login-page.guard';
+import { NotFoundComponent } from './core/pages/not-found/not-found.component';
 
 const routes: Routes = [
-  { path: 'categories', redirectTo: '' },
-  { path: 'auth', redirectTo: 'login' },
+  { path: '', pathMatch: 'full', redirectTo: 'main' },
   { path: 'home', redirectTo: 'main' },
+  { path: 'categories', redirectTo: 'catalog' },
+  { path: 'auth', redirectTo: 'login' },
   {
     path: 'main',
     loadChildren: () => import('@main/main.module')
@@ -34,11 +37,11 @@ const routes: Routes = [
       .then((m) => m.OrdersModule),
   },
   {
-    path: '',
+    path: 'catalog',
     loadChildren: () => import('@catalog/catalog.module')
       .then((m) => m.CatalogModule),
   },
-  // { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

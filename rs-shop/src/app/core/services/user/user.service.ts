@@ -132,6 +132,6 @@ export class UserService {
   }
 
   goToMainPage(): void {
-    if (this.router.url === '/login') this.router.navigate(['main']);
+    if (this.router.url === '/login') this.router.navigate(['/main']);
   }
 }

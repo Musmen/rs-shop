@@ -10,7 +10,7 @@
   <div class="minimal-card-description-wrapper">
     <a 
       class="minimal-card-link card-link link"
-      [routerLink]="['', goodsItem.category || '.', goodsItem.subCategory || '', goodsItem.id]"
+      [routerLink]="['/catalog', goodsItem.category || '.', goodsItem.subCategory || '', goodsItem.id]"
     >
       <h3 class="minimal-card-description-title">
         {{ goodsItem.name }}

@@ -2,7 +2,7 @@
   <a 
     class="breadcrumbs-category-link link" 
     *ngIf="category"
-    [routerLink]="['', category.id]"
+    [routerLink]="['/catalog', category.id]"
     >
     <span class="category-name">{{ category.name }}</span>
   </a>
@@ -17,7 +17,7 @@
   <a 
     class="breadcrumbs-subcategory-link link"
     *ngIf="category && subcategory"
-    [routerLink]="['', category.id, subcategory.id]"
+    [routerLink]="['/catalog', category.id, subcategory.id]"
   >
     <span class="subcategory-name">{{ subcategory.name }}</span>
   </a>

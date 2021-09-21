@@ -63,7 +63,7 @@ export class GoodsItemPageComponent implements OnInit, OnDestroy {
       .subscribe((goodsItem: IGoods) => {
         if (currentSubcategoryId !== goodsItem.subCategory) {
           this.router.navigate(
-            ['/', goodsItem.category, goodsItem.subCategory, goodsItem.id],
+            ['/catalog', goodsItem.category, goodsItem.subCategory, goodsItem.id],
             { replaceUrl: true },
           );
           return;

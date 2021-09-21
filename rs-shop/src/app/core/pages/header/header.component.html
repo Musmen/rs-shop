@@ -31,8 +31,8 @@
           <a 
             class="dropdown-link link text-decoration" 
             [routerLink]="searchedResult.subcategory 
-                            ? ['', searchedResult.category.id, searchedResult.subcategory.id]
-                            : ['', searchedResult.category.id]"
+                            ? ['/catalog', searchedResult.category.id, searchedResult.subcategory.id]
+                            : ['/catalog', searchedResult.category.id]"
           >
             {{ (searchedResult.subcategory || searchedResult.category).name }}
           </a>
@@ -40,7 +40,7 @@
         <li ngbDropdownItem *ngFor="let searchedGoodsItem of searchedGoods">
           <a 
             class="dropdown-link link"
-            [routerLink]="['', searchedGoodsItem.category || '.', searchedGoodsItem.subCategory || '', searchedGoodsItem.id]"
+            [routerLink]="['/catalog', searchedGoodsItem.category || '.', searchedGoodsItem.subCategory || '', searchedGoodsItem.id]"
           >
             <app-goods-item-minimal-card [goodsItem]="searchedGoodsItem"></app-goods-item-minimal-card>
           </a>

@@ -75,3 +75,18 @@ export const DEFAULT_ORDER: IOrder = {
     comment: '',
   },
 };
+
+export const ERRORS_DESCRIPTIONS = {
+  PAGE_NOT_FOUND: 'Извините, страница не найдена...',
+  HTTP: 'Извините, проблемы с Интернет-соединением...',
+};
+// const DURATION_TIME_IN_MS = 3000;
+
+// export const SNACK_BAR: SnackBar = {
+//   CONFIG: {
+//     horizontalPosition: 'center',
+//     verticalPosition: 'top',
+//     duration: DURATION_TIME_IN_MS,
+//   },
+//   ACTION: '',
+// };
