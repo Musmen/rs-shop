@@ -1,4 +1,5 @@
 import { IOrder } from '../models/order.model';
+import { SnackBar } from '../models/snack-bar.model';
 import ISortState from '../models/sort-state.model';
 import { ICredentials, IUser } from '../models/user.model';
 
@@ -80,13 +81,14 @@ export const ERRORS_DESCRIPTIONS = {
   PAGE_NOT_FOUND: 'Извините, страница не найдена...',
   HTTP: 'Извините, проблемы с Интернет-соединением...',
 };
-// const DURATION_TIME_IN_MS = 3000;
 
-// export const SNACK_BAR: SnackBar = {
-//   CONFIG: {
-//     horizontalPosition: 'center',
-//     verticalPosition: 'top',
-//     duration: DURATION_TIME_IN_MS,
-//   },
-//   ACTION: '',
-// };
+const DURATION_TIME_IN_MS = 3000;
+
+export const SNACK_BAR: SnackBar = {
+  CONFIG: {
+    horizontalPosition: 'center',
+    verticalPosition: 'top',
+    duration: DURATION_TIME_IN_MS,
+  },
+  ACTION: '',
+};

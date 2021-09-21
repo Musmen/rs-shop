@@ -99,3 +99,8 @@
     transform: translateY(-1em) translateX(2em) scale(0.73);
   }
 }
+
+mat-spinner.mat-progress-spinner circle, 
+mat-spinner.mat-spinner circle {
+  stroke: $main-brand-color;
+}

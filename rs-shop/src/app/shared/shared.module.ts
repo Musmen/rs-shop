@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
@@ -17,6 +19,7 @@ import {
 
 const materialModules = [
   MatSelectModule, MatIconModule, MatFormFieldModule, MatInputModule, MatButtonModule,
+  MatProgressSpinnerModule, MatSnackBarModule,
 ];
 
 @NgModule({

@@ -14,6 +14,9 @@ import { UserEffects } from '@redux/effects/user.effects';
 import { CoreModule } from '@core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 
+import { SPINNER_CONTROLLER_INTERCEPTOR_PROVIDE_TOKEN } from './core/interceptors/spinner-controller/spinner-controller.interceptor';
+import { ERROR_HANDLER_INTERCEPTOR_PROVIDE_TOKEN } from './core/interceptors/error-handler/error-handler.interceptor';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -38,6 +41,10 @@ import { AppComponent } from './app.component';
       maxAge: 25,
     }),
     EffectsModule.forRoot([CategoriesEffects, StateEffects, UserEffects]),
+  ],
+  providers: [
+    SPINNER_CONTROLLER_INTERCEPTOR_PROVIDE_TOKEN,
+    ERROR_HANDLER_INTERCEPTOR_PROVIDE_TOKEN,
   ],
   bootstrap: [AppComponent],
 })
