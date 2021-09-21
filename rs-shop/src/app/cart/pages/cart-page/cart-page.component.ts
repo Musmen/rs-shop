@@ -35,12 +35,14 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
   cartGoods?: IGoods[];
 
+  modalMessage: string = '';
+
   constructor(
     private store: Store<IAppState>,
     private cartService: CartService,
     private userService: UserService,
     private orderService: OrderService,
-    private modelService: NgbModal,
+    private modalService: NgbModal,
     private ref: ChangeDetectorRef,
     private router: Router,
   ) {
@@ -91,7 +93,8 @@ export class CartPageComponent implements OnInit, OnDestroy {
 
   cartFormSubmit(orderDetails: IOrderDetails): void {
     this.orderService.addOrder(orderDetails);
-    this.modelService.open(
+    this.modalMessage = this.getOrderDescription();
+    this.modalService.open(
       this.modal,
       {
         centered: true,
@@ -111,7 +114,11 @@ export class CartPageComponent implements OnInit, OnDestroy {
     return this.deliverDataDescription$.asObservable();
   }
 
+  getDeliverDataDescription(): string {
+    return this.deliverDataDescription$.getValue();
+  }
+
   closeModal(): void {
-    this.modelService.dismissAll();
+    this.modalService.dismissAll();
   }
 }

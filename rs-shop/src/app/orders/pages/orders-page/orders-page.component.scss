@@ -1,0 +1,62 @@
+@import 'src/scss/variables.scss';
+@import 'src/scss/mixins.scss';
+
+.order-card {
+  .card-body {
+    height: initial;
+  }
+
+  .btn {
+    display: block;
+    width: 100%;
+
+    color: $third-dark-font-color;
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: $main-font-brand-color;
+      text-decoration: none;
+      background-color: $link-hover-secondary-color;
+    }
+  }
+
+  .order-title-span {
+    margin-left: 20px;
+  }
+}
+
+.order-section {
+  margin-top: 30px;
+
+  .order-title {
+    margin-left: 10px;
+    padding-bottom: 30px;
+  }
+  
+  .order-message-for-unknown-user,
+  .order-empty-message {
+    color: $main-brand-color;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  .order-title-wrapper {
+    @include flex-aligned;
+  }
+
+  .order-delete-button {
+    width: 44px;
+    margin-right: 20px;
+
+    color: $main-red;
+    background-color: $main-light-color;
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: $main-light-font-color;
+      background-color: $main-red;
+    }
+  }
+}

@@ -3,29 +3,30 @@ import {
   ChangeDetectionStrategy, Component, EventEmitter,
   Input, OnDestroy, OnInit, Output,
 } from '@angular/core';
-import { Observable, Subscription } from 'rxjs';
 
 import { IOrderDetails } from '@core/models/order.model';
-import { DEFAULT_ORDER } from '@common/constants';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-cart-form',
-  templateUrl: './cart-form.component.html',
-  styleUrls: ['./cart-form.component.scss'],
+  selector: 'app-order-form',
+  templateUrl: './order-form.component.html',
+  styleUrls: ['./order-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CartFormComponent implements OnInit, OnDestroy {
-  @Input() defaultCity$?: Observable<string> | null;
+export class OrderFormComponent implements OnInit, OnDestroy {
+  @Input() orderDetails!: IOrderDetails;
   @Output() cartFormSubmitEvent = new EventEmitter<IOrderDetails>();
   @Output() changeDeliverDataEvent = new EventEmitter<string>();
 
   private subscriptions = new Subscription();
 
   cartForm!: FormGroup;
-  orderDetails!: IOrderDetails;
+
+  dateToDeliver!: string;
+  timeToDeliver!: string;
 
   ngOnInit(): void {
-    this.orderDetails = { ...DEFAULT_ORDER.details };
+    [this.dateToDeliver, this.timeToDeliver] = this.orderDetails.timeToDeliver.split(' ');
 
     this.cartForm = new FormGroup({
       name: new FormControl(this.orderDetails.name, [
@@ -37,12 +38,13 @@ export class CartFormComponent implements OnInit, OnDestroy {
       phone: new FormControl(this.orderDetails.phone, [
         Validators.required, Validators.pattern('[+][0-9]*'),
       ]),
-      dateToDeliver: new FormControl(this.orderDetails.dateToDeliver, [
+      dateToDeliver: new FormControl(this.dateToDeliver, [
         Validators.required, this.dateValidator,
       ]),
-      timeToDeliver: new FormControl(this.orderDetails.timeToDeliver, Validators.required),
+      timeToDeliver: new FormControl(this.timeToDeliver, Validators.required),
       comment: new FormControl(this.orderDetails.comment, [Validators.maxLength(250)]),
     });
+    this.changeDeliverData();
 
     const dateToDeliverSubscription = this.cartForm.controls.dateToDeliver.valueChanges
       .subscribe(
@@ -55,15 +57,6 @@ export class CartFormComponent implements OnInit, OnDestroy {
         () => this.changeDeliverData(),
       );
     this.subscriptions.add(timeToDeliverSubscription);
-
-    const defaultCitySubscription = this.defaultCity$!
-      .subscribe(
-        (location) => {
-          this.orderDetails = { ...this.orderDetails, address: `${location}, ` };
-          this.cartForm.controls.address.setValue(`${location}, `);
-        },
-      );
-    this.subscriptions.add(defaultCitySubscription);
   }
 
   ngOnDestroy(): void {

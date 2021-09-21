@@ -1,4 +1,5 @@
 import { createSelector, createFeatureSelector } from '@ngrx/store';
+
 import { DEFAULT_USER_FULL_NAME } from '@common/constants';
 import { IUsersState } from '../state.model';
 
@@ -28,4 +29,9 @@ export const selectFavoritesGoodsIds = createSelector(
 export const selectCartGoodsIds = createSelector(
   selectState,
   (state: IUsersState) => state.user.cart,
+);
+
+export const selectOrders = createSelector(
+  selectState,
+  (state: IUsersState) => state.user.orders,
 );

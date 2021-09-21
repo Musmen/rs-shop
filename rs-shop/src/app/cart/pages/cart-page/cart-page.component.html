@@ -34,7 +34,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
     <p class="modal-body-message">Ваш заказ создан успешно</p>
-    <p class="modal-body-order-description">{{ getOrderDescription() }}</p>
-    <p class="modal-body-deliver-data-description">Ожидайте доставку {{ getDeliverDataDescription$() | async }}</p>
+    <p class="modal-body-order-description">{{ modalMessage }}</p>
+    <p class="modal-body-deliver-data-description">Ожидайте доставку {{ getDeliverDataDescription() }}</p>
   </div>
 </ng-template>

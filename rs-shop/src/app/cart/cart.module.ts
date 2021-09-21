@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@app/shared/shared.module';
+import { SharedModule } from '@shared/shared.module';
 import { CartRoutingModule } from './cart-routing.module';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CartItemComponent } from './components/cart-item/cart-item.component';

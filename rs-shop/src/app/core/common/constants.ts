@@ -35,6 +35,7 @@ export const MAIN_DB_API_URL = {
   CART: `${BASE_MAIN_DB_API_URL}users/cart`,
   CART_DELETE: `${BASE_MAIN_DB_API_URL}users/cart?id=`,
   ORDER: `${BASE_MAIN_DB_API_URL}users/order`,
+  ORDER_DELETE: `${BASE_MAIN_DB_API_URL}users/order?id=`,
 };
 
 export const DEBOUNCE_TIME_IN_MS: number = 700;

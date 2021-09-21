@@ -2,15 +2,20 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, of } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, switchMap } from 'rxjs/operators';
+
+import { Store } from '@ngrx/store';
+import { IAppState } from '@redux/state.model';
+import { checkLoginStatus } from '@redux/actions/user.actions';
 
 import { MAIN_DB_API_URL } from '@common/constants';
+
 import { IGoods } from '@core/models/goods.model';
 import {
   ICredentials, ILoginCredentials, IToken, IUser,
-} from '@app/core/models/user.model';
-import { ICategory } from '@app/core/models/category.model';
-import { IOrder } from '@app/core/models/order.model';
+} from '@core/models/user.model';
+import { ICategory } from '@core/models/category.model';
+import { IOrder } from '@core/models/order.model';
 
 @Injectable({ providedIn: 'root' })
 export class MainDbService {
@@ -18,11 +23,31 @@ export class MainDbService {
 
   searchResultsGoods: IGoods[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store: Store<IAppState>) { }
 
   private fetchSearchResultsGoods$(searchValue: string): Observable<IGoods[]> {
     const URL_FOR_SEARCH_GOODS: string = `${MAIN_DB_API_URL.SEARCH_GOODS}${searchValue}`;
     return this.http.get<IGoods[]>(URL_FOR_SEARCH_GOODS);
+  }
+
+  private fetchDeleteOrder$(orderId: string): Observable<IOrder> {
+    const URL_FOR_DELETE_ORDER: string = `${MAIN_DB_API_URL.ORDER_DELETE}${orderId}`;
+    return this.http.delete<IOrder>(
+      URL_FOR_DELETE_ORDER,
+      {
+        headers: { Authorization: `Bearer ${this.token}` },
+      },
+    );
+  }
+
+  private fetchAddOrder$(order: IOrder): Observable<IOrder> {
+    return this.http.post<IOrder>(
+      MAIN_DB_API_URL.ORDER,
+      { ...order },
+      {
+        headers: { Authorization: `Bearer ${this.token}` },
+      },
+    );
   }
 
   setToken(token: string): void {
@@ -109,12 +134,36 @@ export class MainDbService {
   }
 
   addOrder(order: IOrder): void {
-    this.http.post<IOrder>(
-      MAIN_DB_API_URL.ORDER,
-      { ...order },
-      {
-        headers: { Authorization: `Bearer ${this.token}` },
-      },
-    ).subscribe();
+    this.fetchAddOrder$(order).subscribe(
+      () => this.store.dispatch(checkLoginStatus()),
+    );
+  }
+
+  // changeOrder(order: IOrder): void {
+  //   this.http.put<IOrder>(
+  //     MAIN_DB_API_URL.ORDER,
+  //     { ...order },
+  //     {
+  //       headers: { Authorization: `Bearer ${this.token}` },
+  //     },
+  //   ).subscribe(
+  //     // () => this.store.dispatch(checkLoginStatus()),
+  //   );
+  // }
+
+  deleteOrder(orderId: string): void {
+    this.fetchDeleteOrder$(orderId).subscribe(
+      () => this.store.dispatch(checkLoginStatus()),
+    );
+  }
+
+  changeOrder(order: IOrder): void {
+    this.fetchDeleteOrder$(order.id!).pipe(
+      switchMap(
+        () => this.fetchAddOrder$(order),
+      ),
+    ).subscribe(
+      () => this.store.dispatch(checkLoginStatus()),
+    );
   }
 }

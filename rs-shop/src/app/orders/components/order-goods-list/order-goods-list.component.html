@@ -1,0 +1,55 @@
+<table class="table table-striped">
+  <thead>
+    <tr class="table-header-row">
+      <th class="table-header-col" scope="col">№</th>
+      <th class="table-header-col" scope="col">Товар</th>
+      <th class="table-header-col" scope="col">Описание</th>
+      <th class="table-header-col" scope="col">Количество</th>
+      <th class="table-header-col" scope="col">Время доставки</th>
+      <th class="table-header-col" scope="col">Стоимость, бел. рублей</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let cartGoodsItem of cartGoods; index as cartGoodsItemIndex">
+    <th class="table-col" scope="row">{{ cartGoodsItemIndex + 1 }}</th>
+    <td class="cart-item table-col">
+      <app-order-goods-item 
+        [cartGoodsItem]="cartGoodsItem"
+        (deleteCartGoodsItemEvent)="onDeleteButtonClick($event)"
+      ></app-order-goods-item>
+    </td>
+    <td class="table-col">
+      <p class="cart-goods-item-description">
+        {{ cartGoodsItem.description }}
+      </p>
+    </td>
+    <td class="table-col">
+      <div class="card-buttons-block">
+        <button 
+          class="card-button cart-item-card-button"
+          aria-label="Decrease product count button"
+          mat-mini-fab
+          (click)="onDecreaseAmountButtonClick(cartGoodsItemIndex)"
+        >
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+        <input 
+          class="input cart-input-item-count"
+          [ngModel]="order!.items[cartGoodsItemIndex].amount"
+          readonly
+        >
+        <button 
+          class="card-button cart-item-card-button"
+          aria-label="Increase product count button"
+          mat-mini-fab
+          (click)="onIncreaseAmountButtonClick(cartGoodsItemIndex)"
+        >
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </td>
+    <td class="table-col">{{ deliverDataDescription$ | async }}</td>
+    <td>{{ cartGoodsItem.price * order!.items[cartGoodsItemIndex].amount | number:'.2-2' }}</td>
+  </tr>
+  </tbody>
+</table>

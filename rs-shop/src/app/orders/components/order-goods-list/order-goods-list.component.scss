@@ -1,0 +1,71 @@
+@import './src/scss/variables.scss';
+@import './src/scss/mixins.scss';
+
+.cart-list {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  margin: 20px 10px;
+}
+
+.cart-item {
+  padding: 10px;
+}
+
+.cart-goods-item-description {
+  text-align: justify;
+}
+
+.cart-goods-item-description::first-letter {
+  text-transform: uppercase;
+}
+
+.table-header-col {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table-col,
+.table-header-col {
+  border-right: 1px solid $main-divider-color;
+}
+
+.table-header-col:last-of-type {
+  border-right: none;
+}
+
+.table-header-row {
+  color: $main-brand-color;
+}
+
+.card-buttons-block {
+  @include flex;
+  align-items: baseline;
+}
+
+.cart-item-card-buttons {
+  @include flex-center;
+  flex-direction: column;
+  padding-top: 0;
+}
+
+.cart-item-card-button {
+  min-width: 40px;
+
+  background-color: $main-brand-color;
+}
+
+.cart-input-item-count {
+  width: 50px;
+  margin: 5px 10px;
+  padding: 10px;
+
+  font-weight: bold;
+  text-align: center;
+
+  border-color: $main-brand-color;
+  border-radius: 10px;
+
+  outline: none;
+
+  cursor: initial;
+}

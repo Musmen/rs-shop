@@ -15,6 +15,7 @@
       "@login/*": ["src/app/login/*"],
       "@favorites/*": ["src/app/favorites/*"],
       "@cart/*": ["src/app/cart/*"],
+      "@orders/*": ["src/app/orders/*"],
     },
     "forceConsistentCasingInFileNames": true,
     "strict": true,

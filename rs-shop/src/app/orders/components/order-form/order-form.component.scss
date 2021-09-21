@@ -1,0 +1,130 @@
+@import './src/scss/variables.scss';
+@import './src/scss/mixins.scss';
+
+.cart-form {
+  min-height: 350px;
+  padding: 20px;
+}
+
+.cart-form-fieldset {
+  @include flex-column;
+  margin-bottom: 20px;
+
+  border: 1px solid $main-divider-color;
+  border-radius: 20px;
+
+  box-shadow: 0 3px 4px $main-bg-color-dark;
+}
+
+.cart-form-field {
+  margin: 10px 30px 0;
+}
+
+.cart-form-legend {
+  margin: 20px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+
+  font-size: 20px;
+  font-weight: bold;
+  color: $main-brand-color;
+}
+
+.cart-form-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 37px;
+  margin: 3px 0;
+  padding-right: 24px;
+
+  font-size: 14px;
+  color: $main-font-color;
+
+  border: 0;
+
+  &:focus{
+    outline: 0;
+  }
+}
+
+.mat-button.cart-form-clear-button {
+  top: 5px;
+  height: 37px;
+}
+
+.mat-button.form-clear-button {
+  position: absolute;
+  right: 0;
+
+  padding: 0;
+  width: 24px;
+  min-width: 24px;
+}     
+
+.form-container {
+  @include flex-around;
+
+  margin: 20px;
+}
+
+.cart-form-button {
+  @include flex-center-aligned;
+  width: 150px;
+
+  color: $main-light-font-color;
+
+  background-color: $main-brand-color;
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: $main-brand-color;
+
+    border-color: $main-brand-color;
+    box-shadow: 0 2px 4px $main-brand-color;
+  }
+
+  &:disabled {
+    color: $third-dark-font-color;
+
+    border-color: $secondary-font-color;
+
+    background-color: $secondary-bg-color-dark;
+
+    &:hover {
+      color: $third-dark-font-color;
+
+      background-color: $secondary-bg-color-dark;
+
+      box-shadow: none;
+    }
+  }
+}
+
+.cart-form-alert {
+  height: 24px;
+  margin: 0 30px;
+  padding: 0;
+}
+
+.cart-form-alert-message {
+  display: block;
+  padding: 1px 30px;
+}
+
+.deliver-wrapper {
+  @include flex-aligned;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.deliver-date-wrapper,
+.deliver-time-wrapper {
+  @include flex-center-aligned;
+  flex-direction: column;
+  width: 100%;
+
+  .cart-form-field {
+    width: 50%;
+  }
+}

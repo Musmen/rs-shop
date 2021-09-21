@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
 
 import { Store } from '@ngrx/store';
@@ -114,6 +114,8 @@ export class UserService {
 
   updateLoginStatus$(): Observable<IUser> {
     this.setTokenFromStorage();
+    if (JSON.stringify(this.getToken()) === '{}') return throwError('');
+
     return this.getUserInfo$();
   }
 
