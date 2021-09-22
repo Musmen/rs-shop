@@ -15,7 +15,7 @@ SwiperCore.use([Pagination, Autoplay]);
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MainSliderComponent {
-  @Input() promoGoods?: IGoods[];
+  @Input() promoGoods?: IGoods[] | null;
 
-  config: SwiperOptions = MAIN_SLIDER_CONFIG;
+  promoGoodsSwiperConfig: SwiperOptions = MAIN_SLIDER_CONFIG;
 }

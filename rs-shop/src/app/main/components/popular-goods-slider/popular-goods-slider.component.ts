@@ -19,7 +19,7 @@ SwiperCore.use([Pagination, Navigation, Grid]);
   encapsulation: ViewEncapsulation.None,
 })
 export class PopularGoodsSliderComponent {
-  @Input() popularGoods?: IGoods[];
+  @Input() popularGoods?: IGoods[] | null;
 
-  config: SwiperOptions = POPULAR_GOODS_SLIDER_CONFIG;
+  popularGoodsSwiperConfig: SwiperOptions = POPULAR_GOODS_SLIDER_CONFIG;
 }

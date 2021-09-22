@@ -12,7 +12,9 @@ import { selectIsUserLogged, selectUserFullName } from '@redux/selectors/user.se
 import {
   ICredentials, IToken, IUser,
 } from '@core/models/user.model';
-import { DEFAULT_USER } from '@common/constants';
+import { DEFAULT_USER, ERRORS_DESCRIPTIONS, SNACK_BAR } from '@common/constants';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { MainDbService } from '../main-db/main-db.service';
 import { UserStorageService } from '../user-storage/user-storage.service';
@@ -30,6 +32,7 @@ export class UserService {
     private router: Router,
     private favoritesService: FavoritesService,
     private cartService: CartService,
+    private snackBar: MatSnackBar,
   ) {
     this.getIsUserLogged$().subscribe(
       (isUserLogged) => {
@@ -76,7 +79,7 @@ export class UserService {
         this.goToMainPage();
       },
       () => {
-        console.log('Error login/registration attempt!');
+        this.snackBar.open(ERRORS_DESCRIPTIONS.LOGIN, SNACK_BAR.ACTION, SNACK_BAR.CONFIG);
         this.store.dispatch(setUserLoginStatus({ isLogged: false }));
         this.clearToken();
       },

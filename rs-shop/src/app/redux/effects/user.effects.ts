@@ -26,7 +26,6 @@ export class UserEffects {
           ),
           catchError(
             () => {
-              console.log('Error login attempt!');
               this.userService.clearToken();
               return of(setUserLoginStatus({ isLogged: false }));
             },
