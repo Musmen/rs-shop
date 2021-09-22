@@ -10,3 +10,9 @@
 
   border-bottom: 1px solid $main-divider-color;
 }
+
+.favorites-empty-message {
+  color: $main-brand-color;
+  font-weight: bold;
+  text-align: center;
+}

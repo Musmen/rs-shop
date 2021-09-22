@@ -23,8 +23,6 @@ export class OrdersService {
   }
 
   changeOrder(order: IOrder): void {
-    // this.mainDBService.deleteOrder(order.id!);
-    // this.mainDBService.addOrder(order);
     this.mainDBService.changeOrder(order);
   }
 

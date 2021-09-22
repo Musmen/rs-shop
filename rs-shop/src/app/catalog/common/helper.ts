@@ -26,3 +26,10 @@ export const getCompareValue: GetCompareValue = (
     }
   }
 };
+
+export const rgb2hexInUpperCase = (hexColor: string) => `#${
+  hexColor.match(/\d+/g)!
+    .map((color) => (+color).toString(16).padStart(2, '0'))
+    .join('')
+    .toUpperCase()
+}`;

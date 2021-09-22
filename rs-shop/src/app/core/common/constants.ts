@@ -79,7 +79,7 @@ export const DEFAULT_ORDER: IOrder = {
 
 export const ERRORS_DESCRIPTIONS = {
   PAGE_NOT_FOUND: 'Извините, страница не найдена...',
-  HTTP: 'Извините, проблемы с Интернет-соединением...',
+  HTTP: 'Проблемы доступа к серверу, проверьте интернет-соединение',
 };
 
 const DURATION_TIME_IN_MS = 3000;

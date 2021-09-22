@@ -3,17 +3,17 @@ import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class SpinnerService {
-  private _isSpinnerShown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  private isSpinnerShown$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   showSpinner(): void {
-    this._isSpinnerShown$.next(true);
+    this.isSpinnerShown$.next(true);
   }
 
   hideSpinner(): void {
-    this._isSpinnerShown$.next(false);
+    this.isSpinnerShown$.next(false);
   }
 
   getIsSpinnerShown$(): Observable<boolean> {
-    return this._isSpinnerShown$.asObservable();
+    return this.isSpinnerShown$.asObservable();
   }
 }

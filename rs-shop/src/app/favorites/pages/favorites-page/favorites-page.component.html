@@ -1,9 +1,17 @@
 <section class="favorites-section">
   <h2 class="favorites-title">Избранные товары</h2>
 
-  <app-favorites-list
-    [favoritesGoods$]="favoritesGoods$"
-    (deleteFavoriteGoodsItemEvent)="onFavoriteButtonClick($event)"
-    (cartButtonClickEvent)="onCartButtonClick($event)"
-  ></app-favorites-list>
+  <ng-container *ngIf="(favoritesGoods$ | async)?.length; else empty">
+    <app-favorites-list
+      [favoritesGoods$]="favoritesGoods$"
+      (deleteFavoriteGoodsItemEvent)="onFavoriteButtonClick($event)"
+      (cartButtonClickEvent)="onCartButtonClick($event)"
+    ></app-favorites-list>
+  </ng-container>
 </section>
+
+<ng-template #empty>
+  <p class="favorites-empty-message">
+    Нет товаров в избранных...
+  </p>
+</ng-template>
