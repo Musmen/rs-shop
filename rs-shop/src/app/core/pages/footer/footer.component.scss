@@ -45,6 +45,8 @@
 .social-list {
   @include flex-center;
   margin: 10px;
+  margin-bottom: 0;
+  padding-bottom: 10px;
 }
 
 .social-item-link {

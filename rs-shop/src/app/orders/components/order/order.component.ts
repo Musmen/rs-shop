@@ -68,7 +68,8 @@ export class OrderComponent implements OnInit, OnDestroy {
     this.cartGoods = this.cartGoods?.filter(
       (cartGoodsItem, cartGoodsIndex) => cartGoodsIndex !== goodsItemIndex,
     );
-    // this. уничтожить заказ, если нет больше нифига...
+
+    if (!this.cartGoods.length) this.ordersService.deleteOrder(this.order.id!);
 
     this.ordersItemService.setCartGoods(this.cartGoods);
     this.ordersItemService.deleteMaxGoodsAmountsItem(goodsItemIndex);

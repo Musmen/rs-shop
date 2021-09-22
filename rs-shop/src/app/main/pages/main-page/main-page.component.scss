@@ -139,3 +139,20 @@
   text-align: justify;
   color: $third-light-font-color;
 }
+
+.video-wrapper {
+  @include flex-center-aligned;
+  margin-top: 20px;
+
+  background-color: transparent;
+}
+
+.video {
+  min-height: 648px;
+  
+  border: 0;
+
+  @include media-mobile {
+    min-height: 207px;
+  }
+}

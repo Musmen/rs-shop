@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import {
   ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit,
   TemplateRef, ViewChild, ViewEncapsulation,
@@ -44,7 +43,6 @@ export class CartPageComponent implements OnInit, OnDestroy {
     private orderService: OrderService,
     private modalService: NgbModal,
     private ref: ChangeDetectorRef,
-    private router: Router,
   ) {
     this.deliverDataDescription$ = new BehaviorSubject<string>(`не ранее ${getDefaultDeliverData()}`);
     this.defaultCity$ = this.store.select(selectLocation);
@@ -103,7 +101,6 @@ export class CartPageComponent implements OnInit, OnDestroy {
         size: 'lg',
       },
     );
-    this.router.navigate(['main']);
   }
 
   changeDeliverData(deliverDataDescription: string): void {

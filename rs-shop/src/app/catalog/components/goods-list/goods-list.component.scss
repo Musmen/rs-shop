@@ -15,11 +15,18 @@
 }
 
 .sorting-block {
+  position: sticky;
+  top: 0;
+
   @include flex-aligned;
   min-height: 50px;
 
   border-top: 1px solid $main-divider-color;
   border-bottom: 1px solid $main-divider-color;
+
+  background-color: $main-light-color;
+
+  z-index: 999;
 }
 
 .sorting-title {
