@@ -18,10 +18,12 @@
           *ngFor="let imageUrl of goodsItem.imageUrls"
         >
         <img
+          #img
           class="tumbs-slider-image" 
           src="{{ imageUrl }}"
           title="Вид товара '{{ goodsItem.name }}'"
           alt="Вид товара '{{ goodsItem.name }}'"
+          (error)="img.src='../../../../assets/images/default_poster.jpeg'"
         >
         </ng-template>
       </swiper>
@@ -38,10 +40,12 @@
           *ngFor="let imageUrl of goodsItem.imageUrls"
         >
           <img
+            #mainImg
             class="posters-slider-image" 
             src="{{ imageUrl }}"
             title="Вид товара '{{ goodsItem.name }}'"
             alt="Вид товара '{{ goodsItem.name }}'"
+            (error)="mainImg.src='../../../../assets/images/default_poster.jpeg'"
           >
         </ng-template>
         <div class="posters-slider-pagination swiper-pagination"></div>

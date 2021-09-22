@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 import { compare, getCompareValue } from '@catalog/common/helper';
 import SortState from '@core/models/sort-state.model';
-import { IGoods } from '@app/core/models/goods.model';
+import { IGoods } from '@core/models/goods.model';
 
 @Pipe({ name: 'sort' })
 export class SortPipe implements PipeTransform {

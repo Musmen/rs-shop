@@ -89,10 +89,12 @@
     box-shadow: 0 2px 4px $main-brand-color;
   }
   
-  &:disabled {
+  &.disabled {
     color: $secondary-font-color;
 
     border-color: $secondary-font-color;
+
+    cursor: initial;
 
     &:hover {
       color: $secondary-font-color;

@@ -7,6 +7,8 @@ import { rgb2hexInUpperCase } from '@catalog/common/helper';
 
 import { AmountVisualizationDirective } from './amount-visualization.directive';
 
+// ************************!!! MY TESTS !!!***************************
+
 @Component({
   template: `
     <h1 appAmountVisualization="10">
@@ -41,10 +43,12 @@ describe('AmountVisualizationDirective', () => {
     h1Set = fixture.debugElement.queryAll(By.directive(AmountVisualizationDirective));
   });
 
+  // **************************!!! # 7 !!!*******************************
   it('should have three visualizates elements', () => {
     expect(h1Set.length).toBe(3);
   });
 
+  // **************************!!! # 8 !!!*******************************
   it('should set first <h1> tag of TestComponent color and fill in "yellow"', () => {
     const hexColorFirstH1 = rgb2hexInUpperCase(h1Set[0].nativeElement.style.color);
     const hexFillFirstH1 = rgb2hexInUpperCase(h1Set[0].nativeElement.style.fill);
@@ -53,11 +57,13 @@ describe('AmountVisualizationDirective', () => {
     expect(hexFillFirstH1).toBe(Colors.yellow);
   });
 
+  // **************************!!! # 9 !!!*******************************
   it(`should set first <h1> tag of TestComponent attribute in "${DEFAULT_AMOUNT_VISUALIZATION.title}"`, () => {
     const firstH1Title = h1Set[0].nativeElement.title;
     expect(firstH1Title).toBe(DEFAULT_AMOUNT_VISUALIZATION.title);
   });
 
+  // **************************!!! # 10 !!!*******************************
   it('should set second <h1> tag of TestComponent color and fill in "red"', () => {
     const hexColorSecondH2 = rgb2hexInUpperCase(h1Set[1].nativeElement.style.color);
     const hexFillSecondH2 = rgb2hexInUpperCase(h1Set[1].nativeElement.style.fill);
@@ -66,11 +72,13 @@ describe('AmountVisualizationDirective', () => {
     expect(hexFillSecondH2).toBe(Colors.red);
   });
 
+  // **************************!!! # 11 !!!*******************************
   it(`should set second <h1> tag of TestComponent attribute in "${Titles.low}"`, () => {
     const secondH1Title = h1Set[1].nativeElement.title;
     expect(secondH1Title).toBe(Titles.low);
   });
 
+  // **************************!!! # 12 !!!*******************************
   it('should set third <h1> tag of TestComponent color and fill in "green"', () => {
     const hexColorThirdH2 = rgb2hexInUpperCase(h1Set[2].nativeElement.style.color);
     const hexFillThirdH2 = rgb2hexInUpperCase(h1Set[2].nativeElement.style.fill);
@@ -79,6 +87,7 @@ describe('AmountVisualizationDirective', () => {
     expect(hexFillThirdH2).toBe(Colors.green);
   });
 
+  // **************************!!! # 13 !!!*******************************
   it(`should set third <h1> tag of TestComponent attribute in "${Titles.high}"`, () => {
     const thirdH1Title = h1Set[2].nativeElement.title;
     expect(thirdH1Title).toBe(Titles.high);

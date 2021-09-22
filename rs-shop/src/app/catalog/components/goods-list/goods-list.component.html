@@ -55,7 +55,7 @@
 <div class="controls-block">
   <button
     class="goods-list-more-button main-button"
-    [attr.disabled]="isGoodsMaxCountReached"
+    [class.disabled]="getIsGoodsMaxCountReached() | async"
     mat-icon-button
     aria-label="Показать еще 10 товаров"
     title="Показать еще 10 товаров"

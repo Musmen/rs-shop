@@ -5,7 +5,7 @@ import {
 } from '@angular/core';
 
 import {
-  Observable, of, Subscription, combineLatest,
+  Observable, of, Subscription, combineLatest, BehaviorSubject,
 } from 'rxjs';
 import { take } from 'rxjs/operators';
 
@@ -38,7 +38,7 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
   subcategory?: ICategory | null;
 
   goods: IGoods[] = [];
-  isGoodsMaxCountReached: boolean = false;
+  isGoodsMaxCountReached = new BehaviorSubject<boolean>(false);
 
   sortState: ISortState = { ...initialSortState };
 
@@ -68,7 +68,7 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
   private initGoodsList(): void {
     this.goods = [];
     this.goodsStartIndex = 0;
-    this.isGoodsMaxCountReached = false;
+    this.isGoodsMaxCountReached.next(false);
 
     this.addNextGoodsGroup(this.category?.id, this.subcategory?.id);
   }
@@ -91,7 +91,7 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private checkIsGoodsMaxCountReached(fetchedItemsCount: number): void {
-    if (fetchedItemsCount !== GOODS_COUNT_IN_GROUP) this.isGoodsMaxCountReached = true;
+    if (fetchedItemsCount !== GOODS_COUNT_IN_GROUP) this.isGoodsMaxCountReached.next(true);
   }
 
   private fetchNextGoodsGroup(
@@ -116,6 +116,10 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
     this.subscriptions.add(goodsSubscription);
   }
 
+  getIsGoodsMaxCountReached(): Observable<boolean> {
+    return this.isGoodsMaxCountReached.asObservable();
+  }
+
   changeSortState(newSortingBy: string): void {
     if (this.sortState.sortingBy === newSortingBy) {
       this.sortState.ascending *= -1;
@@ -131,6 +135,8 @@ export class GoodsListComponent implements OnInit, OnChanges, OnDestroy {
     subcategoryId = this.subcategory?.id,
     goodsStartIndex = this.goodsStartIndex,
   ): void {
+    if (this.isGoodsMaxCountReached.getValue()) return;
+
     this.fetchNextGoodsGroup(categoryId, subcategoryId, goodsStartIndex);
     this.updateGoodsStartIndex();
   }

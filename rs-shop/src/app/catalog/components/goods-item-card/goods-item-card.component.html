@@ -1,10 +1,12 @@
 <article class="goods-item-card card-body" *ngIf="goodsItem">
   <div class="goods-item-card-poster-wrapper card-poster-wrapper">
-    <img 
+    <img
+      #img 
       class="goods-item-card-poster card-poster" 
       src="{{ goodsItem.imageUrls[0] }}" 
       alt="{{ goodsItem.name }}"
       title="{{ goodsItem.name }}"
+      (error)="img.src='../../../../assets/images/default_poster.jpeg'"
     >
   </div>
 
