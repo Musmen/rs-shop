@@ -9,6 +9,10 @@
 .tumbs-slider-wrapper,
 .tumbs-slider-image {
   width: 120px;
+
+  @include media-mobile {
+    width: 70px;
+  }
 }
 
 .tumbs-slider-image {
@@ -16,12 +20,26 @@
   padding: 5px;
 
   object-fit: contain;
+
+  @include media-mobile {
+    width: 70px;
+  }
 }
 
 .posters-slider-wrapper {
   position: relative;
   width: 500px;
   margin: 0 50px;
+
+  @include media-tablet {
+    width: 300px;
+    margin: 0 10px;
+  }
+
+	@include media-mobile {
+    width: 200px;
+    margin: 0 5px;
+  }
 }
 
 .posters-slider {
@@ -32,13 +50,34 @@
   width: 500px;
   max-height: 500px;
   object-fit: contain;
+
+  @include media-tablet {
+    width: 300px;
+    max-height: 300px;
+  }
+
+  @include media-mobile {
+    width: 200px;
+    max-height: 200px;
+  }
 }
 
 .description-wrapper {
   align-self: flex-start;
 
-  .description-card {
+  .description-card,
+  .card-body {
     width: 300px;
+
+    @include media-tablet {
+      width: 200px;
+      padding: 0;
+    }
+
+    @include media-mobile {
+      width: 150px;
+      padding: 0;
+    }
   }
 
   .goods-item-card-description-title,
@@ -46,10 +85,26 @@
   .goods-item-card-description-raiting,
   .goods-item-card-price-label {
     max-width: 300px;
+
+    @include media-tablet {
+      width: 150px;
+    }
+
+    @include media-mobile {
+      width: 100px;
+    }
   }
 
   .goods-item-card-description-title {
     font-size: 1.5rem;
+
+    @include media-tablet {
+      font-size: 1.2rem;
+    }
+
+    @include media-mobile {
+      font-size: 1rem;
+    }
   }
 
   .goods-item-card-description-wrapper {
@@ -89,6 +144,12 @@
     }
   }
 
+  .goods-item-card-controller-wrapper .goods-item-card-button {
+    @include media-mobile {
+      width: 140px;
+    }
+  }
+
   .goods-item-card-link {
     text-decoration: none;
 
@@ -125,6 +186,19 @@
 .promo-icon {
   background-image: url('../../../../assets/images/special-icons.png');
   background-position: 0 0;
+
+  z-index: 10;
+
+  @include media-tablet {
+    right: -35px;
+  }
+
+  @include media-mobile {
+    margin-top: 10px;
+    right: -30px;
+
+    transform: scale(0.75);
+  }
 }
 
 .popular-icon {
@@ -135,4 +209,17 @@
 
   background-image: url('../../../../assets/images/special-icons.png');
   background-position: -135px 0;
+
+  z-index: 10;
+
+  @include media-tablet {
+    right: -35px;
+  }
+
+  @include media-mobile {
+    margin-top: 10px;
+    right: -30px;
+
+    transform: scale(0.75);
+  }
 }

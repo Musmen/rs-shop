@@ -4,14 +4,30 @@
 .goods-list{
   display: grid;
   grid-template-columns: repeat(4, 25%);
+
+  @include media-tablet {
+    grid-template-columns: repeat(3, 33%);
+  }
+
+  @include media-mobile {
+    grid-template-columns: repeat(2, 50%);
+  }
 }
 
 .goods-item:not(:nth-last-child(-n + 4)) {
   border-bottom: 1px solid $main-divider-color;
+
+  @include media-tablet {
+    border-bottom: 0;
+  }
 }
 
 .goods-item:not(:nth-child(4n)) {
   border-right: 1px solid $main-divider-color;
+
+  @include media-tablet {
+    border-right: 0;
+  }
 }
 
 .sorting-block {
@@ -28,6 +44,12 @@
   background-color: $main-light-color;
 
   z-index: 999;
+
+  @include media-tablet {
+    min-height: 40px;
+
+    font-size: 14px;
+  }
 }
 
 .sorting-title {

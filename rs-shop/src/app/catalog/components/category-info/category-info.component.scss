@@ -18,6 +18,10 @@
 .subcategory-list {
   display: grid;
   grid-template-columns: 50% 50%;
+
+  @include media-mobile {
+    grid-template-columns: 100%;
+  }
 }
 
 .subcategory-link {

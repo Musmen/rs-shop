@@ -11,6 +11,10 @@
   width: 30%;
 
   border-right: 1px solid $main-divider-color;
+
+  @include media-mobile {
+    width: 40%;
+  }
 }
 
 .navigation-list {
@@ -40,4 +44,8 @@
 
 .category-content {
   width: 70%;
+
+  @include media-mobile {
+    width: 60%;
+  }
 }
