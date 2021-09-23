@@ -1,6 +1,8 @@
 @import './src/scss/variables.scss';          
 
 .header {
+  padding-top: 5px;
+
   background-color: $secondary-bg-color-light;
 
   .minimal-card {

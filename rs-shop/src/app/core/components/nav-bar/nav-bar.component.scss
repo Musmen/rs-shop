@@ -2,7 +2,7 @@
 @import 'src/scss/mixins.scss';
 
 :host {
-  @include flex;
+  @include flex-center;
 
   background: $nav-backgroud-gradient;
 }
