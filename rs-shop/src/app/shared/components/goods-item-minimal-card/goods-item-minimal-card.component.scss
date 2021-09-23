@@ -10,6 +10,10 @@
   height: 200px;
 }
 
+.minimal-card-poster {
+  max-width: 75%;
+}
+
 .minimal-card {
   @include flex-aligned;
   justify-content: center;
@@ -31,10 +35,26 @@
   margin-left: 30px;
 
   font-size: 1.5rem;
+
+  @include media-tablet {
+    font-size: 1.3rem;
+  }
+
+  @include media-mobile {
+    font-size: 1.1rem;
+  }
 }
 
 .minimal-card-description-title {
   text-align: center;
+
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
+
+  @include media-mobile {
+    font-size: 1.2rem;
+  }
 }
 
 .minimal-card-description-price {
@@ -43,6 +63,14 @@
   font-weight: bold;
   font-size: 1.5rem;
   text-align: center;
+
+  @include media-tablet {
+    font-size: 1.3rem;
+  }
+
+  @include media-mobile {
+    font-size: 1.1rem;
+  }
 }
 
 .minimal-card-description-title,

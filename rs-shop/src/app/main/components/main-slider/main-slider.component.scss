@@ -1,4 +1,11 @@
 @import './src/scss/variables.scss';
+@import './src/scss/mixins.scss';
+
+.main-swiper-container {
+  @include media-tablet {
+    margin-top: 0;
+  }
+}
 
 .swiper-link {
   color: inherit !important;

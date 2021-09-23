@@ -1,4 +1,5 @@
 @import './src/scss/variables.scss';          
+@import './src/scss/mixins.scss';          
 
 .header {
   padding-top: 5px;
@@ -30,16 +31,32 @@
     margin-left: 10px;
 
     font-size: 1rem;
+
+    @include media-tablet {
+      width: 300px;
+    }
+  
+    @include media-mobile {
+      width: 200px;
+    }
   }
 
   .minimal-card-description-title {
-    width: 600px;
+    width: 800px;
     font-size: 1rem;
     
     text-align: left;
     text-overflow: ellipsis;
     
     overflow: hidden;
+
+    @include media-tablet {
+      width: 600px;
+    }
+  
+    @include media-mobile {
+      width: 350px;
+    }
   }
 
   .minimal-card-description-price {
@@ -65,7 +82,6 @@
     padding: 1rem 1.5rem;
   
     border-bottom: 1px solid $main-divider-color;
-    
   }
   
   .text-decoration {
@@ -74,10 +90,8 @@
 }
 
 .search-results-drop-down-menu {
+  width: 95%;
   max-height: 70vh;
-
-  left: 20% !important;
-  right: 20% !important;
 
   overflow-x: hidden;
   overflow-y: auto;

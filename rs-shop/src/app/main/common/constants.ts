@@ -22,9 +22,6 @@ export const POPULAR_GOODS_SLIDER_CONFIG: SwiperOptions = {
   preloadImages: true,
   updateOnImagesReady: true,
   grabCursor: true,
-  spaceBetween: 15,
-  slidesPerView: 3,
-  slidesPerGroup: 3,
   navigation: {
     nextEl: '.popular-goods-swiper-button-next',
     prevEl: '.popular-goods-swiper-button-prev',
@@ -32,5 +29,16 @@ export const POPULAR_GOODS_SLIDER_CONFIG: SwiperOptions = {
   grid: {
     fill: 'row',
     rows: 2,
+  },
+  breakpoints: {
+    850: {
+      slidesPerView: 4,
+      slidesPerGroup: 4,
+    },
+    1000: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+      spaceBetween: 15,
+    },
   },
 };

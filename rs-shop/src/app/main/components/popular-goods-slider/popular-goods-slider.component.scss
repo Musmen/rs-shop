@@ -1,3 +1,5 @@
+@import './src/scss/mixins.scss';
+
 .popular-goods-title {
   margin-left: 40px;
 }
@@ -10,7 +12,9 @@
   }
 
   .minimal-card-poster {
-    width: 70%;
+    @include media-tablet {
+      width: 70%;
+    }
   }
 
   .minimal-card-description-wrapper {
