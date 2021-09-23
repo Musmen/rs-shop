@@ -9,6 +9,7 @@
 
 .navigation-list {
   @include flex-center;
+  flex-wrap: wrap;
 
   color: $main-light-font-color;
 }
