@@ -1,0 +1,102 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';          
+
+:host {
+  @include flex;
+  
+  border-bottom: 1px solid $main-divider-color;
+}
+
+.centralizer {
+  @include flex-between;
+  flex-wrap: wrap;
+
+  @include media-mobile {
+    justify-content: center;
+  }
+}
+
+.info-block {
+  align-self: center;
+
+  flex-wrap: wrap;
+
+  @include media-mobile {
+    justify-content: center;
+  }
+}
+
+.info-block,
+.working-time-block {
+  border-left: 1px solid $main-divider-color;
+
+  @include media-mobile {
+    margin: 5px 0;
+    border: none;
+  }
+}
+
+.contacts-list-item,
+.contacts-dropdown {
+  margin-right: 10px;
+}
+
+.contacts-dropdown {
+  @include media-mobile {
+    order: 1;
+  }
+}
+
+.contacts-list-item:first-of-type {
+  margin-left: 10px;
+}
+
+.contacts-item-icon {
+  margin-right: 5px;
+}
+
+.contacts-list-item,
+.dropdown-item {
+  &:focus,
+  &:hover,
+  &:active {
+    color: $main-red;
+
+    .contacts-item-icon-viber {
+      color: $main-red;
+    }
+    
+    .contacts-item-icon-telegram .path-fill {
+      fill: $main-red;
+    }
+  }  
+}
+
+.working-time-block {
+  height: 100%;
+
+  font-size: 14px;
+  line-height: 16px;
+  color: $secondary-font-color;
+}
+
+.working-time-icon,
+.working-time-description {
+  margin: 0 5px;
+}
+
+.working-time-description {
+  margin: 0;
+}
+
+.dropdown-button{
+  &:focus,
+  &:hover,
+  &:active {
+    color: $main-red;
+  }  
+}
+
+.contacts-dropdown-menu {
+  box-shadow: 0 2px 4px $main-bg-color-dark;
+}

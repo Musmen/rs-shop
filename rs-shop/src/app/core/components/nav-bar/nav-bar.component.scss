@@ -1,0 +1,28 @@
+@import 'src/scss/variables.scss';
+@import 'src/scss/mixins.scss';
+
+:host {
+  @include flex-center;
+
+  background: $nav-backgroud-gradient;
+}
+
+.navigation-list {
+  @include flex-center;
+  flex-wrap: wrap;
+
+  color: $main-light-font-color;
+}
+
+.navigation-link {
+  display: block;
+  padding: 10px;
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: inherit;
+    
+    background-color: $link-hover-color;
+  }
+}

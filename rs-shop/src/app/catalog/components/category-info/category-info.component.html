@@ -1,0 +1,10 @@
+<section class="category-section" *ngIf="(category$ | async) as category">
+  <h2 class="category-title">{{ category.name }}</h2>
+  <ul class="subcategory-list list">
+    <li class="subcategory-item" *ngFor="let subCategory of category.subCategories">
+      <a class="subcategory-link link" [routerLink]="['/catalog', category.id, subCategory.id]">
+        <span>{{ subCategory.name }}</span>
+      </a>
+    </li>
+  </ul>
+</section>

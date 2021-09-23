@@ -1,0 +1,9 @@
+<ul class="favorites-list list">
+  <li class="favorites-item" *ngFor="let favoriteGoodsItem of favoritesGoods$ | async">
+    <app-favorites-item 
+      [favoriteGoodsItem]="favoriteGoodsItem"
+      (deleteFavoriteGoodsItemEvent)="onFavoriteButtonClick($event)"
+      (cartButtonClickEvent)="onCartButtonClick($event)"
+    ></app-favorites-item>
+  </li>
+</ul>

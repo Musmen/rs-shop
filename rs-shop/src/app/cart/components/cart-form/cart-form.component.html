@@ -1,0 +1,194 @@
+<form 
+  class="cart-form" 
+  name="cart-form" 
+  [formGroup]="cartForm"
+  (ngSubmit)="onCartFormSubmit()"
+>
+  <fieldset class="cart-form-fieldset">
+    <legend class="cart-form-legend">Для завершения заказа заполните, проверьте и подтвердите:</legend>
+    
+    <mat-form-field class="cart-form-field" appearance="outline">
+      <mat-label>Фамилия Имя Отчество</mat-label> 
+      <input
+        class="form-input cart-form-input"
+        type="text"
+        name="full-name-form-input"
+        autocomplete="off"
+        matInput
+        formControlName="name"
+        required
+      >
+      <button
+        class="form-clear-button cart-form-clear-button"
+        type="button"
+        aria-label="Очистить ФИО"
+        mat-button
+        *ngIf="cartForm.controls.name.value"
+        (click)="cartForm.controls.name.setValue('')"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+    <p class="cart-form-alert">
+      <span 
+        class="cart-form-alert-message alert alert-danger"
+        *ngIf="cartForm.controls.name.invalid && cartForm.controls.name.touched"
+      >
+        ФИО обязательно от 3 до 50 символов
+      </span>
+    </p>
+
+    <mat-form-field class="cart-form-field" appearance="outline">
+      <mat-label>Адрес доставки</mat-label>
+      <input
+        class="form-input cart-form-input"
+        type="text"
+        name="address-form-input"
+        autocomplete="off"
+        matInput
+        formControlName="address"
+        required
+      >
+      <button
+        class="form-clear-button cart-form-clear-button"
+        type="button"
+        aria-label="Очистить адрес"
+        mat-button
+        *ngIf="cartForm.controls.address.value"
+        (click)="cartForm.controls.address.setValue('')"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+    <p class="cart-form-alert">
+      <span 
+        class="cart-form-alert-message alert alert-danger"
+        *ngIf="cartForm.controls.address.invalid && cartForm.controls.address.touched"
+      >
+        Адрес доставки обязателен от 3 до 250 символов
+      </span>
+    </p>
+
+    <mat-form-field class="cart-form-field" appearance="outline">
+      <mat-label>Номер телефона для связи</mat-label>
+      <input
+        class="form-input cart-form-input"
+        type="text"
+        name="phone-form-input"
+        autocomplete="off"
+        matInput
+        formControlName="phone"
+        required
+      >
+      <button
+        class="form-clear-button cart-form-clear-button"
+        type="button"
+        aria-label="Очистить номер телефона"
+        mat-button
+        *ngIf="cartForm.controls.phone.value"
+        (click)="cartForm.controls.phone.setValue('')"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+    <p class="cart-form-alert">
+      <span 
+        class="cart-form-alert-message alert alert-danger"
+        *ngIf="cartForm.controls.phone.invalid && cartForm.controls.phone.touched"
+      >
+        Номер телефона обязателен, начинается с "+" и содержит только цифры
+      </span>
+    </p>
+
+    <div class="deliver-wrapper">
+      <div class="deliver-date-wrapper">
+        <mat-form-field class="cart-form-field" appearance="outline">
+          <mat-label>Дата доставки</mat-label>
+          <input
+            class="form-input cart-form-input cart-date-form-input"
+            type="date"
+            name="deliver-date-form-input"
+            autocomplete="off"
+            matInput
+            formControlName="dateToDeliver"
+            required
+          >
+        </mat-form-field>
+        <p class="cart-form-alert">
+          <span 
+            class="cart-form-alert-message alert alert-danger"
+            *ngIf="cartForm.controls.dateToDeliver.invalid && cartForm.controls.dateToDeliver.touched"
+          >
+            Дата доставки не ранее завтрашнего дня
+          </span>
+        </p>
+      </div>
+
+      <div class="deliver-time-wrapper">
+        <mat-form-field class="cart-form-field" appearance="outline">
+          <mat-label>Время доставки</mat-label>
+          <input
+            class="form-input cart-form-input cart-time-form-input"
+            type="time"
+            name="deliver-time-form-input"
+            autocomplete="off"
+            matInput
+            formControlName="timeToDeliver"
+            required
+          >
+        </mat-form-field>
+        <p class="cart-form-alert">
+          <span 
+            class="cart-form-alert-message alert alert-danger"
+            *ngIf="cartForm.controls.timeToDeliver.invalid && cartForm.controls.timeToDeliver.touched"
+          >
+            Обязательно укажите желаемое время доставки
+          </span>
+        </p>
+      </div>
+    </div>
+
+    <mat-form-field class="cart-form-field cart-form-field-comment" appearance="outline">
+      <mat-label>Комментарий к заказу</mat-label>
+      <input
+        class="form-input cart-form-input"
+        type="text"
+        name="comment-form-input"
+        autocomplete="off"
+        matInput
+        formControlName="comment"
+      >
+      <button
+        class="form-clear-button cart-form-clear-button"
+        type="button"
+        aria-label="Очистить комментарий к заказу"
+        mat-button
+        *ngIf="cartForm.controls.comment.value"
+        (click)="cartForm.controls.comment.setValue('')"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+    </mat-form-field>
+    <p class="cart-form-alert">
+      <span 
+        class="cart-form-alert-message alert alert-danger"
+        *ngIf="cartForm.controls.comment.invalid && cartForm.controls.comment.touched"
+      >
+        Допускается комментарий не более 250 символов
+      </span>
+    </p>
+
+    <div class="form-container">
+      <button
+        class="cart-form-button form-button main-button button shadow"
+        type="submit"
+        aria-label="Оформить заказ"
+        title="Оформить заказ"
+        mat-button
+        [disabled]="cartForm.invalid"
+      >
+        Оформить заказ
+      </button>
+    </div>
+  </fieldset>
+</form>                                             

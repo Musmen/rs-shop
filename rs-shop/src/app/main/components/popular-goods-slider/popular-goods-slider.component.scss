@@ -1,0 +1,41 @@
+@import './src/scss/mixins.scss';
+
+.popular-goods-title {
+  margin-left: 40px;
+}
+
+.popular-goods-swiper-container {
+  position: relative;
+
+  .swiper {
+    width: 94%;
+  }
+
+  .minimal-card-poster {
+    @include media-tablet {
+      width: 70%;
+    }
+  }
+
+  .minimal-card-description-wrapper {
+    margin-left: 5px;
+    font-size: 1rem;
+  }
+  
+  .minimal-card-description-title {
+    font-size: 1.1rem;
+  }
+  
+  .minimal-card-description-price {
+    margin: 2px 0;
+    font-size: 1rem;
+  }
+
+  .popular-goods-swiper-button-prev {
+    left: 5px;
+  }
+
+  .popular-goods-swiper-button-next {
+    right: 5px;
+  }
+}

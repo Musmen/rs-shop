@@ -1,0 +1,51 @@
+<section class="order-section">
+  <h2 class="order-title">Список ожидающих заказов</h2>
+
+  <ng-container *ngIf="getIsUserLogged$() | async; else messageForUnknownUser"> 
+    <ng-container *ngIf="orders?.length; else empty">
+      
+       <ngb-accordion #acc="ngbAccordion">
+        <ngb-panel [cardClass]="'order-card'" *ngFor="let order of orders; index as orderIndex">
+          <ng-template ngbPanelTitle>
+            <div class="order-title-wrapper">
+              <button
+                class="order-delete-button main-button"
+                mat-icon-button
+                aria-label="Удалить"
+                title="Удалить"
+                (click)="$event.stopPropagation(); deleteOrder(order.id!)"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+              <mat-icon>expand_more</mat-icon>
+              <span class="order-title-span">
+                Заказ № {{ orderIndex + 1 }}
+              </span>
+              <span class="order-title-span">
+                Позиций: {{ order.items.length }}
+              </span>
+              <span class="order-title-span">
+                Доставка ожидается: {{ order.details.timeToDeliver }}
+              </span>
+            </div>
+          </ng-template>
+          <ng-template ngbPanelContent>
+            <app-order [order]="order"></app-order>
+          </ng-template>
+        </ngb-panel>
+      </ngb-accordion>
+    </ng-container>
+  </ng-container>
+</section>
+
+<ng-template #messageForUnknownUser>
+  <p class="order-message-for-unknown-user">
+    Для работы с ожидающими заказами необходимо войти в свой профиль
+  </p>
+</ng-template>
+
+<ng-template #empty>
+  <p class="order-empty-message">
+    Нет заказов в листе ожидания...
+  </p>
+</ng-template>

@@ -1,0 +1,51 @@
+@import 'src/scss/variables.scss';
+@import 'src/scss/mixins.scss';
+
+:host {
+  @include flex;
+  min-height: 60vh;
+  margin-top: 20px;
+}
+
+.navigation-block {
+  width: 30%;
+
+  border-right: 1px solid $main-divider-color;
+
+  @include media-mobile {
+    width: 40%;
+  }
+}
+
+.navigation-list {
+  @include flex-column;
+
+  color: $main-light-font-color;
+}
+
+.navigation-link {
+  @include flex-aligned;
+  padding: 10px;
+
+  color: $third-dark-font-color;
+
+  .icon {
+    margin-right: 10px;
+  }
+
+  &:focus,
+  &:hover,
+  &:active,
+  &.active {
+    color: $main-font-brand-color;
+    background-color: $link-hover-secondary-color;
+  }
+}
+
+.category-content {
+  width: 70%;
+
+  @include media-mobile {
+    width: 60%;
+  }
+}

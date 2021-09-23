@@ -1,0 +1,55 @@
+<header class="header">
+  <div class="centralizer">
+    <app-info-block 
+      [location]="location$ | async" 
+      (changeLocationEvent)="changeLocation($event)"
+    >
+    </app-info-block>
+
+    <div class="search-results-drop-down" ngbDropdown #myDrop="ngbDropdown">
+      <app-main-menu 
+        [userFullName$]="userFullName$"
+        [isUserLogged$]="isUserLogged$"
+        (setSearchValueEvent)="setSearchValue($event)"
+        (logoutEvent)="logout()"
+        ngbDropdownAnchor>
+      </app-main-menu>
+
+      <div
+        class="search-results-drop-down-menu" 
+        ngbDropdownMenu 
+        aria-labelledby="dropdownManual" 
+        *ngIf="!isResultsNotEmpty(); else searchResultsList"
+      >
+        <span class="dropdown-item-not-active" ngbDropdownItem>
+        :( По Вашему запросу ничего не найдено...
+        </span>
+      </div>
+
+      <ng-template #searchResultsList>
+        <ul class="search-results-drop-down-menu list" ngbDropdownMenu aria-labelledby="dropdownManual">
+          <li ngbDropdownItem *ngFor="let searchedResult of searchedCategories">
+            <a 
+              class="dropdown-link link text-decoration" 
+              [routerLink]="searchedResult.subcategory 
+                              ? ['/catalog', searchedResult.category.id, searchedResult.subcategory.id]
+                              : ['/catalog', searchedResult.category.id]"
+            >
+              {{ (searchedResult.subcategory || searchedResult.category).name }}
+            </a>
+          </li>
+          <li ngbDropdownItem *ngFor="let searchedGoodsItem of searchedGoods">
+            <a 
+              class="dropdown-link link"
+              [routerLink]="['/catalog', searchedGoodsItem.category || '.', searchedGoodsItem.subCategory || '', searchedGoodsItem.id]"
+            >
+              <app-goods-item-minimal-card [goodsItem]="searchedGoodsItem"></app-goods-item-minimal-card>
+            </a>
+          </li>
+        </ul>
+      </ng-template>
+    </div>
+
+  </div>
+  <app-nav-bar [categories]="categories$ | async"></app-nav-bar>
+</header>

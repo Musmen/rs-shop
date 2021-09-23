@@ -1,0 +1,107 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';          
+
+:host {
+  @include flex-center;
+}
+
+.login-form {
+  @include flex-column;
+  
+  width: 480px;
+  min-height: 350px;
+  margin-top: 40px;
+  padding: 20px;
+
+  background-color: $third-bg-color-light;
+  border-radius: 20px;
+
+  box-shadow: 0 2px 4px $main-bg-color-dark;
+}
+
+.login-fieldset,
+.registration-fieldset {
+  @include flex-column;
+
+  border: 1px solid $main-divider-color;
+  border-radius: 20px;
+
+  box-shadow: 0 4px 4px $main-bg-color-dark;
+}
+
+.login-fieldset {
+  margin-bottom: 20px;
+}
+
+.login-form-field {
+  margin: 10px;
+}
+
+.login-form-legend {
+  width: 120px;
+  margin: 20px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+
+  font-size: 20px;
+  color: $main-brand-color;
+}
+
+.registration-form-legend {
+  width: 330px;
+}
+
+.login-form-input {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 37px;
+  margin: 3px 0;
+  padding-right: 24px;
+
+  font-size: 14px;
+  color: $main-font-color;
+
+  border: 0;
+
+  &:focus{
+    outline: 0;
+  }
+}
+
+.mat-button.login-form-clear-button {
+  top: 5px;
+  height: 37px;
+}
+
+.mat-button.form-clear-button {
+  position: absolute;
+  right: 0;
+
+  padding: 0;
+  width: 24px;
+  min-width: 24px;
+}     
+
+.form-container {
+  @include flex-around;
+
+  margin: 20px;
+}
+
+.login-form-button {
+  @include flex-center-aligned;
+  width: 150px;
+
+  color: $main-light-font-color;
+
+  background-color: $main-brand-color;
+
+  &:focus,
+  &:hover,
+  &:active {
+    color: $main-brand-color;
+
+    border-color: $main-brand-color;
+    box-shadow: 0 2px 4px $main-brand-color;
+  }
+}

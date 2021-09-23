@@ -1,0 +1,17 @@
+<div class="cart-goods-item" *ngIf="cartGoodsItem">
+  <app-goods-item-minimal-card [goodsItem]="cartGoodsItem"></app-goods-item-minimal-card>
+  <div class="cart-item-controller-wrapper card-controller-wrapper">
+    <div class="cart-item-buttons card-buttons">
+      <button
+        class="cart-item-button main-button cart-item-button-active"
+        mat-icon-button
+        aria-label="Удалить"
+        title="Удалить"
+        (click)="onDeleteButtonClick(cartGoodsItem.id)"
+      >
+        <mat-icon class="button-icon">delete</mat-icon>
+        <span>Удалить</span>
+      </button>
+    </div>
+  </div>
+</div>

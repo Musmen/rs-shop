@@ -1,0 +1,29 @@
+<div class="order">
+  <p class="order-summary" *ngIf="cartGoods?.length">{{ getOrderDescription$() | async }}</p>
+
+  <app-order-goods-list
+    [cartGoods]="cartGoods"
+    [order]="order"
+    [deliverDataDescription$]="getDeliverDataDescription$()"
+    (deleteCartGoodsItemEvent)="onDeleteButtonClick($event)"
+    (decreaseAmountEvent)="decreaseGoodsItemAmount($event)"
+    (increaseAmountEvent)="increaseGoodsItemAmount($event)"
+  ></app-order-goods-list>
+
+  <app-order-form 
+    [orderDetails]="order!.details"
+    (cartFormSubmitEvent)="cartFormSubmit($event)"
+    (changeDeliverDataEvent)="changeDeliverData($event)"
+  ></app-order-form>
+</div>
+
+<ng-template #modal>
+  <div class="modal-body">
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <p class="modal-body-message">Ваш заказ успешно изменен</p>
+    <p class="modal-body-order-description">{{ getOrderDescription$() | async }}</p>
+    <p class="modal-body-deliver-data-description">Ожидайте доставку {{ getDeliverDataDescription$() | async }}</p>
+  </div>
+</ng-template>

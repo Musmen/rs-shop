@@ -1,0 +1,17 @@
+<section class="main-swiper-container swiper-container">
+  <h3 class="visually-hidden">Акционные товары</h3>
+  <ng-container *ngIf="promoGoods?.length">
+    <swiper [config]="promoGoodsSwiperConfig">
+      <ng-template 
+        swiperSlide 
+        *ngFor="let promoGood of promoGoods"
+      >
+        <a class="swiper-link" [routerLink]="['/catalog', '.', '', promoGood.id]">
+          <app-goods-item-minimal-card [goodsItem]="promoGood"></app-goods-item-minimal-card>
+        </a>
+      </ng-template>
+    </swiper>
+  </ng-container>
+
+  <div class="main-swiper-pagination swiper-pagination"></div>
+</section>

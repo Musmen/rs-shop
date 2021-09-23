@@ -1,0 +1,14 @@
+<section class="popular-goods-swiper-container">
+  <h3 class="popular-goods-title">Популярные товары</h3>
+  <swiper class="swiper" [config]="popularGoodsSwiperConfig">
+    <ng-template 
+      swiperSlide 
+      *ngFor="let popularGood of popularGoods"
+    >
+      <app-goods-item-minimal-card [goodsItem]="popularGood"></app-goods-item-minimal-card>
+    </ng-template>
+  </swiper>
+
+  <div class="popular-goods-swiper-button-prev swiper-button-prev"></div>
+  <div class="popular-goods-swiper-button-next swiper-button-next"></div>
+</section>

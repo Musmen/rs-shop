@@ -1,0 +1,141 @@
+@import './src/scss/variables.scss';
+@import './src/scss/mixins.scss';
+
+.goods-list{
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+
+  @include media-tablet {
+    grid-template-columns: repeat(3, 33%);
+  }
+
+  @include media-mobile {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+.goods-item:not(:nth-last-child(-n + 4)) {
+  border-bottom: 1px solid $main-divider-color;
+
+  @include media-tablet {
+    border-bottom: 0;
+  }
+}
+
+.goods-item:not(:nth-child(4n)) {
+  border-right: 1px solid $main-divider-color;
+
+  @include media-tablet {
+    border-right: 0;
+  }
+}
+
+.sorting-block {
+  position: sticky;
+  top: 0;
+
+  @include flex-aligned;
+  min-height: 50px;
+  padding-left: 20px;
+
+  border-top: 1px solid $main-divider-color;
+  border-bottom: 1px solid $main-divider-color;
+
+  background-color: $main-light-color;
+
+  z-index: 999;
+
+  @include media-tablet {
+    min-height: 40px;
+
+    font-size: 14px;
+  }
+}
+
+.sorting-title {
+  margin-right: 10px;
+}
+
+.sorting-criteria-list {
+  @include flex-aligned;
+  margin: 0;
+}
+
+.sorting-criteria-item {
+  margin-right: 20px;
+}
+
+.sorting-criteria-link {
+  display: inline-flex;
+  align-items: center;
+
+  color: $secondary-light-font-color;
+  text-decoration: none;
+
+  cursor: pointer;
+
+  &.active {
+    color: $main-font-brand-color;
+  }
+}
+
+.sorting-direction-icon {
+  color: transparent;
+}
+
+.active .sorting-direction-icon {
+  color: inherit;
+  transition: transform 0.6s;
+}
+
+.increasing .sorting-direction-icon {
+  transform: rotate(-180deg);
+}
+
+.controls-block {
+  @include flex-center-aligned;
+}
+
+.goods-list-more-button {
+  width: 200px;
+  margin: 10px;
+
+  color: $main-brand-color;
+
+  border-color: $main-brand-color;
+
+  &:active,
+  &:focus {
+    color: $main-brand-color;
+
+    border-color: $main-brand-color;
+  }
+
+  &:hover {
+    color: $main-light-font-color;
+
+    background-color: $main-brand-color;
+    
+    box-shadow: 0 2px 4px $main-brand-color;
+  }
+  
+  &.disabled {
+    color: $secondary-font-color;
+
+    border-color: $secondary-font-color;
+
+    cursor: initial;
+
+    &:hover {
+      color: $secondary-font-color;
+
+      background-color: inherit;
+
+      box-shadow: none;
+    }
+  }
+}
+
+.button-icon {
+  margin-right: 10px;
+}

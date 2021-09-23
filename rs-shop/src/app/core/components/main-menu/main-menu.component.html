@@ -1,0 +1,138 @@
+<div class="centralizer">
+  <a class="logo-link link" [routerLink]="['main']" title="На главную страницу">
+    <h1 class="visually-hidden">RS Shop: приложение – интернет-магазин (Angular)</h1>
+    <img class="logo" src="../../../assets/images/logo.svg" alt="Логотип Angular">
+  </a>
+
+  <app-spinner></app-spinner>
+
+  <button
+    class="catalog-button main-button shadow"
+    mat-icon-button
+    aria-label="Открыть каталог товаров"
+    title="Открыть каталог товаров"
+    [routerLink]="['/catalog']"
+  >
+    <mat-icon>apps</mat-icon>
+    Каталог товаров
+  </button>
+
+  <form class="search-form form" name="search">
+    <mat-form-field class="search-form-field" appearance="outline">
+      <mat-label>Поиск товара или категории</mat-label>
+      <input
+        class="search-form-input search-input input" 
+        type="search" 
+        name="searchValue"
+        matInput 
+        autocomplete="off"
+        [(ngModel)]="searchValue" 
+        (ngModelChange)="setSearchValue(searchValue)"
+      >
+      <button 
+        class="search-clear-button"
+        type="button"
+        *ngIf="searchValue" 
+        matSuffix 
+        mat-icon-button 
+        aria-label="Clear search input" 
+        (click)="searchValue=''"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+
+  <div ngbDropdown placement="bottom" class="profile-dropdown d-inline-block">
+    <button
+      id="dropdownUserProfile"
+      class="profile-button main-button shadow"
+      mat-icon-button
+      aria-label="Открыть профиль пользователя"
+      title="Открыть профиль пользователя"
+      ngbDropdownToggle
+    >
+      <mat-icon>login</mat-icon>
+      Аккаунт
+      <mat-icon>arrow_drop_down</mat-icon>
+    </button>
+    <div class="profile-dropdown-menu py-3" ngbDropdownMenu aria-labelledby="dropdownUserProfile">
+      <p class="user-icon" [class.logged]="isUserLogged$ | async">
+        <mat-icon [inline]="true">account_circle</mat-icon>
+      </p>
+      <p class="user-info">
+        <span class="user-full-name">
+          {{ userFullName$ | async }}
+        </span>
+      </p>
+      <div class="dropdown-divider"></div>
+      <div class="dropdown-login-button-wrapper">
+        <button 
+          class="dropdown-link link dropdown-login-button dropdown-item-not-active" 
+          ngbDropdownItem 
+          *ngIf="isUserLogged$ | async; else loginButton"
+          (click)="onLogoutButtonClick()"
+        >
+          Выйти
+        </button>
+      </div>
+      <div class="dropdown-divider"></div>
+      <ul class="list">
+        <li class="px-4" ngbDropdownItem>
+          <a
+            class="dropdown-link link"
+            aria-label="Открыть корзину товаров"
+            title="Открыть корзину товаров"
+            [routerLink]="['/cart']"
+          >
+            <mat-icon class="dropdown-item-icon">shopping_cart</mat-icon>
+            Корзина
+          </a>
+        </li>
+        <li class="px-4" ngbDropdownItem>
+          <a
+            class="dropdown-link link"
+            aria-label="Открыть избранные товары"
+            title="Открыть избранные товары"
+            [routerLink]="['/favorites']"
+          >
+            <mat-icon class="dropdown-item-icon">favorite</mat-icon>
+            Избранные товары
+          </a>
+        </li>
+        <li class="px-4" ngbDropdownItem>
+          <a
+            class="dropdown-link link"
+            aria-label="Открыть лист ожидания"
+            title="Открыть лист ожидания"
+            [routerLink]="['/orders']"
+          >
+            <mat-icon class="dropdown-item-icon">list_alt</mat-icon>
+            Лист ожидания
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <button
+    class="cart-button main-button shadow"
+    mat-icon-button
+    aria-label="Открыть корзину товаров"
+    title="Открыть корзину товаров"
+    [routerLink]="['/cart']"
+  >
+    <mat-icon>shopping_cart</mat-icon>
+    Корзина
+  </button>
+</div>
+
+<ng-template #loginButton>
+  <button 
+    class="dropdown-link link dropdown-login-button dropdown-item-not-active" 
+    ngbDropdownItem
+    [routerLink]="['/login']"
+  >
+    Войти
+  </button>
+</ng-template>

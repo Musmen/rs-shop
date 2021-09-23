@@ -1,0 +1,18 @@
+@import 'src/scss/variables.scss';
+
+.favorites-section {
+  margin-top: 30px;
+}
+
+.favorites-title {
+  margin-left: 10px;
+  padding-bottom: 30px;
+
+  border-bottom: 1px solid $main-divider-color;
+}
+
+.favorites-empty-message {
+  color: $main-brand-color;
+  font-weight: bold;
+  text-align: center;
+}

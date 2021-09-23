@@ -1,0 +1,42 @@
+<div class="favorite-goods-item" *ngIf="favoriteGoodsItem">
+  <app-goods-item-minimal-card [goodsItem]="favoriteGoodsItem"></app-goods-item-minimal-card>
+  <div class="favorites-item-controller-wrapper card-controller-wrapper">
+    <div class="favorites-item-buttons card-buttons">
+      <button
+        class="favorites-item-button main-button favorites-item-button-active"
+        *ngIf="favoriteGoodsItem.isInCart; else notIsInCartButton"
+        mat-icon-button
+        aria-label="Извлечь из корзины"
+        title="Извлечь из корзины"
+        (click)="onCartButtonClick(favoriteGoodsItem)"
+        >
+        <mat-icon class="button-icon">shopping_cart</mat-icon>
+        <span>В корзинe</span>
+      </button>
+      
+      <button
+        class="favorites-item-button main-button favorites-item-button-active"
+        mat-icon-button
+        aria-label="Убрать из избранных"
+        title="Убрать из избранных"
+        (click)="onFavoriteButtonClick(favoriteGoodsItem.id)"
+      >
+        <mat-icon class="button-icon">delete</mat-icon>
+        <span>Убрать из списка</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<ng-template #notIsInCartButton>
+  <button
+    class="favorites-item-button main-button"
+    mat-icon-button
+    aria-label="Добавить в корзину"
+    title="Добавить в корзину"
+    (click)="onCartButtonClick(favoriteGoodsItem)"
+    >
+    <mat-icon class="button-icon">shopping_cart</mat-icon>
+    <span>В корзину</span>
+  </button>
+</ng-template>

@@ -1,0 +1,119 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';
+
+.favorite-goods-item {
+  @include flex-column;
+  justify-content: space-between;
+  height: 260px;
+
+  @include media-tablet {
+    height: 280px;
+  }
+
+  .minimal-card {
+    justify-content: space-around;
+    height: initial;
+  }
+  
+  .minimal-card-poster {
+    max-width: 90px;
+    height: 100px;
+    min-height: 100px;
+  }
+  
+  .minimal-card-description-wrapper {
+    max-width: 150px;
+    margin-left: 10px;
+  
+    font-size: 1rem;
+
+    @include media-tablet {
+      font-size: 0.9rem;
+    }
+  
+    @include media-mobile {
+      font-size: 0.8rem;
+    }
+  }
+  
+  .minimal-card-description-title {
+    max-height: 95px;
+    font-size: 1rem;
+
+    @include media-tablet {
+      font-size: 0.9rem;
+    }
+  
+    @include media-mobile {
+      font-size: 0.8rem;
+    }
+  }
+  
+  .minimal-card-description-price {
+    font-size: 0.8rem;
+  }
+  
+  .minimal-card-description-title,
+  .minimal-card-description-price,
+  .minimal-card-description-raiting,
+  .minimal-card-price-label {
+    max-width: 140px;
+  
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @include media-tablet {
+      width: 120px;
+    }
+  
+    @include media-mobile {
+      width: 100px;
+    }
+  }
+}
+
+.favorites-item-controller-wrapper {
+  @include flex-center;
+
+  .favorites-item-button {
+    width: 150px;
+    margin-bottom: 10px;
+  
+    font-size: 12px;
+    color: $main-light-font-color;
+  
+    background-color: $main-brand-color;
+  
+    &:focus,
+    &:hover,
+    &:active {
+      color: $main-light-font-color;
+  
+      background-color: $main-brand-color;
+      border-color: $main-brand-color;
+      box-shadow: 0 2px 4px $main-brand-color;
+    }
+  
+    &.favorites-item-button-active {
+      color: $main-brand-color;
+  
+      border-color: $main-brand-color;
+      background-color: $main-button-light-color;
+      box-shadow: 0 2px 4px $main-button-shadow-color;
+  
+      &:focus,
+      &:hover,
+      &:active {
+        box-shadow: 0 2px 4px $main-brand-color;
+      }
+    }
+  }
+  
+  .favorites-item-button:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .button-icon {
+    margin: 5px;
+  }
+}

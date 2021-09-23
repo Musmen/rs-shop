@@ -1,0 +1,37 @@
+@import './src/scss/variables.scss';
+@import './src/scss/mixins.scss';
+
+.favorites-list {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  margin: 20px 10px;
+
+  @include media-tablet {
+    grid-template-columns: repeat(3, 33%);
+    margin: 5px;
+  }
+
+  @include media-mobile {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+.favorites-item {
+  padding: 10px;
+}
+
+.favorites-item:not(:nth-last-child(-n + 4)) {
+  border-bottom: 1px solid $main-divider-color;
+
+  @include media-tablet {
+    border-bottom: 0;
+  }
+}
+
+.favorites-item:not(:nth-child(4n)) {
+  border-right: 1px solid $main-divider-color;
+
+  @include media-tablet {
+    border-right: 0;
+  }
+}

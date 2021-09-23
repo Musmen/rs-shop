@@ -1,0 +1,82 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';
+
+:host {
+  display: block;
+}
+
+.minimal-card,
+.minimal-card-poster {
+  height: 200px;
+}
+
+.minimal-card-poster {
+  max-width: 75%;
+}
+
+.minimal-card {
+  @include flex-aligned;
+  justify-content: center;
+}
+
+.minimal-card-poster-wrapper {
+  @include flex-center-aligned;
+}
+
+.minimal-card-poster {
+  min-height: 200px;
+  object-fit: contain;
+}
+
+.minimal-card-description-wrapper {
+  @include flex-center-aligned;
+  flex-direction: column;
+  max-width: 50%;
+  margin-left: 30px;
+
+  font-size: 1.5rem;
+
+  @include media-tablet {
+    font-size: 1.3rem;
+  }
+
+  @include media-mobile {
+    font-size: 1.1rem;
+  }
+}
+
+.minimal-card-description-title {
+  text-align: center;
+
+  @include media-tablet {
+    font-size: 1.4rem;
+  }
+
+  @include media-mobile {
+    font-size: 1.2rem;
+  }
+}
+
+.minimal-card-description-price {
+  margin: 5px 0;
+
+  font-weight: bold;
+  font-size: 1.5rem;
+  text-align: center;
+
+  @include media-tablet {
+    font-size: 1.3rem;
+  }
+
+  @include media-mobile {
+    font-size: 1.1rem;
+  }
+}
+
+.minimal-card-description-title,
+.minimal-card-description-price,
+.minimal-card-description-raiting,
+.minimal-card-price-label {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

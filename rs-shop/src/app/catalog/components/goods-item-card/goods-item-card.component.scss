@@ -1,0 +1,82 @@
+@import './src/scss/mixins.scss';          
+@import './src/scss/variables.scss';
+
+.goods-item-card {
+  @include flex-column;
+  justify-content: space-between;
+
+  height: 100%;
+}
+
+.goods-item-card {
+  flex-direction: column;
+}
+
+.goods-item-card-poster-wrapper {
+  max-width: 100%;
+}
+
+.goods-item-card-description-wrapper {
+  max-width: 100%;
+
+  font-size: 0.85rem;
+}
+
+.goods-item-card-description-title {
+  font-size: 0.95rem;
+}
+
+.goods-item-card-description-title,
+.goods-item-card-description-price,
+.goods-item-card-description-raiting,
+.goods-item-card-price-label {
+  max-width: 250px;
+}
+
+.goods-item-card-description-price {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.goods-item-card-controller-wrapper {
+  .goods-item-card-button {
+    width: 160px;
+    margin-bottom: 10px;
+  
+    color: $main-light-font-color;
+  
+    background-color: $main-brand-color;
+  
+    &:focus,
+    &:hover,
+    &:active {
+      color: $main-light-font-color;
+  
+      background-color: $main-brand-color;
+      border-color: $main-brand-color;
+      box-shadow: 0 2px 4px $main-brand-color;
+    }
+  
+    &.goods-item-card-button-active {
+      color: $main-brand-color;
+  
+      border-color: $main-brand-color;
+      background-color: $main-button-light-color;
+      box-shadow: 0 2px 4px $main-button-shadow-color;
+  
+      &:focus,
+      &:hover,
+      &:active {
+        box-shadow: 0 2px 4px $main-brand-color;
+      }
+    }
+  }
+  
+  .goods-item-card-button:last-of-type {
+    margin-bottom: 0;
+  }
+  
+  .button-icon {
+    margin: 5px;
+  }
+}

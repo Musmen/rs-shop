@@ -1,0 +1,42 @@
+@import 'src/scss/variables.scss';
+@import 'src/scss/mixins.scss';
+
+:host {
+  @include flex-center;
+}
+
+.category-section {
+  width: 80%;
+  margin-top: 30px;
+}
+
+.category-title {
+  margin-bottom: 30px;
+  margin-left: 10px;
+}
+
+.subcategory-list {
+  display: grid;
+  grid-template-columns: 50% 50%;
+
+  @include media-mobile {
+    grid-template-columns: 100%;
+  }
+}
+
+.subcategory-link {
+  @include flex-aligned;
+  padding: 10px;
+
+  color: $third-dark-font-color;
+  text-decoration: underline;
+
+  &:focus,
+  &:hover,
+  &:active,
+  &.active {
+    color: $main-font-brand-color;
+    text-decoration: none;
+    background-color: $link-hover-secondary-color;
+  }
+}
