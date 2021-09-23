@@ -1,24 +1,24 @@
 <table class="table table-striped">
   <thead>
     <tr class="table-header-row">
-      <th class="table-header-col" scope="col">№</th>
+      <th class="table-header-col table-item-to-hide-in-mobile" scope="col">№</th>
       <th class="table-header-col" scope="col">Товар</th>
-      <th class="table-header-col" scope="col">Описание</th>
+      <th class="table-header-col table-description-item" scope="col">Описание</th>
       <th class="table-header-col" scope="col">Количество</th>
-      <th class="table-header-col" scope="col">Время доставки</th>
-      <th class="table-header-col" scope="col">Стоимость, бел. рублей</th>
+      <th class="table-header-col table-item-to-hide-in-mobile" scope="col">Время доставки</th>
+      <th class="table-header-col table-item-to-hide-in-mobile" scope="col">Стоимость, бел. рублей</th>
     </tr>
   </thead>
   <tbody>
   <tr *ngFor="let cartGoodsItem of cartGoods; index as cartGoodsItemIndex">
-    <th class="table-col" scope="row">{{ cartGoodsItemIndex + 1 }}</th>
+    <th class="table-col table-item-to-hide-in-mobile" scope="row">{{ cartGoodsItemIndex + 1 }}</th>
     <td class="cart-item table-col">
       <app-order-goods-item 
         [cartGoodsItem]="cartGoodsItem"
         (deleteCartGoodsItemEvent)="onDeleteButtonClick($event)"
       ></app-order-goods-item>
     </td>
-    <td class="table-col">
+    <td class="table-col table-description-item">
       <p class="cart-goods-item-description">
         {{ cartGoodsItem.description }}
       </p>
@@ -48,8 +48,8 @@
         </button>
       </div>
     </td>
-    <td class="table-col">{{ deliverDataDescription$ | async }}</td>
-    <td>{{ cartGoodsItem.price * order!.items[cartGoodsItemIndex].amount | number:'.2-2' }}</td>
+    <td class="table-col table-item-to-hide-in-mobile">{{ deliverDataDescription$ | async }}</td>
+    <td class="table-item-to-hide-in-mobile">{{ cartGoodsItem.price * order!.items[cartGoodsItemIndex].amount | number:'.2-2' }}</td>
   </tr>
   </tbody>
 </table>

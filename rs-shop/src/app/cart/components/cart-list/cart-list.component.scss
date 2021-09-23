@@ -1,10 +1,16 @@
 @import './src/scss/variables.scss';
 @import './src/scss/mixins.scss';
 
-.cart-list {
-  display: grid;
-  grid-template-columns: repeat(4, 25%);
-  margin: 20px 10px;
+.table-description-item {
+  @include media-tablet {
+    display: none;
+  }
+}
+
+.table-item-to-hide-in-mobile {
+  @include media-mobile {
+    display: none;
+  }
 }
 
 .cart-item {

@@ -7,6 +7,19 @@
   margin: 20px 10px;
 }
 
+.table-description-item {
+  @include media-tablet {
+    display: none;
+  }
+}
+
+.table-item-to-hide-in-mobile {
+  @include media-mobile {
+    display: none;
+  }
+}
+
+
 .cart-item {
   padding: 10px;
 }

@@ -18,6 +18,10 @@
 
 .cart-form-field {
   margin: 10px 30px 0;
+
+  @include media-tablet {
+    margin-top: 35px;
+  }
 }
 
 .cart-form-legend {
@@ -116,6 +120,10 @@
   @include flex-aligned;
   justify-content: center;
   margin-top: 5px;
+
+  @include media-mobile {
+    flex-direction: column;
+  }
 }
 
 .deliver-date-wrapper,
@@ -126,5 +134,11 @@
 
   .cart-form-field {
     width: 50%;
+  }
+}
+
+.order-form-field-comment {
+  @include media-tablet {
+    margin-top: 37px;
   }
 }

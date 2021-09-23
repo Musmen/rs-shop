@@ -1,4 +1,9 @@
 @import 'src/scss/variables.scss';
+@import 'src/scss/mixins.scss';
+
+.order {
+  width: 480px;
+}
 
 .cart-section {
   margin-top: 30px;
