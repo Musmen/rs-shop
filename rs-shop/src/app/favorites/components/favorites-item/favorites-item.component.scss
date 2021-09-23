@@ -6,6 +6,10 @@
   justify-content: space-between;
   height: 260px;
 
+  @include media-tablet {
+    height: 280px;
+  }
+
   .minimal-card {
     justify-content: space-around;
     height: initial;
@@ -22,11 +26,27 @@
     margin-left: 10px;
   
     font-size: 1rem;
+
+    @include media-tablet {
+      font-size: 0.9rem;
+    }
+  
+    @include media-mobile {
+      font-size: 0.8rem;
+    }
   }
   
   .minimal-card-description-title {
     max-height: 95px;
     font-size: 1rem;
+
+    @include media-tablet {
+      font-size: 0.9rem;
+    }
+  
+    @include media-mobile {
+      font-size: 0.8rem;
+    }
   }
   
   .minimal-card-description-price {
@@ -41,6 +61,14 @@
   
     text-overflow: ellipsis;
     overflow: hidden;
+
+    @include media-tablet {
+      width: 120px;
+    }
+  
+    @include media-mobile {
+      width: 100px;
+    }
   }
 }
 
