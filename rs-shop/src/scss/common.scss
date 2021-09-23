@@ -6,11 +6,20 @@ body {
 }
 
 .centralizer {
-  width: 1200px;
+  width: 1020px;
+	box-sizing: border-box;
   margin: 0 auto;
 	padding: 0 10px;
 
 	user-select: none;
+
+	@include media-tablet {
+    width: 760px;
+  }
+
+	@include media-mobile {
+    width: 500px;
+  }
 }
 
 .visually-hidden {
@@ -58,9 +67,11 @@ body {
 :root .main-button {
 	box-sizing: border-box;
 	@include flex-center;
-	width: 120px;
+	width: 100px;
 	height: 42px;
 	
+	font-size: 14px;
+
 	border: 1px solid $main-button-border-color;
 	border-radius: 40px;
 	
@@ -75,4 +86,16 @@ body {
     background-color: $main-button-light-color;
     box-shadow: 0 2px 4px $main-button-shadow-color;
 	}
+
+	@include media-tablet {
+    width: 90px;
+
+		font-size: 13px;
+  }
+
+	@include media-mobile {
+    width: 80px;
+
+		font-size: 12px;
+  }
 }

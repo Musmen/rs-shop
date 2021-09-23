@@ -3,5 +3,14 @@
 .spinner-container {
   position: absolute;
   top: 0;
-  left: 63px;
+  left: 50px;
+
+  @include media-tablet {
+    top: 10px;
+  }
+
+  @include media-mobile {
+    top: 0;
+    left: 150px;
+  }
 }

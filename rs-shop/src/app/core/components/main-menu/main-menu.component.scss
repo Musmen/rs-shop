@@ -10,7 +10,13 @@
   position: relative;
   @include flex-aligned;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   margin: 15px auto;
+  padding: 0;
+
+  @include media-mobile {
+    margin: 10px 0;
+  }
 }
 
 .logo {
@@ -22,11 +28,24 @@
 .search-form {
   @include flex;
   margin-right: 20px;
+
+  @include media-tablet {
+    margin: 10px;
+  }
+
+  @include media-mobile {
+    // margin: 10px;
+  }
 }
 
 .search-form-field {
-  width: 540px;
+  width: 420px;
   height: 36px;
+
+  @include media-mobile {
+    width: 380px;
+		box-sizing: border-box;
+  }
 }
 
 .search-form-input {
@@ -35,13 +54,13 @@
 
 .catalog-button {
   min-width: 160px;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 
 .profile-button,
 .cart-button {
   min-width: 120px;
-	margin-right: 20px;
+	margin-right: 10px;
 }
 
 .profile-dropdown {
@@ -102,9 +121,9 @@
 
 .user-icon {
   @include flex-center;
-  margin: 20px 0 30px;
   
-  transform: scale(2.5);
+  font-size: 70px;
+  line-height: 70px;
 }
 
 .logged {

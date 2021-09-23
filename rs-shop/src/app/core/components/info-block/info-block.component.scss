@@ -9,20 +9,42 @@
 
 .centralizer {
   @include flex-between;
+  flex-wrap: wrap;
+
+  @include media-mobile {
+    justify-content: center;
+  }
 }
 
 .info-block {
   align-self: center;
+
+  flex-wrap: wrap;
+
+  @include media-mobile {
+    justify-content: center;
+  }
 }
 
 .info-block,
 .working-time-block {
   border-left: 1px solid $main-divider-color;
+
+  @include media-mobile {
+    margin: 5px 0;
+    border: none;
+  }
 }
 
 .contacts-list-item,
 .contacts-dropdown {
   margin-right: 10px;
+}
+
+.contacts-dropdown {
+  @include media-mobile {
+    order: 1;
+  }
 }
 
 .contacts-list-item:first-of-type {

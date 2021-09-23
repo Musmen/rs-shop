@@ -1,6 +1,9 @@
 import { SwiperOptions } from 'swiper';
 
 export const MAIN_SLIDER_CONFIG: SwiperOptions = {
+  updateOnWindowResize: true,
+  preloadImages: true,
+  updateOnImagesReady: true,
   spaceBetween: 50,
   slidesPerView: 1,
   loop: true,
@@ -15,6 +18,9 @@ export const MAIN_SLIDER_CONFIG: SwiperOptions = {
 };
 
 export const POPULAR_GOODS_SLIDER_CONFIG: SwiperOptions = {
+  updateOnWindowResize: true,
+  preloadImages: true,
+  updateOnImagesReady: true,
   grabCursor: true,
   spaceBetween: 15,
   slidesPerView: 3,
